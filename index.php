@@ -1,0 +1,1 @@
+echo "<?php echo 'Hello, this is my portfolio site!'; ?>" > index.php
