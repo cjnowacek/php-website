@@ -11,46 +11,58 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1 class="name">CJ Nowacek - Technical Artist</h1>
+      <span class="name">CJ Nowacek</span>
+      <span class="name">Technical Artist</span>
+      <!--<span style="font-size: 50%; background: inherit;">Technical Artist</span>-->
     </div>
 
-    <div class="title__container">
-      <nav class="nav">
-        <ul>
-          <!--<li><a href="index.php">Home</a></li>-->
-          <li><a href="about.php">About</a></li>
-          <li><a href="">|</a></li>
-          <li><a href="projects.php">Tools</a></li>
-          <li><a href="">|</a></li>
-          <li><a href="projects.php">Dev Log</a></li>
-          <li><a href="">|</a></li>
-          <li><a href="projects.php">Other</a></li>
-        </ul>
-      </nav>
-    </div>
+  </div>
 
+  <div class="container">
+    <nav class="nav">
+      <ul>
+        <!--<li><a href="index.php">Home</a></li>-->
+        <li><a href="about.php">About</a></li>
+        <li><a href="">-</a></li>
+        <li><a href="projects.php">Tools</a></li>
+        <li><a href="">-</a></li>
+        <li><a href="projects.php">Dev Log</a></li>
+        <li><a href="">-</a></li>
+        <li><a href="projects.php">Other</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container">
 
     <div class="video-container">
       <iframe title="vimeo-player" src="https://player.vimeo.com/video/711045781?h=582a1ac828" frameborder="0" allowfullscreen></iframe>
     </div>
 
+
+    <hr>
+    <h1 class="name">Projects</h1>
+    <hr style="color: #FF7A40;">
+
     <div class="grid">
       <div class="grid-item">
         <div class="grid-media">
           <img src="static/img/smite2_1200x900.png" alt="Placeholder">
-          <img class="hover-gif" src="static/img/y7A08Y_1.gif" alt="GIF Placeholder">
+          <img class="hover-gif" src="static/img/y7A08Y.gif" alt="GIF Placeholder">
         </div>
         <a href="about.php" style="text-decoration:none">
-          <p class="subtext">Smite</p>
+          <h1 class="name">Smite</h1>
         </a>
       </div>
+
+
       <div class="grid-item">
         <div class="grid-media">
-          <img src="https://via.placeholder.com/400x300.jpg" alt="Runaway">
+          <img src="static/img/smite2_1200x900.png" alt="Runaway">
           <img class="hover-gif" src="static/img/y7A08Y.gif" alt="Runaway GIF">
         </div>
         <a href="about.php" style="text-decoration:none">
-          <p class="subtext">Runaway</p>
+          <h1 class="name">Runaway</h1>
         </a>
       </div>
       <div class="grid-item">
@@ -59,15 +71,18 @@
           <img class="hover-gif" src="https://via.placeholder.com/400x300.gif" alt="GIF Placeholder">
         </div>
         <a href="about.php" style="text-decoration:none">
-          <p class="subtext">The Sintern</p>
+          <h1 class="name">The Sintern</h1>
         </a>
       </div>
     </div>
   </div>
+  <hr>
+  <p class="subtext">&copy; 2024 CJ Nowacek. All rights reserved.</p>
+
+
   <footer>
-    <p class="copyright">&copy; 2024 CJ Nowacek. All rights reserved.</p>
     <button onclick="scrollToTop()">Back to Top</button>
-  </footer>-
+  </footer>
   <script>
     document.querySelectorAll('.grid-item').forEach(item => {
       item.addEventListener('mouseenter', () => {

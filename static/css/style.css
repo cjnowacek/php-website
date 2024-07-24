@@ -16,32 +16,26 @@ body {
 }
 
 .container {
-    min-width: 80%;
+    min-width: none;
     max-width: 80%;
-    text-align: right;
+    text-align: Center;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
 }
 
 .header {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    justify-content: left;
+    align-items: left;
     margin-bottom: 20px;
 }
 
-h1.name {
+.name {
     font-family: Portico_Regular, sans-serif;
     color: var(--header-color);
+    padding: 10px;
     margin: 0;
-}
-
-span.title {
-    font-family: Portico_Regular, sans-serif;
-    color: var(--header-color);
-    font-size: 24px;
-    text-align: right;
 }
 
 .nav {
@@ -56,6 +50,7 @@ span.title {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    line-height: 50%;
 }
 
 .nav li {
@@ -136,25 +131,26 @@ p.subtext {
 
 footer {
     text-align: center;
-    padding: 20px;
-    background-color: var(--bg-color * 2);
+    padding: 10px 0px;
     color: var(--header-color);
     position: fixed;
     width: 100%;
     bottom: 0;
-    opacity: .5;
+    opacity: 1;
 }
 
 footer button {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: var(--header-color);
+    background-color: white;
     color: var(--header-color);
     border: none;
     cursor: pointer;
     font-size: 16px;
+    font-family: inherit;
+    border-radius: 5px;
 }
 
 footer button:hover {
-    background-color: #e06b2f;
+    background-color: #ebebeb;
 }
