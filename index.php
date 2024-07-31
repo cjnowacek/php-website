@@ -40,9 +40,7 @@
     </div>
 
 
-    <hr>
     <h1 class="name">Projects</h1>
-    <hr style="color: #FF7A40;">
 
     <div class="grid">
       <div class="grid-item">
@@ -100,4 +98,4 @@
   </script>
 </body>
 
-</html>
+</html> 

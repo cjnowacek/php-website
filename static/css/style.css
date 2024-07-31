@@ -32,14 +32,14 @@ body {
 }
 
 .name {
-    font-family: Portico_Regular, sans-serif;
+    font-family: Cambria, Georgia, serif; 
     color: var(--header-color);
     padding: 10px;
     margin: 0;
 }
 
 .nav {
-    font-family: Portico_Regular, sans-serif;
+    font-family: Cambria, Georgia, serif; 
     color: black;
     font-size: 50px;
     line-height: 1.6em;
