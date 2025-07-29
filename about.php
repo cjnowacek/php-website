@@ -1,51 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$page_title = "About";
+include 'includes/header.php';
+?>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="static/css/style.css" />
-    <title>CJ Nowacek</title>
-</head>
+<div class="container">
 
-<body>
-    <h1>CJ Nowacek - Technical Artist</h1>
-    <nav>
-        <a href="index.php">Home</a>
-        <a href="about.php">About</a>
-        <a href="projects.php">Projects</a>
-    </nav>
-    <div class="container">
-        <div class="video-container">
-            <iframe title="vimeo-player" src="https://player.vimeo.com/video/711045781?h=582a1ac828" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="grid">
-            <div class="grid-item">
-                <img src="https://via.placeholder.com/400x300.jpg" alt="Placeholder">
-                <img class="hover-gif" src="https://via.placeholder.com/400x300.gif" alt="GIF Placeholder">
-            </div>
-            <div class="grid-item">
-                <img src="static/img/smite2_1200x900.png" alt="Smite">
-                <img class="hover-gif" src="static/img/smite2_1200x900.gif" alt="Smite GIF">
-            </div>
-            <div class="grid-item">
-                <img src="static/img/TheSintern1200x900.png" alt="The Sintern">
-                <img class="hover-gif" src="static/img/TheSintern1200x900.gif" alt="The Sintern GIF">
-            </div>
-            <div class="grid-item">
-                <img src="https://via.placeholder.com/400x300.jpg" alt="Placeholder">
-                <img class="hover-gif" src="https://via.placeholder.com/400x300.gif" alt="GIF Placeholder">
-            </div>
-            <div class="grid-item">
-                <img src="https://via.placeholder.com/400x300.jpg" alt="Placeholder">
-                <img class="hover-gif" src="https://via.placeholder.com/400x300.gif" alt="GIF Placeholder">
-            </div>
-            <div class="grid-item">
-                <img src="https://via.placeholder.com/400x300.jpg" alt="Placeholder">
-                <img class="hover-gif" src="https://via.placeholder.com/400x300.gif" alt="GIF Placeholder">
-            </div>
+    <div class="about-content">
+        <h2>About Me</h2>
+        <div class="about-text">
+            <p>I'm a passionate Technical Artist with expertise in bridging the gap between art and technology in game development. My work focuses on creating efficient workflows, tools, and visual effects that enhance the creative process while maintaining optimal performance.</p>
+            
+            <h3>Skills & Expertise</h3>
+            <ul>
+                <li>Shader Development & Visual Effects</li>
+                <li>Pipeline Development & Tool Creation</li>
+                <li>3D Graphics Programming</li>
+                <li>Game Engine Integration</li>
+                <li>Performance Optimization</li>
+                <li>Cross-disciplinary Collaboration</li>
+            </ul>
+
+            <h3>Experience</h3>
+            <p>With experience working on major titles like Smite 2 and various independent projects, I specialize in creating robust technical solutions that empower artists and streamline production workflows.</p>
         </div>
     </div>
-</body>
+</div>
 
-</html>
+<?php include 'includes/footer.php'; ?>
