@@ -1,9 +1,10 @@
 <?php
 $page_title = "About";
-include 'includes/header.php';
+include '../includes/header.php';
 ?>
 
 <div class="container">
+    <?php include '../includes/demo_reel.php'; ?>
 
     <div class="about-content">
         <h2>About Me</h2>
@@ -26,4 +27,4 @@ include 'includes/header.php';
     </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>
