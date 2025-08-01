@@ -1,13 +1,14 @@
 <?php
 // includes/config.php
-$site_title = "CJ Nowacek - Technical Artist";
+$site_title = "CJ Nowacek";
 $site_name = "CJ Nowacek";
 $current_year = date('Y');
 
 // Navigation items
 $nav_items = [
     'index.php' => 'Home',
-    'projects.php' => 'Projects',
+    'techart.php' => 'Techart',
+    'devops.php' => 'Devops', 
     'about.php' => 'About', 
     //'contact.php' => 'Contact'
 ];
