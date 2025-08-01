@@ -458,3 +458,66 @@ footer button:hover {
         font-size: 1.3em;
     }
 }
+
+/* Animated Cards for Competencies - Add this to the end of style.css */
+
+/* Four in a row for competencies */
+.competencies-grid .grid-item {
+    flex: 1 1 calc(25% - var(--grid-gap));
+    max-width: calc(25% - var(--grid-gap));
+}
+
+/* Animated card styling for competencies */
+.competencies-grid .grid-item .project-info {
+    background: --bg-color;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid green;
+}
+
+.competencies-grid .grid-item:hover .project-info {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 122, 64, 0.2);
+}
+
+.competencies-grid .grid-item .project-info h3 {
+    color: var(--header-color);
+    font-family: Cambria, Georgia, serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.competencies-grid .grid-item .project-info .project-description {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0;
+}
+
+/* Responsive: 2 per row on tablets, 1 on mobile */
+@media (max-width: 1024px) {
+    .competencies-grid .grid-item {
+        flex: 1 1 calc(50% - var(--grid-gap));
+        max-width: calc(50% - var(--grid-gap));
+    }
+}
+
+@media (max-width: 768px) {
+    .competencies-grid .grid-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    
+    .competencies-grid .grid-item .project-info {
+        padding: 1.5rem;
+    }
+}

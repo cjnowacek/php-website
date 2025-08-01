@@ -1,13 +1,43 @@
 <?php
-$page_title = "Home"; // Optional: sets custom page title
-include '../includes/header.php';  // Go up one level to find includes
+$page_title = "Home";
+include '../includes/header.php';
 ?>
 
 <div class="container">
     <?php include '../includes/demo_reel.php'; ?>
 
-    <h2>Featured Projects</h2>
+    <h2>Core Competencies</h2>
+    <div class="grid competencies-grid">
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>🔄 CI/CD Pipelines</h3>
+                <p class="project-description">Jenkins, GitHub Actions, automated testing and deployment workflows</p>
+            </div>
+        </div>
 
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>🐍 Automation Scripting</h3>
+                <p class="project-description">Python automation for infrastructure provisioning and asset processing</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>🐳 Containerization</h3>
+                <p class="project-description">Docker containers and orchestration for consistent deployments</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>☁️ Cloud & Infrastructure</h3>
+                <p class="project-description">Scalable infrastructure design and cloud platform optimization</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Featured Projects</h2>
     <div class="grid">
         <div class="grid-item">
             <div class="grid-media">
