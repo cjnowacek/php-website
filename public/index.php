@@ -4,7 +4,6 @@ include '../includes/header.php';  // Go up one level to find includes
 ?>
 
 <div class="container">
-    <?php include '../includes/demo_reel.php'; ?>
 
     <h2>Featured Projects</h2>
 
