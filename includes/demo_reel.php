@@ -4,10 +4,11 @@
 <div class="demo-reel">
     <h2>Demo Reel</h2>
     <div class="video-container">
-        <iframe title="vimeo-player" 
+        <iframe title="CJ Nowacek Technical Art Demo Reel" 
                 src="https://player.vimeo.com/video/1016947852?h=ff8595b6d0" 
                 frameborder="0" 
-                allowfullscreen>
+                allowfullscreen
+                loading="lazy">
         </iframe>
     </div>
 </div>
