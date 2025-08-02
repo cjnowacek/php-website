@@ -469,7 +469,7 @@ footer button:hover {
 
 /* Animated card styling for competencies */
 .competencies-grid .grid-item .project-info {
-    background: --bg-color;
+    background: white;
     color: #333;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -479,7 +479,7 @@ footer button:hover {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    border: 1px solid green;
+    border: 1px solid #e0e0e0;
 }
 
 .competencies-grid .grid-item:hover .project-info {
@@ -503,6 +503,137 @@ footer button:hover {
     margin: 0;
 }
 
+/* Containerized Project Cards */
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 40px rgba(255, 122, 64, 0.2);
+}
+
+.project-media {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+.project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.project-media .hover-gif {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-media .hover-gif {
+    opacity: 1;
+}
+
+.project-card:hover .project-media img:first-child {
+    opacity: 0;
+}
+
+.project-info-card {
+    padding: 2rem;
+    color: #333;
+}
+
+.project-info-card h3 {
+    color: var(--header-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: Cambria, Georgia, serif;
+}
+
+.project-company {
+    color: var(--subheader-color);
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.project-description-card {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-highlights {
+    margin: 1.5rem 0;
+}
+
+.project-highlights ul {
+    margin-left: 1rem;
+    color: #666;
+}
+
+.project-highlights li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.tech-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    background: linear-gradient(135deg, #fff5f0 0%, #ffeee6 100%);
+    color: var(--header-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background: var(--header-color);
+    color: white;
+    transform: scale(1.05);
+}
+
+.project-link {
+    display: inline-block;
+    background: var(--header-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: Cambria, Georgia, serif;
+}
+
+.project-link:hover {
+    background: var(--subheader-color);
+    transform: translateY(-2px);
+}
+
 /* Responsive: 2 per row on tablets, 1 on mobile */
 @media (max-width: 1024px) {
     .competencies-grid .grid-item {
@@ -519,5 +650,27 @@ footer button:hover {
     
     .competencies-grid .grid-item .project-info {
         padding: 1.5rem;
+    }
+
+    .projects-container {
+        gap: 2rem;
+    }
+    
+    .project-media {
+        height: 250px;
+    }
+    
+    .project-info-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-media {
+        height: 200px;
+    }
+    
+    .tech-tags {
+        justify-content: center;
     }
 }

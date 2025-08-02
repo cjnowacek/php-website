@@ -4,7 +4,8 @@ include '../includes/header.php';
 ?>
 
 <div class="container">
-    <?php include '../includes/demo_reel.php'; ?>
+
+    <h2>Professional Statement</h2>
 
     <h2>Core Competencies</h2>
     <div class="grid competencies-grid">
