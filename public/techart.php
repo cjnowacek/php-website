@@ -3,6 +3,25 @@ $page_title = "Technical Art";
 include '../includes/header.php';
 ?>
 
+<style>
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+@media (max-width: 900px) {
+    .projects-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
 <div class="container">
     <?php include '../includes/demo_reel.php'; ?>
 
