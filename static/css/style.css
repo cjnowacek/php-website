@@ -674,3 +674,22 @@ footer button:hover {
         justify-content: center;
     }
 }
+
+/* Add this to the end of your static/css/style.css file */
+
+/* Override the default projects-container for index page - 2 columns in rows */
+.projects-container-index {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem;
+    margin: 2rem 0;
+    /* Override the flex-direction: column from the main projects-container */
+}
+
+/* Responsive adjustments for index projects */
+@media (max-width: 768px) {
+    .projects-container-index {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+}
