@@ -1,6 +1,6 @@
 <?php
 $page_title = "Page Not Found";
-include '../includes/header.php';
+include 'includes/header.php';
 http_response_code(404);
 ?>
 
@@ -26,4 +26,4 @@ http_response_code(404);
     </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

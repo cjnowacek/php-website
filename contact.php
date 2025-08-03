@@ -1,6 +1,6 @@
 <?php
 $page_title = "Contact";
-include '../includes/header.php';
+include 'includes/header.php';
 ?>
 
 <div class="container">
@@ -25,7 +25,7 @@ include '../includes/header.php';
             
             <div class="resume-download">
                 <h3>Resume</h3>
-                <a href="../static/files/CJ_Nowacek_Resume.pdf" class="project-link" download>
+                <a href="static/files/CJ_Nowacek_Resume.pdf" class="project-link" download>
                     📄 Download Resume (PDF)
                 </a>
                 <p class="project-description">Technical Artist & DevOps Engineer<br>
@@ -44,7 +44,7 @@ include '../includes/header.php';
         
         <div class="contact-form">
             <h3>Send a Message</h3>
-            <form action="../includes/contact_handler.php" method="POST" id="contactForm">
+            <form action="includes/contact_handler.php" method="POST" id="contactForm">
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -122,4 +122,4 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 });
 </script>
 
-<?php include '../includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

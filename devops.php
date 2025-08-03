@@ -1,6 +1,6 @@
 <?php
 $page_title = "DevOps";
-include '../includes/header.php';
+include 'includes/header.php';
 ?>
 
 <div class="container">
@@ -45,7 +45,7 @@ include '../includes/header.php';
     <div class="projects-container">
         <div class="project-card">
             <div class="project-media">
-                <img src="../static/img/devops-pipeline.png" alt="Game Build Pipeline" />
+                <img src="static/img/devops-pipeline.png" alt="Game Build Pipeline" />
             </div>
             <div class="project-info-card">
                 <h3>Automated Game Build Pipeline</h3>
@@ -72,7 +72,7 @@ include '../includes/header.php';
 
         <div class="project-card">
             <div class="project-media">
-                <img src="../static/img/asset-automation.png" alt="Asset Processing Automation" />
+                <img src="static/img/asset-automation.png" alt="Asset Processing Automation" />
             </div>
             <div class="project-info-card">
                 <h3>Asset Processing Automation</h3>
@@ -99,7 +99,7 @@ include '../includes/header.php';
 
         <div class="project-card">
             <div class="project-media">
-                <img src="../static/img/monitoring-dashboard.png" alt="Infrastructure Monitoring" />
+                <img src="static/img/monitoring-dashboard.png" alt="Infrastructure Monitoring" />
             </div>
             <div class="project-info-card">
                 <h3>Infrastructure Monitoring & Analytics</h3>
@@ -126,4 +126,4 @@ include '../includes/header.php';
     </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
