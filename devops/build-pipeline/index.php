@@ -15,7 +15,9 @@ include '../../includes/header.php';
     <!-- Hero Section -->
     <div class="project-hero">
         <div class="hero-media">
-            <img src="images/pipeline-hero.jpg" alt="CI/CD Pipeline Dashboard" class="hero-image">
+            <div class="project-media-overlay">
+                <div class="media-icon">🔄</div>
+            </div>
             <div class="hero-overlay">
                 <h1>Automated Game Build Pipeline</h1>
                 <p class="hero-subtitle">Scalable CI/CD Infrastructure for Game Development</p>
@@ -253,3 +255,202 @@ from typing import List
 
 class AssetProcessor:
     def __init__(self, source_dir: Path, output_dir: Path):
+        self.source_dir = source_dir
+        self.output_dir = output_dir
+        
+    async def process_textures(self, files: List[Path]):
+        """Process textures with platform-specific compression"""
+        tasks = []
+        for file in files:
+            if file.suffix.lower() in ['.png', '.tga', '.exr']:
+                tasks.append(self.compress_texture(file))
+        
+        await asyncio.gather(*tasks)
+    
+    async def compress_texture(self, texture_path: Path):
+        """Compress texture for multiple platforms"""
+        platforms = ['pc', 'console', 'mobile']
+        
+        for platform in platforms:
+            output_path = self.output_dir / platform / texture_path.name
+            await self.run_compression(texture_path, output_path, platform)
+    
+    def generate_build_report(self):
+        """Generate comprehensive build metrics"""
+        return {
+            'assets_processed': self.processed_count,
+            'build_time': self.total_time,
+            'compression_ratio': self.avg_compression,
+            'platforms': len(self.target_platforms)
+        }
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Monitoring & Analytics -->
+    <div class="project-section">
+        <h2>Monitoring & Analytics</h2>
+        <div class="monitoring-dashboard">
+            <div class="dashboard-section">
+                <h3>Build Performance Metrics</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon">⏱️</div>
+                        <div class="metric-value">18 min</div>
+                        <div class="metric-label">Average Build Time</div>
+                        <div class="metric-trend positive">↓ 60% improvement</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">✅</div>
+                        <div class="metric-value">95.2%</div>
+                        <div class="metric-label">Success Rate</div>
+                        <div class="metric-trend positive">↑ 65% improvement</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">🚀</div>
+                        <div class="metric-value">24/7</div>
+                        <div class="metric-label">Deployment Availability</div>
+                        <div class="metric-trend positive">Zero downtime</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">💰</div>
+                        <div class="metric-value">40%</div>
+                        <div class="metric-label">Cost Reduction</div>
+                        <div class="metric-trend positive">Resource optimization</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Challenges & Solutions -->
+    <div class="project-section">
+        <h2>Challenges & Solutions</h2>
+        <div class="challenges-grid">
+            <div class="challenge-card">
+                <div class="challenge-header">
+                    <h3>🏗️ Legacy System Integration</h3>
+                </div>
+                <div class="challenge-content">
+                    <div class="challenge-problem">
+                        <strong>Challenge:</strong> Existing tools and workflows were deeply integrated with legacy systems, making migration complex.
+                    </div>
+                    <div class="challenge-solution">
+                        <strong>Solution:</strong> Implemented incremental migration strategy with adapter layers, allowing gradual transition while maintaining operational continuity.
+                    </div>
+                </div>
+            </div>
+
+            <div class="challenge-card">
+                <div class="challenge-header">
+                    <h3>📊 Resource Optimization</h3>
+                </div>
+                <div class="challenge-content">
+                    <div class="challenge-problem">
+                        <strong>Challenge:</strong> Build agents were underutilized during off-peak hours, leading to inefficient resource allocation.
+                    </div>
+                    <div class="challenge-solution">
+                        <strong>Solution:</strong> Implemented auto-scaling Kubernetes cluster with intelligent scheduling and cost-optimized spot instances.
+                    </div>
+                </div>
+            </div>
+
+            <div class="challenge-card">
+                <div class="challenge-header">
+                    <h3>🔧 Tool Chain Complexity</h3>
+                </div>
+                <div class="challenge-content">
+                    <div class="challenge-problem">
+                        <strong>Challenge:</strong> Multiple platform builds required different tool chains and dependencies, creating environment inconsistencies.
+                    </div>
+                    <div class="challenge-solution">
+                        <strong>Solution:</strong> Containerized all build environments with versioned dependencies, ensuring reproducible builds across all platforms.
+                    </div>
+                </div>
+            </div>
+
+            <div class="challenge-card">
+                <div class="challenge-header">
+                    <h3>📈 Team Adoption</h3>
+                </div>
+                <div class="challenge-content">
+                    <div class="challenge-problem">
+                        <strong>Challenge:</strong> Development team was resistant to changing established workflows and processes.
+                    </div>
+                    <div class="challenge-solution">
+                        <strong>Solution:</strong> Conducted training sessions, created comprehensive documentation, and implemented gradual rollout with early adopter feedback.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Impact & Results -->
+    <div class="project-section">
+        <h2>Business Impact</h2>
+        <div class="impact-summary">
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <div class="stat-number">$120K</div>
+                    <div class="stat-label">Annual Cost Savings</div>
+                    <div class="stat-description">Reduced infrastructure costs and developer time</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">Faster Releases</div>
+                    <div class="stat-description">From monthly to weekly deployment cycles</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime</div>
+                    <div class="stat-description">Reliable deployments with automatic rollback</div>
+                </div>
+            </div>
+            
+            <div class="impact-testimonial">
+                <blockquote>
+                    "The new build pipeline transformed our development process. We went from dreading deployments to deploying multiple times per day with confidence. The time savings alone justified the entire project."
+                </blockquote>
+                <cite>— Lead Developer, Game Development Team</cite>
+            </div>
+        </div>
+    </div>
+
+    <!-- Future Improvements -->
+    <div class="project-section">
+        <h2>Future Enhancements</h2>
+        <div class="roadmap-items">
+            <div class="roadmap-item">
+                <div class="roadmap-icon">🤖</div>
+                <div class="roadmap-content">
+                    <h3>AI-Powered Optimization</h3>
+                    <p>Implement machine learning algorithms to predict build failures and optimize resource allocation based on historical patterns.</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-icon">🔍</div>
+                <div class="roadmap-content">
+                    <h3>Advanced Testing Integration</h3>
+                    <p>Add automated visual regression testing and performance benchmarking to catch issues earlier in the pipeline.</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-icon">☁️</div>
+                <div class="roadmap-content">
+                    <h3>Multi-Cloud Strategy</h3>
+                    <p>Expand to multi-cloud deployment for improved redundancy and cost optimization across different regions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <div class="project-navigation">
+        <a href="../../devops.php" class="nav-button secondary">← Back to DevOps</a>
+        <a href="../asset-automation/" class="nav-button primary">Next Project: Asset Automation →</a>
+    </div>
+</div>
+
+<?php include '../../includes/footer.php'; ?>
