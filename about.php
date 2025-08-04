@@ -4,7 +4,6 @@ include 'includes/header.php';
 ?>
 
 <div class="container">
-    <?php include 'includes/demo_reel.php'; ?>
 
     <div class="about-content">
         <h2>About Me</h2>

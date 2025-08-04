@@ -6,15 +6,16 @@ $current_year = date('Y');
 
 // Navigation items
 $nav_items = [
-    'index.php' => 'Home',
-    'techart.php' => 'Techart',
-    'devops.php' => 'Devops', 
-    'about.php' => 'About', 
-    'contact.php' => 'Contact'  // ENABLED CONTACT
+    '/index.php' => 'Home',
+    '/techart.php' => 'Techart',
+    '/devops.php' => 'Devops', 
+    '/about.php' => 'About', 
+    '/contact.php' => 'Contact'
 ];
 
 // Get current page for active nav highlighting
 $current_page = basename($_SERVER['PHP_SELF']);
+$current_path = '/' . $current_page; // Add leading slash to match nav_items
 
 // Site metadata for SEO
 $site_description = "CJ Nowacek - Technical Artist and DevOps Engineer specializing in game development, shader programming, pipeline automation, and infrastructure optimization.";

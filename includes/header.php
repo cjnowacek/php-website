@@ -11,7 +11,7 @@ $page_title = isset($page_title) ? $page_title . ' - ' . $site_name : $site_titl
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
     <title><?php echo htmlspecialchars($page_title); ?></title>
 </head>
 
@@ -21,7 +21,7 @@ $page_title = isset($page_title) ? $page_title . ' - ' . $site_name : $site_titl
         <nav>
             <?php foreach ($nav_items as $file => $label): ?>
                 <a href="<?php echo $file; ?>" 
-                   <?php echo ($current_page === $file) ? 'class="active"' : ''; ?>>
+                   <?php echo ($current_path === $file) ? 'class="active"' : ''; ?>>
                     <?php echo htmlspecialchars($label); ?>
                 </a>
             <?php endforeach; ?>
