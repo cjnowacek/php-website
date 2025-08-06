@@ -1,12 +1,26 @@
 <?php
-// Updated index.php
+// Updated index.php - YOU decide which projects and order
 $page_title = "Home";
 include 'includes/header.php';
-include 'includes/project_loader.php';
-include 'includes/project_card.php';
+include 'includes/projects/project_loader.php';
+include 'includes/projects/project_card.php';
 
-// Get featured projects
-$featuredProjects = ProjectLoader::getFeaturedProjects(4);
+// YOU control which projects appear and in what order
+$featuredProjectIds = [
+    'smite2',           // First card
+    'build_pipeline',   // Second card  
+    'runaway',           // Fourth card
+    'sintern'          // Third card
+];
+
+// Load the specific projects you want
+$featuredProjects = [];
+foreach ($featuredProjectIds as $projectId) {
+    $project = ProjectLoader::getProject($projectId);
+    if ($project) {
+        $featuredProjects[] = $project;
+    }
+}
 ?>
 
 <div class="container">
@@ -19,7 +33,6 @@ $featuredProjects = ProjectLoader::getFeaturedProjects(4);
         <p>Whether developing custom shaders for next-generation games, automating asset processing workflows, or designing scalable infrastructure solutions, I bring a unique perspective that combines artistic sensibility with engineering precision.</p>
     </div>
 
-    <!-- Core Competencies section stays the same -->
     <h2>Core Competencies</h2>
     <div class="grid competencies-grid">
         <div class="grid-item">
@@ -28,7 +41,55 @@ $featuredProjects = ProjectLoader::getFeaturedProjects(4);
                 <p class="project-description">Shader development, VFX creation, rendering optimization, and visual problem-solving</p>
             </div>
         </div>
-        <!-- ... other competencies ... -->
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>🔄 CI/CD Pipelines</h3>
+                <p class="project-description">Jenkins, GitHub Actions, automated testing and deployment workflows</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>🐍 Automation Scripting</h3>
+                <p class="project-description">Python automation for infrastructure provisioning and asset processing</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>🐳 Containerization</h3>
+                <p class="project-description">Docker containers and orchestration for consistent deployments</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>☁️ Cloud & Infrastructure</h3>
+                <p class="project-description">Scalable infrastructure design and cloud platform optimization</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>🛠️ Pipeline Development</h3>
+                <p class="project-description">Tool creation, workflow optimization, and artist-friendly automation</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>⚡ Performance Optimization</h3>
+                <p class="project-description">Rendering optimization, profiling, and resource management</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>🎮 Game Engine Expertise</h3>
+                <p class="project-description">Unity, Unreal Engine, custom engine integration and modification</p>
+            </div>
+        </div>
     </div>
 
     <h2>Featured Projects</h2>

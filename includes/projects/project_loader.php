@@ -1,6 +1,5 @@
 <?php
-
-// includes/project_loader.php
+// Fixed includes/project_loader.php
 class ProjectLoader {
     private static $projects = null;
     
@@ -21,12 +20,14 @@ class ProjectLoader {
     public static function getFeaturedProjects($limit = null) {
         $projects = self::getAllProjects();
         $featured = array_filter($projects, function($project) {
-            return $project['featured'] === true;
+            return isset($project['featured']) && $project['featured'] === true;
         });
         
         // Sort by order
         usort($featured, function($a, $b) {
-            return $a['order'] <=> $b['order'];
+            $orderA = isset($a['order']) ? $a['order'] : 999;
+            $orderB = isset($b['order']) ? $b['order'] : 999;
+            return $orderA <=> $orderB;
         });
         
         return $limit ? array_slice($featured, 0, $limit) : $featured;
@@ -44,17 +45,42 @@ class ProjectLoader {
     
     private static function loadProjects() {
         self::$projects = [];
-        $projectDir = __DIR__ . '/projects/';
         
-        if (is_dir($projectDir)) {
+        // Try multiple possible paths
+        $possiblePaths = [
+            __DIR__ . '/',              // Same directory as project_loader.php
+            __DIR__ . '/projects/',     // projects subdirectory
+            dirname(__DIR__) . '/includes/projects/', // From root
+        ];
+        
+        $projectDir = null;
+        foreach ($possiblePaths as $path) {
+            if (is_dir($path)) {
+                $projectDir = $path;
+                break;
+            }
+        }
+        
+        if ($projectDir && is_dir($projectDir)) {
             $files = glob($projectDir . '*.php');
             foreach ($files as $file) {
-                $project = include $file;
-                if (is_array($project)) {
-                    self::$projects[] = $project;
+                // Skip the project_loader.php and project_card.php files
+                if (basename($file) === 'project_loader.php' || basename($file) === 'project_card.php') {
+                    continue;
+                }
+                
+                try {
+                    $project = include $file;
+                    if (is_array($project) && isset($project['id'])) {
+                        self::$projects[] = $project;
+                    }
+                } catch (Exception $e) {
+                    // Skip files that cause errors
+                    error_log("Error loading project file {$file}: " . $e->getMessage());
                 }
             }
         }
     }
 }
 ?>
+

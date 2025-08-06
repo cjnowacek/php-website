@@ -3,7 +3,7 @@
 return [
     'id' => 'sintern',
     'title' => 'The Sintern',
-    'company' => 'Independent Project',
+    'company' => 'Junior Film',
     'category' => 'techart',
     'featured' => true,
     'order' => 2,

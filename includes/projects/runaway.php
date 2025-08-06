@@ -4,7 +4,7 @@
 return [
     'id' => 'runaway',
     'title' => 'Runaway',
-    'company' => 'Game Jam Project',
+    'company' => 'Senior Thesis',
     'category' => 'techart',
     'featured' => true,
     'order' => 3,
