@@ -1,9 +1,8 @@
 <?php
 $page_title = "Technical Art";
 include 'includes/header.php';
-include 'includes/projects/project_loader.php';
-include 'includes/projects/project_card.php';
-
+include 'includes/project-data/project_loader.php';
+include 'includes/project-data/project_card.php';
 // YOU control which tech art projects appear and in what order
 $techartProjectIds = [
     'smite',    // Most important first

@@ -45,12 +45,9 @@ class ProjectLoader {
     
     private static function loadProjects() {
         self::$projects = [];
-        
-        // Try multiple possible paths
         $possiblePaths = [
-            __DIR__ . '/',              // Same directory as project_loader.php
-            __DIR__ . '/projects/',     // projects subdirectory
-            dirname(__DIR__) . '/includes/projects/', // From root
+          __DIR__ . '/',                                    # Same directory
+          dirname(__DIR__) . '/includes/project-data/',     # From root
         ];
         
         $projectDir = null;

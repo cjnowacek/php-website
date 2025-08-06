@@ -2,12 +2,11 @@
 // Updated index.php - YOU decide which projects and order
 $page_title = "Home";
 include 'includes/header.php';
-include 'includes/projects/project_loader.php';
-include 'includes/projects/project_card.php';
-
+include 'includes/project-data/project_loader.php';
+include 'includes/project-data/project_card.php';
 // YOU control which projects appear and in what order
 $featuredProjectIds = [
-    'smite2',           // First card
+    'smite',           // First card
     'build_pipeline',   // Second card  
     'runaway',           // Fourth card
     'sintern'          // Third card
