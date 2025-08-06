@@ -6,7 +6,7 @@ include 'includes/projects/project_card.php';
 
 // YOU control which tech art projects appear and in what order
 $techartProjectIds = [
-    'smite2',    // Most important first
+    'smite',    // Most important first
     'runaway',    // Third
     'sintern',   // Second
 ];

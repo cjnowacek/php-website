@@ -1,5 +1,5 @@
 <?php
-$page_title = "Smite 2 - Technical Art";
+$page_title = "Smite - Technical Art";
 include '../../includes/header.php';
 ?>
 
@@ -8,10 +8,10 @@ include '../../includes/header.php';
     <nav style="margin: 20px 0; color: var(--text-secondary); font-size: 14px;">
         <a href="../../index.php" style="color: var(--header-color); text-decoration: none;">Home</a> > 
         <a href="../../techart.php" style="color: var(--header-color); text-decoration: none;">Technical Art</a> > 
-        <span>Smite 2</span>
+        <span>Smite</span>
     </nav>
 
-    <h2>Smite 2</h2>
+    <h2>Smite</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <p><strong>Hi-Rez Studios | 2024-2025 | Unreal Engine 5</strong></p>
         <p>Led technical art development for the highly anticipated sequel to Hi-Rez Studios' popular MOBA game. This project focused on modernizing the visual pipeline while maintaining the distinctive art style that Smite is known for.</p>

@@ -1,13 +1,13 @@
 <?php
-// includes/projects/smite2.php
+// includes/projects/smite.php
 return [
-    'id' => 'smite2',
-    'title' => 'Smite 2',
+    'id' => 'smite',
+    'title' => 'Smite',
     'company' => 'Hi-Rez Studios',
     'category' => 'techart',
     'featured' => true,
     'order' => 1,
-    'image' => 'static/img/smite2_1200x900.png',
+    'image' => 'static/img/smite_1200x900.png',
     'gif' => 'static/img/y7A08Y.gif',
     'description' => 'Led technical art development for the highly anticipated sequel to the popular MOBA game. Focused on creating advanced shader systems, optimizing rendering pipelines, and developing tools to streamline the art production workflow.',
     'highlights' => [
@@ -17,7 +17,7 @@ return [
         'Implemented real-time lighting system for dynamic environments'
     ],
     'tech_tags' => ['Unreal Engine', 'HLSL', 'Python', 'Maya', 'Substance'],
-    'link' => 'techart/smite2/',
+    'link' => 'techart/smite/',
     'meta' => [
         'duration' => '18 months',
         'role' => 'Senior Technical Artist',
