@@ -7,14 +7,12 @@ return [
     'category' => 'techart',
     'featured' => true,
     'order' => 1,
-    'image' => 'static/img/smite_1200x900.png',
+    'image' => 'static/img/Smite_1200x900.png',
     'gif' => 'static/img/y7A08Y.gif',
     'description' => 'Technical artist to the popular MOBA game. Focused on creating optimizing charater rigging pipelines, and developing tools to streamline the art production workflow.',
     'highlights' => [
-        'Developed custom shader library for character and environment rendering',
-        'Created automated LOD generation tools reducing artist workload by 40%',
-        'Optimized rendering pipeline achieving 25% performance improvement',
-        'Implemented real-time lighting system for dynamic environments'
+      'Created automatic build tools for building rig moduals',
+      'Reduced character port time from smite to its sequal by 25%'
     ],
     'tech_tags' => ['Unreal Engine 5', '3D Studio Max','Macscript' , 'Python', ],
     'link' => 'techart/smite/',
