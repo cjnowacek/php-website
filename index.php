@@ -1,5 +1,4 @@
 <?php
-// Updated index.php - YOU decide which projects and order
 $page_title = "Home";
 include 'includes/header.php';
 include 'includes/project-data/project_loader.php';
@@ -38,6 +37,7 @@ foreach ($featuredProjectIds as $projectId) {
             <div class="project-info">
                 <h3>🎨 Technical Art</h3>
                 <p class="project-description">Shader development, VFX creation, and visual problem-solving</p>
+                <a href="techart.php" class="competency-link">View Projects</a>
             </div>
         </div>
 
@@ -45,6 +45,7 @@ foreach ($featuredProjectIds as $projectId) {
             <div class="project-info">
                 <h3>🐍 Automation Scripting</h3>
                 <p class="project-description">Python automation for infrastructure provisioning and asset processing</p>
+                <a href="devops.php" class="competency-link">View Projects</a>
             </div>
         </div>
 
@@ -52,6 +53,7 @@ foreach ($featuredProjectIds as $projectId) {
             <div class="project-info">
                 <h3>🛠️ Pipeline Development</h3>
                 <p class="project-description">Tool creation, workflow optimization, and artist-friendly automation</p>
+                <a href="techart.php" class="competency-link">View Projects</a>
             </div>
         </div>
 
@@ -59,6 +61,7 @@ foreach ($featuredProjectIds as $projectId) {
             <div class="project-info">
                 <h3>🎮 Game Engine Expertise</h3>
                 <p class="project-description">Unity, Unreal Engine, custom engine integration and modification</p>
+                <a href="techart.php" class="competency-link">View Projects</a>
             </div>
         </div>
     </div>
