@@ -7,9 +7,9 @@ include 'includes/project-data/project_card.php';
 // YOU control which projects appear and in what order
 $featuredProjectIds = [
     'smite',           // First card
-    'build_pipeline',   // Second card  
-    'runaway',           // Fourth card
-    'sintern'          // Third card
+    'build_pipeline',   // Second card
+    'runaway',           // Third card
+    'sintern'          // Forth card
 ];
 
 // Load the specific projects you want
@@ -25,11 +25,11 @@ foreach ($featuredProjectIds as $projectId) {
 <div class="container">
     <h2>Professional Statement</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p>I am a passionate Technical Artist and DevOps Engineer specializing in the intersection of creativity and technology in game development. With extensive experience in shader development, pipeline automation, and infrastructure optimization, I bridge the gap between artistic vision and technical implementation.</p>
+        <p>I am a passionate Technical Artist and DevOps Engineer specializing in the intersection of creativity and technology . With extensive experience in pipeline automation, and infrastructure optimization, I bridge the gap between artistic vision and technical implementation.</p>
         
-        <p>My expertise spans from creating visually stunning effects and optimizing rendering pipelines to building robust CI/CD systems and automating complex workflows. I thrive on solving challenging technical problems while empowering creative teams to focus on what they do best—creating amazing experiences.</p>
+        <p>My expertise spans from creating and building software tools making other people lives easier. Creating robust CI/CD systems and automating complex workflows. I thrive on solving challenging technical problems while empowering creative teams to focus on what they do best—creating amazing experiences.</p>
         
-        <p>Whether developing custom shaders for next-generation games, automating asset processing workflows, or designing scalable infrastructure solutions, I bring a unique perspective that combines artistic sensibility with engineering precision.</p>
+        <p>Whether developing character rigs, or automating asset processing workflows, I bring a unique perspective that combines artistic sensibility with engineering precision.</p>
     </div>
 
     <h2>Core Competencies</h2>
@@ -37,14 +37,7 @@ foreach ($featuredProjectIds as $projectId) {
         <div class="grid-item">
             <div class="project-info">
                 <h3>🎨 Technical Art</h3>
-                <p class="project-description">Shader development, VFX creation, rendering optimization, and visual problem-solving</p>
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <div class="project-info">
-                <h3>🔄 CI/CD Pipelines</h3>
-                <p class="project-description">Jenkins, GitHub Actions, automated testing and deployment workflows</p>
+                <p class="project-description">Shader development, VFX creation, and visual problem-solving</p>
             </div>
         </div>
 
@@ -57,29 +50,8 @@ foreach ($featuredProjectIds as $projectId) {
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🐳 Containerization</h3>
-                <p class="project-description">Docker containers and orchestration for consistent deployments</p>
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <div class="project-info">
-                <h3>☁️ Cloud & Infrastructure</h3>
-                <p class="project-description">Scalable infrastructure design and cloud platform optimization</p>
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <div class="project-info">
                 <h3>🛠️ Pipeline Development</h3>
                 <p class="project-description">Tool creation, workflow optimization, and artist-friendly automation</p>
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <div class="project-info">
-                <h3>⚡ Performance Optimization</h3>
-                <p class="project-description">Rendering optimization, profiling, and resource management</p>
             </div>
         </div>
 
