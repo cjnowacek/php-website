@@ -1,0 +1,16 @@
+/* static/css/variables.css - All CSS custom properties */
+
+:root {
+    --grid-gap: 10px;
+
+    --header-color: #FF7A40;
+    --subheader-color: #b45b35;
+
+    --bg-color: #37383d;
+    --text-color: #ffffff;
+    --text-secondary: #cccccc;
+
+    --images-max-width: 100%;
+    --form-bg: #434449;
+    --button-hover: #ebebeb;
+}
