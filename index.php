@@ -8,7 +8,7 @@ $featuredProjectIds = [
     'smite',           // First card
     'build_pipeline',   // Second card
     'runaway',           // Third card
-    'sintern'          // Forth card
+    'sintern'          //Fourth card
 ];
 
 // Load the specific projects you want

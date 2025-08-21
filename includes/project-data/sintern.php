@@ -7,8 +7,8 @@ return [
     'category' => 'techart',
     'featured' => true,
     'order' => 2,
-    'image' => 'static/img/TheSintern1200x900.png',
-    'gif' => 'static/img/TheSintern1200x900.gif',
+    'image' => 'static/img/sintern_1200x900.png',
+    'gif' => 'static/img/sintern_1200x900.gif',
     'description' => 'A stylized horror game featuring innovative visual effects and atmospheric rendering. Developed custom shaders and particle systems to create unique supernatural visual experiences while maintaining optimal performance.',
     'highlights' => [
         'Custom ghost/spirit rendering with translucency effects',

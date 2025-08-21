@@ -7,8 +7,8 @@ return [
     'category' => 'techart',
     'featured' => true,
     'order' => 1,
-    'image' => 'static/img/Smite_1200x900.png',
-    'gif' => 'static/img/y7A08Y.gif',
+    'image' => 'static/img/smite_1200x900.png',
+    'gif' => 'static/img/smite_1200x900.gif',
     'description' => 'Technical artist to the popular MOBA game. Focused on creating optimizing charater rigging pipelines, and developing tools to streamline the art production workflow.',
     'highlights' => [
       'Created automatic build tools for building rig moduals',

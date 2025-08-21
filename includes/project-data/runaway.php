@@ -10,14 +10,14 @@ return [
     'order' => 3,
     'image' => 'static/img/runaway_1200x900.png',
     'gif' => 'static/img/runaway_1200x900.gif',
-    'description' => 'Fast-paced action game developed during a 48-hour game jam. Focused on creating efficient rendering solutions and rapid prototyping tools to meet tight deadlines while maintaining visual quality.',
+    'description' => 'Final BFA school project. Story rich adventure focusing on childhood trauma and facing your past.',
     'highlights' => [
-        'Modular shader system for quick iteration',
+        'Character rigging and animation',
         'Automated build and deployment pipeline',
-        'Real-time performance profiling tools',
+        'Programed cinematic camera and character locomotion',
         'Streamlined asset import workflow'
     ],
-    'tech_tags' => ['Unity', 'HLSL', 'C#', 'Git', 'Jenkins'],
+    'tech_tags' => ['Unreal Engine', 'Maya', 'Blender', 'Python'],
     'link' => 'techart/runaway/',
     'meta' => [
         'duration' => '48 hours',
