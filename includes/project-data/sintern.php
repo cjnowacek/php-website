@@ -17,7 +17,7 @@ return [
         'Particle-based supernatural effects'
     ],
     'tech_tags' => ['Unity', 'ShaderGraph', 'C#', 'Blender', 'VFX Graph'],
-    'link' => 'techart/sintern/',
+    'link' => 'pages-techart/sintern/index.php',
     'meta' => [
         'duration' => '6 months',
         'role' => 'Technical Artist & Developer',

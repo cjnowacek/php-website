@@ -18,7 +18,7 @@ return [
         'Streamlined asset import workflow'
     ],
     'tech_tags' => ['Unreal Engine', 'Maya', 'Blender', 'Python'],
-    'link' => 'techart/runaway/',
+    'link' => 'pages-techart/runaway/index.php',
     'meta' => [
         'duration' => '48 hours',
         'role' => 'Technical Artist',

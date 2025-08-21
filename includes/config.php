@@ -7,8 +7,8 @@ $current_year = date('Y');
 // Navigation items
 $nav_items = [
     '/index.php' => 'Home',
-    '/techart.php' => 'Techart',
-    '/devops.php' => 'Devops', 
+    '/pages-techart.php' => 'Techart',  // Update this
+    '/pages-devops.php' => 'Devops',    // Update this
     '/about.php' => 'About', 
     '/contact.php' => 'Contact'
 ];

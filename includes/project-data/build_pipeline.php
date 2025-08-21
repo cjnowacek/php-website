@@ -20,7 +20,7 @@ return [
         'Multi-platform builds from single pipeline'
     ],
     'tech_tags' => ['Jenkins', 'Docker', 'Kubernetes', 'AWS', 'Python'],
-    'link' => 'devops/build-pipeline/',
+    'link' => 'pages-devops/build-pipeline/',
     'meta' => [
         'duration' => '8 months',
         'role' => 'DevOps Engineer',
