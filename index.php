@@ -3,7 +3,7 @@ $page_title = "Home";
 include 'includes/header.php';
 include 'includes/project-data/project_loader.php';
 include 'includes/project-data/project_card.php';
-// YOU control which projects appear and in what order
+// Control which projects appear and in what order
 $featuredProjectIds = [
     'smite',           // First card
     'build_pipeline',   // Second card

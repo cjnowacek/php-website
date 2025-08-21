@@ -7,9 +7,9 @@ $current_year = date('Y');
 // Navigation items
 $nav_items = [
     '/index.php' => 'Home',
-    '/pages-techart.php' => 'Techart',  // Update this
-    '/pages-devops.php' => 'Devops',    // Update this
-    '/about.php' => 'About', 
+    '/techart.php' => 'Techart',
+    '/devops.php' => 'Devops',
+    '/about.php' => 'About',
     '/contact.php' => 'Contact'
 ];
 
@@ -21,7 +21,7 @@ $current_path = '/' . $current_page; // Add leading slash to match nav_items
 $site_description = "CJ Nowacek - Technical Artist and DevOps Engineer specializing in game development, shader programming, pipeline automation, and infrastructure optimization.";
 $site_keywords = "technical artist, devops engineer, game development, shader programming, pipeline automation, unreal engine, unity, python automation, ci/cd";
 $site_author = "CJ Nowacek";
-$site_url = "https://cjnowacek.com"; // Update with your actual domain
+$site_url = "https://cjnowacek.com";
 
 // Social media links
 $social_links = [
