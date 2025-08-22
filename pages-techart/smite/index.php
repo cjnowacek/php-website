@@ -3,7 +3,7 @@ $page_title = "Smite - Technical Art";
 include '../../includes/header.php';
 ?>
 
-<div class="container">
+<div class="container" style="max-width: 1300px;">
     <!-- Breadcrumb Navigation -->
     <nav style="margin: 20px 0; color: var(--text-secondary); font-size: 14px;">
         <a href="../../index.php" style="color: var(--header-color); text-decoration: none;">Home</a> > 

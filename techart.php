@@ -39,7 +39,7 @@ foreach ($techartProjectIds as $projectId) {
 }
 </style>
 
-<div class="container">
+<div class="container" style="max-width: 1300px;">
     <?php include 'includes/demo_reel.php'; ?>
 
     <h2>Featured Projects</h2>
@@ -56,7 +56,7 @@ foreach ($techartProjectIds as $projectId) {
         item.addEventListener('mouseenter', () => {
             const gif = item.querySelector('.hover-gif');
             if (gif && gif.src) {
-                gif.src = gif.src; // Reset the GIF to play from the beginning
+              gif.src = gif.src; // Reset the GIF to play from the beginning
             }
         });
     });

@@ -21,7 +21,7 @@ foreach ($devopsProjectIds as $projectId) {
 }
 ?>
 
-<div class="container">
+<div class="container" style="max-width: 1300px;">
     <h2>DevOps & Infrastructure</h2>
     
     <div class="about-text">

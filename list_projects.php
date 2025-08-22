@@ -4,7 +4,7 @@ include 'includes/header.php';
 include 'includes/projects/project_loader.php';
 ?>
 
-<div class="container">
+<div class="container" style="max-width: 1300px;">
     <h2>Available Projects (for reference)</h2>
     <p>Use these IDs in your project arrays:</p>
     

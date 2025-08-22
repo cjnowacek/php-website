@@ -4,7 +4,7 @@ include 'includes/header.php';
 http_response_code(404);
 ?>
 
-<div class="container">
+<div class="container" style="max-width: 1300px;">
     <div class="about-content" style="text-align: center; max-width: 600px; margin: 0 auto;">
         <h2 style="font-size: 4em; margin-bottom: 20px;">404</h2>
         <h3>Page Not Found</h3>

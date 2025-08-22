@@ -3,7 +3,7 @@ $page_title = "Contact";
 include 'includes/header.php';
 ?>
 
-<div class="container">
+<div class="container" style="max-width: 1300px;">
     <h2>Get In Touch</h2>
     
     <div class="contact-content">

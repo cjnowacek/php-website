@@ -3,7 +3,7 @@ $page_title = "About";
 include 'includes/header.php';
 ?>
 
-<div class="container">
+<div class="container" style="max-width: 1300px;">
 
     <div class="about-content">
         <h2>About Me</h2>
