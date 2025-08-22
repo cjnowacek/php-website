@@ -21,7 +21,7 @@ foreach ($featuredProjectIds as $projectId) {
 }
 ?>
 
-<div class="container">
+<div class="container" style="max-width: 1300px;">
     <h2>Professional Statement</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <p>I am a passionate Technical Artist and DevOps Engineer specializing in the intersection of creativity and technology . With extensive experience in pipeline automation, and infrastructure optimization, I bridge the gap between artistic vision and technical implementation.</p>
@@ -67,19 +67,11 @@ foreach ($featuredProjectIds as $projectId) {
     </div>
 
     <h2>Featured Projects</h2>
-    <div class="projects-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 2rem 0;">
+    <div class="projects-container projects-container-index">
         <?php foreach ($featuredProjects as $project): ?>
             <?php renderProjectCard($project); ?>
         <?php endforeach; ?>
     </div>
-
-    <style>
-    @media (max-width: 600px) {
-        .projects-container {
-            grid-template-columns: 1fr !important;
-        }
-    }
-    </style>
 </div>
 
 <script>

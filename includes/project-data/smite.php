@@ -15,7 +15,7 @@ return [
       'Reduced character port time from smite to its sequal by 25%'
     ],
     'tech_tags' => ['Unreal Engine 5', '3D Studio Max','Macscript' , 'Python', ],
-    'link' => '/pages-techart/smite/index.php',
+    'link' => 'pages-techart/smite/index.php',
     'meta' => [
         'duration' => '18 months',
         'role' => 'Technical Artist',

@@ -13,147 +13,194 @@ include '../../includes/header.php';
 
     <h2>Smite</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>Hi-Rez Studios | 2024-2025 | Unreal Engine 5</strong></p>
-        <p>Led technical art development for the highly anticipated sequel to Hi-Rez Studios' popular MOBA game. This project focused on modernizing the visual pipeline while maintaining the distinctive art style that Smite is known for.</p>
+        <p><strong>Hi-Rez Studios | 2023-2024 | Unreal Engine 5 & 3DS Max</strong></p>
+        <p>Technical artist for Hi-Rez Studios' popular MOBA game, focusing on character rigging pipeline optimization and tool development. Working on a live-service game with millions of players required robust, scalable solutions that could handle frequent content updates while maintaining high quality standards.</p>
         
-        <p>Working closely with the art team, I developed advanced shader systems, optimized rendering pipelines, and created automated tools that significantly streamlined the art production workflow. The goal was to enhance visual fidelity while ensuring optimal performance across multiple platforms.</p>
+        <p>My primary focus was streamlining the character production workflow, particularly the transition from the original Smite to its sequel. This involved creating automated tools for rig building, optimizing character port processes, and ensuring consistency across a large library of character assets.</p>
     </div>
 
-    <h2>Key Achievements</h2>
+    <h2>Key Contributions</h2>
     <div class="grid competencies-grid">
         <div class="grid-item">
             <div class="project-info">
-                <h3>🎨 Custom Shader Library</h3>
-                <p class="project-description">Developed comprehensive shader library featuring advanced character rendering, dynamic weather effects, and optimized environment shaders with PBR workflows.</p>
+                <h3>🔧 Automatic Rig Tools</h3>
+                <p class="project-description">Created automated build tools for modular rig components, reducing manual setup time and ensuring consistency across character assets.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>⚙️ Automated LOD Generation</h3>
-                <p class="project-description">Created intelligent LOD generation tools that automatically optimize meshes based on usage context, reducing artist workload by 40%.</p>
+                <h3>⚡ Character Port Optimization</h3>
+                <p class="project-description">Reduced character port time from Smite to its sequel by 25% through automated conversion scripts and standardized workflows.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>⚡ Performance Optimization</h3>
-                <p class="project-description">Optimized rendering pipeline through custom culling systems and shader analysis, achieving 25% performance improvement.</p>
+                <h3>📝 Pipeline Documentation</h3>
+                <p class="project-description">Developed comprehensive documentation and training materials for character production pipeline, reducing onboarding time for new team members.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>💡 Real-time Lighting</h3>
-                <p class="project-description">Implemented dynamic lighting system supporting real-time global illumination and advanced shadow techniques.</p>
+                <h3>🎮 Live-Service Support</h3>
+                <p class="project-description">Maintained and updated existing character assets while supporting ongoing content releases and seasonal updates.</p>
             </div>
         </div>
     </div>
 
     <h2>Technical Implementation</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <h3>Custom Character Shader (HLSL)</h3>
+        <h3>Automated Rig Building (MaxScript)</h3>
         <div style="background: var(--form-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code>// Enhanced PBR shader with custom rim lighting
-float3 CalculateCustomLighting(float3 normal, float3 viewDir, float3 lightDir)
-{
-    float NdotL = saturate(dot(normal, lightDir));
-    float NdotV = saturate(dot(normal, viewDir));
+            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code>-- Automated character rig module builder
+fn buildCharacterRig characterMesh = (
+    -- Clear selection and validate input
+    clearSelection()
+    if characterMesh == undefined then (
+        messageBox "Please select a character mesh"
+        return false
+    )
     
-    // Custom rim lighting for character silhouettes
-    float rimPower = 2.0;
-    float rim = 1.0 - NdotV;
-    rim = pow(rim, rimPower);
+    -- Create bone hierarchy
+    spineChain = createSpineChain characterMesh
+    armChains = createArmChains characterMesh
+    legChains = createLegChains characterMesh
     
-    float3 rimColor = _RimColor.rgb * rim * _RimIntensity;
+    -- Setup control systems
+    createSpineControls spineChain
+    createIKFKSwitches armChains
+    createIKFKSwitches legChains
     
-    return NdotL + rimColor;
-}</code></pre>
+    -- Apply skin modifier with automatic weights
+    applySkinModifier characterMesh (spineChain + armChains + legChains)
+    
+    -- Finalize rig
+    createRigInterface characterMesh
+    return true
+)</code></pre>
         </div>
 
-        <h3>Python LOD Generation Tool</h3>
+        <h3>Character Port Automation (Python)</h3>
         <div style="background: var(--form-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code># Automated LOD generation with quality preservation
-def generate_lod_chain(mesh_path, lod_levels=[0.75, 0.5, 0.25]):
-    """Generate LOD chain with intelligent vertex reduction"""
+            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 20px 0;"><code>#!/usr/bin/env python3
+"""Character porting automation for Smite sequel"""
+
+import os
+import json
+from pathlib import Path
+
+class CharacterPorter:
+    def __init__(self, source_path, target_path):
+        self.source_path = Path(source_path)
+        self.target_path = Path(target_path)
+        self.conversion_log = []
     
-    for i, reduction in enumerate(lod_levels):
-        lod_mesh = optimize_mesh(mesh_path, reduction)
-        validate_silhouette(lod_mesh, original_mesh)
+    def port_character(self, character_name):
+        """Port character from original Smite to sequel"""
+        print(f"Starting port for {character_name}...")
         
-        output_path = f"{mesh_path}_LOD{i+1}.fbx"
-        export_mesh(lod_mesh, output_path)
+        # Load character data
+        char_data = self.load_character_data(character_name)
         
-        print(f"Generated LOD{i+1}: {reduction*100}% detail retained")</code></pre>
+        # Convert mesh and textures
+        self.convert_mesh_assets(char_data)
+        self.convert_texture_assets(char_data)
+        
+        # Update rig for new skeleton
+        self.update_rig_hierarchy(char_data)
+        
+        # Generate optimized LODs
+        self.generate_lod_chain(char_data)
+        
+        # Validate and export
+        if self.validate_character(char_data):
+            self.export_character(char_data)
+            print(f"Successfully ported {character_name}")
+            return True
+        
+        return False</code></pre>
         </div>
     </div>
 
-    <h2>Project Results</h2>
+    <h2>Project Impact</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <ul>
-            <li><strong>50+ Custom Shaders:</strong> Created comprehensive shader library for all game assets</li>
-            <li><strong>40% Time Savings:</strong> Automated LOD generation reduced artist workload significantly</li>
-            <li><strong>25% Performance Boost:</strong> Optimized rendering pipeline improved frame rates across platforms</li>
-            <li><strong>Cross-Platform Support:</strong> Ensured consistent visual quality on PC, Console, and Mobile</li>
-            <li><strong>Real-time Global Illumination:</strong> Enhanced visual fidelity with dynamic lighting</li>
+            <li><strong>25% Faster Character Ports:</strong> Automated conversion reduced manual work from days to hours</li>
+            <li><strong>200+ Characters Supported:</strong> Tools scaled to handle the entire Smite character roster</li>
+            <li><strong>Consistent Quality:</strong> Standardized pipeline ensured uniform quality across all character assets</li>
+            <li><strong>Team Productivity:</strong> Freed up artist time for creative work instead of technical setup</li>
+            <li><strong>Live Service Support:</strong> Enabled rapid deployment of character updates and new content</li>
         </ul>
 
         <h3>Technology Stack</h3>
-        <p><strong>Tools & Technologies:</strong> Unreal Engine 5, HLSL, Python, Maya, Substance Suite, Perforce, Houdini, Jenkins</p>
+        <p><strong>Tools & Technologies:</strong> Unreal Engine 5, 3DS Max, MaxScript, Python, Perforce, Jenkins</p>
         
         <h3>Team & Duration</h3>
-        <p><strong>Role:</strong> Senior Technical Artist<br>
-        <strong>Team Size:</strong> 25+ developers<br>
+        <p><strong>Role:</strong> Technical Artist<br>
+        <strong>Team Size:</strong> 200+ developers<br>
         <strong>Duration:</strong> 18 months<br>
-        <strong>Platforms:</strong> PC, Console, Mobile</p>
+        <strong>Platforms:</strong> PC, Console</p>
     </div>
 
-    <h2>Development Process</h2>
-    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>1. Research & Analysis:</strong> Analyzed existing Smite pipeline, identified bottlenecks, and researched modern rendering techniques. Collaborated with art team to understand workflow pain points.</p>
-        
-        <p><strong>2. Prototype Development:</strong> Created proof-of-concept shaders and tools. Tested performance across target platforms and gathered feedback from artists and engineers.</p>
-        
-        <p><strong>3. Pipeline Implementation:</strong> Rolled out new systems incrementally, provided training to art team, and iteratively improved tools based on production feedback.</p>
-        
-        <p><strong>4. Optimization & Polish:</strong> Fine-tuned performance, created documentation, and established best practices for ongoing development. Prepared systems for live service deployment.</p>
-    </div>
-
-    <h2>Lessons Learned</h2>
+    <h2>Production Challenges</h2>
     <div class="grid competencies-grid">
         <div class="grid-item">
             <div class="project-info">
-                <h3>🔄 Iterative Development</h3>
-                <p class="project-description">Regular feedback from artists during development was crucial. Small, frequent updates were more effective than large releases.</p>
+                <h3>📈 Scale Management</h3>
+                <p class="project-description">Managing tools for 100+ characters required robust error handling and batch processing capabilities.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>📊 Performance Metrics</h3>
-                <p class="project-description">Establishing clear performance benchmarks early helped guide optimization decisions throughout development.</p>
+                <h3>🔄 Live Service Constraints</h3>
+                <p class="project-description">Tools needed to work with existing content while supporting ongoing development and player-facing updates.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🎯 Cross-Platform Design</h3>
-                <p class="project-description">Designing shaders with multiple platforms in mind from the start saved significant refactoring time later.</p>
+                <h3>👥 Team Coordination</h3>
+                <p class="project-description">Large team required clear communication and documentation. Created training materials and workflow guides.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>📚 Documentation</h3>
-                <p class="project-description">Comprehensive tool documentation and video tutorials dramatically reduced support requests and improved adoption.</p>
+                <h3>🎯 Quality Assurance</h3>
+                <p class="project-description">Automated validation systems ensured exported characters met quality standards before integration.</p>
             </div>
         </div>
+    </div>
+
+    <h2>Technical Innovation</h2>
+    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+        <p><strong>Modular Rig System:</strong> Developed a component-based rigging approach that allowed for flexible character variations while maintaining consistency. Rigs could be assembled from pre-built modules for different character types.</p>
+        
+        <p><strong>Batch Processing Pipeline:</strong> Created tools that could process multiple characters simultaneously, with progress tracking and error reporting. Essential for handling the large character roster efficiently.</p>
+        
+        <p><strong>Version Control Integration:</strong> Built Perforce integration directly into tools, allowing automatic check-in/check-out of processed assets with detailed change logs.</p>
+        
+        <p><strong>Quality Metrics Dashboard:</strong> Implemented automated quality checking with visual dashboards showing rig health, performance metrics, and compliance with studio standards.</p>
+    </div>
+
+    <h2>Lessons Learned</h2>
+    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+        <p><strong>Automation Saves Time and Reduces Errors:</strong> Investing in robust automation tools paid dividends across the large character roster. Manual processes that seemed quick for one character became bottlenecks at scale.</p>
+        
+        <p><strong>Documentation is Critical:</strong> In a large team environment, clear documentation and training materials were essential for tool adoption and maintenance.</p>
+        
+        <p><strong>Error Handling Matters:</strong> Production tools need robust error handling and recovery systems. What works in testing may fail unexpectedly with real content.</p>
+        
+        <p><strong>Iterative Improvement:</strong> Tools evolved based on team feedback and production needs. Regular updates and improvements were necessary to maintain efficiency.</p>
     </div>
 
     <!-- Navigation -->
     <div style="display: flex; justify-content: space-between; margin: 60px 0 40px 0; gap: 20px;">
         <a href="../../techart.php" class="project-link" style="background: var(--form-bg); color: var(--text-color);">← Back to Technical Art</a>
-        <a href="../sintern/" class="project-link">Next Project: The Sintern →</a>
+        <a href="../runaway/" class="project-link">Next Project: Runaway →</a>
     </div>
 </div>
 

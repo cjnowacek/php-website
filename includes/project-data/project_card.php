@@ -7,9 +7,14 @@ function renderProjectCard($project, $showLink = true) {
     <div class="project-card">
         <div class="project-media">
             <?php if (!empty($project['image'])): ?>
-                <img src="<?php echo htmlspecialchars($project['image']); ?>" alt="<?php echo htmlspecialchars($project['title']); ?>">
+                <img src="<?php echo htmlspecialchars($project['image']); ?>" 
+                     alt="<?php echo htmlspecialchars($project['title']); ?>"
+                     loading="lazy">
                 <?php if ($hasGif): ?>
-                    <img class="hover-gif" src="<?php echo htmlspecialchars($project['gif']); ?>" alt="<?php echo htmlspecialchars($project['title']); ?> GIF">
+                    <img class="hover-gif" 
+                         src="<?php echo htmlspecialchars($project['gif']); ?>" 
+                         alt="<?php echo htmlspecialchars($project['title']); ?> GIF"
+                         loading="lazy">
                 <?php endif; ?>
             <?php else: ?>
                 <div class="project-media-overlay">

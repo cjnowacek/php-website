@@ -1,5 +1,5 @@
 <?php
-$page_title = "Smite - Technical Art";
+$page_title = "The Sintern - Technical Art";
 include '../../includes/header.php';
 ?>
 
@@ -8,152 +8,204 @@ include '../../includes/header.php';
     <nav style="margin: 20px 0; color: var(--text-secondary); font-size: 14px;">
         <a href="../../index.php" style="color: var(--header-color); text-decoration: none;">Home</a> > 
         <a href="../../techart.php" style="color: var(--header-color); text-decoration: none;">Technical Art</a> > 
-        <span>Smite</span>
+        <span>The Sintern</span>
     </nav>
 
-    <h2>Smite</h2>
+    <h2>The Sintern</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>Hi-Rez Studios | 2024-2025 | Unreal Engine 5</strong></p>
-        <p>Led technical art development for the highly anticipated sequel to Hi-Rez Studios' popular MOBA game. This project focused on modernizing the visual pipeline while maintaining the distinctive art style that Smite is known for.</p>
+        <p><strong>Junior Film Project | 2023 | Unity Engine</strong></p>
+        <p>A stylized horror game featuring innovative visual effects and atmospheric rendering. The Sintern challenged me to create unique supernatural visual experiences while maintaining optimal performance on a limited development timeline.</p>
         
-        <p>Working closely with the art team, I developed advanced shader systems, optimized rendering pipelines, and created automated tools that significantly streamlined the art production workflow. The goal was to enhance visual fidelity while ensuring optimal performance across multiple platforms.</p>
+        <p>As the technical artist and developer, I focused on creating custom shaders and particle systems that would bring the supernatural elements to life. The project required balancing visual impact with performance constraints, leading to creative solutions for rendering ghostly apparitions and atmospheric effects.</p>
     </div>
 
-    <h2>Key Achievements</h2>
+    <h2>Key Contributions</h2>
     <div class="grid competencies-grid">
         <div class="grid-item">
             <div class="project-info">
-                <h3>🎨 Custom Shader Library</h3>
-                <p class="project-description">Developed comprehensive shader library featuring advanced character rendering, dynamic weather effects, and optimized environment shaders with PBR workflows.</p>
+                <h3>👻 Ghost/Spirit Rendering</h3>
+                <p class="project-description">Developed custom translucency effects with rim lighting and distortion for supernatural character rendering with ethereal appearance.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>⚙️ Automated LOD Generation</h3>
-                <p class="project-description">Created intelligent LOD generation tools that automatically optimize meshes based on usage context, reducing artist workload by 40%.</p>
+                <h3>🌫️ Procedural Atmosphere</h3>
+                <p class="project-description">Created dynamic horror atmosphere system with procedural fog, particle effects, and environmental storytelling elements.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>⚡ Performance Optimization</h3>
-                <p class="project-description">Optimized rendering pipeline through custom culling systems and shader analysis, achieving 25% performance improvement.</p>
+                <h3>💡 Dynamic Lighting</h3>
+                <p class="project-description">Implemented real-time lighting system with flickering effects, shadow manipulation, and atmospheric light scattering.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>💡 Real-time Lighting</h3>
-                <p class="project-description">Implemented dynamic lighting system supporting real-time global illumination and advanced shadow techniques.</p>
+                <h3>✨ Supernatural VFX</h3>
+                <p class="project-description">Designed particle-based supernatural effects using Unity's VFX Graph for poltergeist activities and spirit manifestations.</p>
             </div>
         </div>
     </div>
 
     <h2>Technical Implementation</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <h3>Custom Character Shader (HLSL)</h3>
+        <h3>Ghost Shader (ShaderGraph/HLSL)</h3>
         <div style="background: var(--form-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code>// Enhanced PBR shader with custom rim lighting
-float3 CalculateCustomLighting(float3 normal, float3 viewDir, float3 lightDir)
+            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code>// Custom ghost rendering with translucency and distortion
+Shader "Custom/GhostSpirit"
 {
-    float NdotL = saturate(dot(normal, lightDir));
-    float NdotV = saturate(dot(normal, viewDir));
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+        _Opacity ("Opacity", Range(0,1)) = 0.5
+        _RimPower ("Rim Power", Range(0.5,8)) = 3
+        _DistortionStrength ("Distortion", Range(0,0.1)) = 0.05
+        _FlickerSpeed ("Flicker Speed", Range(0,10)) = 2
+    }
     
-    // Custom rim lighting for character silhouettes
-    float rimPower = 2.0;
-    float rim = 1.0 - NdotV;
-    rim = pow(rim, rimPower);
-    
-    float3 rimColor = _RimColor.rgb * rim * _RimIntensity;
-    
-    return NdotL + rimColor;
+    SubShader
+    {
+        Tags {"Queue"="Transparent" "RenderType"="Transparent"}
+        Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off
+        
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            
+            float4 frag (v2f i) : SV_Target
+            {
+                // Rim lighting for ethereal glow
+                float3 viewDir = normalize(_WorldSpaceCameraPos - i.worldPos);
+                float rim = 1.0 - saturate(dot(normalize(i.normal), viewDir));
+                rim = pow(rim, _RimPower);
+                
+                // Time-based flickering
+                float flicker = sin(_Time.y * _FlickerSpeed) * 0.5 + 0.5;
+                float opacity = _Opacity * rim * flicker;
+                
+                return float4(i.color.rgb, opacity);
+            }
+            ENDCG
+        }
+    }
 }</code></pre>
         </div>
 
-        <h3>Python LOD Generation Tool</h3>
+        <h3>Atmospheric Horror System (C#)</h3>
         <div style="background: var(--form-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code># Automated LOD generation with quality preservation
-def generate_lod_chain(mesh_path, lod_levels=[0.75, 0.5, 0.25]):
-    """Generate LOD chain with intelligent vertex reduction"""
+            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code>public class AtmosphereController : MonoBehaviour
+{
+    [Header("Horror Atmosphere")]
+    public ParticleSystem fogSystem;
+    public Light[] flickeringLights;
+    public AudioSource ambientAudio;
     
-    for i, reduction in enumerate(lod_levels):
-        lod_mesh = optimize_mesh(mesh_path, reduction)
-        validate_silhouette(lod_mesh, original_mesh)
+    private float tensionLevel = 0f;
+    
+    void Update()
+    {
+        // Procedural tension building
+        tensionLevel = CalculateTensionLevel();
         
-        output_path = f"{mesh_path}_LOD{i+1}.fbx"
-        export_mesh(lod_mesh, output_path)
+        // Adjust atmosphere based on tension
+        UpdateFogDensity(tensionLevel);
+        UpdateLightFlicker(tensionLevel);
+        UpdateAmbientAudio(tensionLevel);
+    }
+    
+    private void UpdateFogDensity(float tension)
+    {
+        var main = fogSystem.main;
+        main.startLifetime = Mathf.Lerp(5f, 15f, tension);
         
-        print(f"Generated LOD{i+1}: {reduction*100}% detail retained")</code></pre>
+        var emission = fogSystem.emission;
+        emission.rateOverTime = Mathf.Lerp(10f, 50f, tension);
+    }
+}</code></pre>
         </div>
     </div>
 
     <h2>Project Results</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <ul>
-            <li><strong>50+ Custom Shaders:</strong> Created comprehensive shader library for all game assets</li>
-            <li><strong>40% Time Savings:</strong> Automated LOD generation reduced artist workload significantly</li>
-            <li><strong>25% Performance Boost:</strong> Optimized rendering pipeline improved frame rates across platforms</li>
-            <li><strong>Cross-Platform Support:</strong> Ensured consistent visual quality on PC, Console, and Mobile</li>
-            <li><strong>Real-time Global Illumination:</strong> Enhanced visual fidelity with dynamic lighting</li>
+            <li><strong>Unique Visual Identity:</strong> Created distinctive supernatural aesthetic that enhanced narrative immersion</li>
+            <li><strong>Performance Optimized:</strong> Maintained 30+ FPS on low-end hardware through efficient shader design</li>
+            <li><strong>Atmospheric Immersion:</strong> Dynamic lighting and particle effects created compelling horror atmosphere</li>
+            <li><strong>Modular VFX System:</strong> Reusable effects components enabled rapid content creation for level designers</li>
+            <li><strong>Shader Library:</strong> Developed 12+ custom shaders for different supernatural phenomena</li>
         </ul>
 
         <h3>Technology Stack</h3>
-        <p><strong>Tools & Technologies:</strong> Unreal Engine 5, HLSL, Python, Maya, Substance Suite, Perforce, Houdini, Jenkins</p>
+        <p><strong>Tools & Technologies:</strong> Unity 2022.3, ShaderGraph, VFX Graph, C#, Blender, Photoshop, Git</p>
         
         <h3>Team & Duration</h3>
-        <p><strong>Role:</strong> Senior Technical Artist<br>
-        <strong>Team Size:</strong> 25+ developers<br>
-        <strong>Duration:</strong> 18 months<br>
-        <strong>Platforms:</strong> PC, Console, Mobile</p>
+        <p><strong>Role:</strong> Technical Artist & Developer<br>
+        <strong>Team Size:</strong> 3 developers<br>
+        <strong>Duration:</strong> 6 months<br>
+        <strong>Platform:</strong> PC</p>
     </div>
 
-    <h2>Development Process</h2>
-    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>1. Research & Analysis:</strong> Analyzed existing Smite pipeline, identified bottlenecks, and researched modern rendering techniques. Collaborated with art team to understand workflow pain points.</p>
-        
-        <p><strong>2. Prototype Development:</strong> Created proof-of-concept shaders and tools. Tested performance across target platforms and gathered feedback from artists and engineers.</p>
-        
-        <p><strong>3. Pipeline Implementation:</strong> Rolled out new systems incrementally, provided training to art team, and iteratively improved tools based on production feedback.</p>
-        
-        <p><strong>4. Optimization & Polish:</strong> Fine-tuned performance, created documentation, and established best practices for ongoing development. Prepared systems for live service deployment.</p>
-    </div>
-
-    <h2>Lessons Learned</h2>
+    <h2>Creative Challenges</h2>
     <div class="grid competencies-grid">
         <div class="grid-item">
             <div class="project-info">
-                <h3>🔄 Iterative Development</h3>
-                <p class="project-description">Regular feedback from artists during development was crucial. Small, frequent updates were more effective than large releases.</p>
+                <h3>👁️ Visual Clarity</h3>
+                <p class="project-description">Balancing atmospheric effects with gameplay visibility. Used selective fog placement and contrast management.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>📊 Performance Metrics</h3>
-                <p class="project-description">Establishing clear performance benchmarks early helped guide optimization decisions throughout development.</p>
+                <h3>⚡ Performance vs Quality</h3>
+                <p class="project-description">Heavy particle effects demanded optimization. Implemented LOD systems and dynamic quality scaling.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🎯 Cross-Platform Design</h3>
-                <p class="project-description">Designing shaders with multiple platforms in mind from the start saved significant refactoring time later.</p>
+                <h3>🎨 Art Direction</h3>
+                <p class="project-description">Translating horror concepts into technical solutions. Collaborated closely with artists to realize vision.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>📚 Documentation</h3>
-                <p class="project-description">Comprehensive tool documentation and video tutorials dramatically reduced support requests and improved adoption.</p>
+                <h3>🔧 Tool Integration</h3>
+                <p class="project-description">Learning Unity's VFX Graph while in production. Created documentation and workflows for team adoption.</p>
             </div>
         </div>
+    </div>
+
+    <h2>Technical Innovation</h2>
+    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+        <p><strong>Layered Transparency System:</strong> Developed a multi-pass rendering approach for overlapping transparent effects. This allowed complex ghost materializations without sorting issues or performance penalties.</p>
+        
+        <p><strong>Procedural Horror Events:</strong> Created a system that dynamically adjusts visual intensity based on player actions and story progression. The atmosphere responds to player behavior, creating a more immersive horror experience.</p>
+        
+        <p><strong>Efficient Particle Pooling:</strong> Implemented custom particle pooling system to handle frequent VFX spawning without garbage collection spikes. Critical for maintaining smooth performance during intense supernatural sequences.</p>
+    </div>
+
+    <h2>Lessons Learned</h2>
+    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+        <p><strong>Atmosphere Over Complexity:</strong> Simple effects executed well were more effective than complex systems. The key was consistency and thoughtful placement rather than technical complexity.</p>
+        
+        <p><strong>Performance Testing Early:</strong> Regular testing on target hardware revealed bottlenecks early. What looked great in the editor didn't always perform well on lower-end systems.</p>
+        
+        <p><strong>Collaborative Iteration:</strong> Close collaboration with level designers and artists led to better integration of effects with gameplay. Technical solutions needed to serve the narrative.</p>
+        
+        <p><strong>Documentation Matters:</strong> Creating clear documentation for custom shaders and effects helped team members understand and modify systems when needed.</p>
     </div>
 
     <!-- Navigation -->
     <div style="display: flex; justify-content: space-between; margin: 60px 0 40px 0; gap: 20px;">
         <a href="../../techart.php" class="project-link" style="background: var(--form-bg); color: var(--text-color);">← Back to Technical Art</a>
-        <a href="../sintern/" class="project-link">Next Project: The Sintern →</a>
+        <a href="../smite/" class="project-link">Next Project: Smite →</a>
     </div>
 </div>
 
