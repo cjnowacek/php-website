@@ -1,8 +1,8 @@
 <?php
 $page_title = "DevOps";
 include 'includes/header.php';
-include 'includes/project-data/project_loader.php';
-include 'includes/project-data/project_card.php';
+include 'includes/project-components/project_loader.php';
+include 'includes/project-components/project_card.php';
 // YOU control which devops projects appear and in what order
 $devopsProjectIds = [
     'build_pipeline',    // Your main devops project

@@ -50,7 +50,7 @@ class ProjectLoader {
         $possiblePaths = [
             __DIR__ . '/',              // Same directory as project_loader.php
             __DIR__ . '/projects/',     // projects subdirectory
-            dirname(__DIR__) . '/includes/projects/', // From root
+            dirname(__DIR__) . '/includes/prohect-cards/', // From root
         ];
         
         $projectDir = null;

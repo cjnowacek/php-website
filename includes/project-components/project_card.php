@@ -1,6 +1,6 @@
-<?php
 
-// includes/project_card.php - Reusable project card component
+<?php
+// includes/project-cards/project_card.php - Reusable project card component
 function renderProjectCard($project, $showLink = true) {
     $hasGif = !empty($project['gif']);
     ?>
