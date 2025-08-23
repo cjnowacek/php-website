@@ -5,10 +5,10 @@ include 'includes/project-data/project_loader.php';
 include 'includes/project-data/project_card.php';
 // Control which projects appear and in what order
 $featuredProjectIds = [
-    'smite',           // First card
-    'build_pipeline',   // Second card
-    'runaway',           // Third card
-    'sintern'          //Fourth card
+  'whisper-from-the-stars',
+    'smite',
+    'runaway',
+    'sintern'
 ];
 
 // Load the specific projects you want

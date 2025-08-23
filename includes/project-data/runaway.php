@@ -8,7 +8,7 @@ return [
     'category' => 'techart',
     'featured' => true,
     'order' => 3,
-    'image' => 'static/img/runaway_1200x900.png',
+    'image' => 'static/img/runaway_1200x900.webp',
     'gif' => 'static/img/runaway_1200x900.gif',
     'description' => 'Final BFA school project. Story rich adventure focusing on childhood trauma and facing your past.',
     'highlights' => [

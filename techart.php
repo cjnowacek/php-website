@@ -23,13 +23,14 @@ foreach ($techartProjectIds as $projectId) {
 <style>
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
 }
 @media (max-width: 900px) {
     .projects-container {
         grid-template-columns: 1fr 1fr;
+        min-width: auto;
     }
 }
 @media (max-width: 600px) {
@@ -40,7 +41,14 @@ foreach ($techartProjectIds as $projectId) {
 </style>
 
 <div class="container" style="max-width: 1300px;">
-    <?php include 'includes/demo_reel.php'; ?>
+ 
+    <h2>Techart</h2>
+    
+    <div class="about-text">
+        <p>Specializing in building character rigging solutions for game development and technical art workflows. I've spent a considerable ammount of time automating complex processes, and creating high polish game assets.</p>
+    </div>
+
+   <?php include 'includes/demo_reel.php'; ?>
 
     <h2>Featured Projects</h2>
 
