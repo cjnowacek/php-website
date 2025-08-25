@@ -1,212 +1,128 @@
 <?php
 $page_title = "The Sintern - Technical Art";
-include '../../includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/components/breadcrumb.php';
+
+// Define breadcrumb navigation
+$breadcrumbs = [
+    ['title' => 'Home', 'url' => '/index.php'],
+    ['title' => 'Technical Art', 'url' => '/techart.php'],
+    ['title' => 'The Sintern', 'url' => ''] // Current page, no URL
+];
 ?>
 
 <div class="container" style="max-width: 1300px;">
-    <!-- Breadcrumb Navigation -->
-    <nav style="margin: 20px 0; color: var(--text-secondary); font-size: 14px;">
-        <a href="../../index.php" style="color: var(--header-color); text-decoration: none;">Home</a> > 
-        <a href="../../techart.php" style="color: var(--header-color); text-decoration: none;">Technical Art</a> > 
-        <span>The Sintern</span>
-    </nav>
+    <?php renderBreadcrumb($breadcrumbs); ?>
 
     <h2>The Sintern</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>Junior Film Project | 2023 | Unity Engine</strong></p>
-        <p>A stylized horror game featuring innovative visual effects and atmospheric rendering. The Sintern challenged me to create unique supernatural visual experiences while maintaining optimal performance on a limited development timeline.</p>
+        <p><strong>Junior Film Project | 2021-2022 | Maya</strong></p>
+        <p>A story about an intern from hell and her demon dog. The Sintern challenged me to create character rigs for the first time in a production environment. Given our limited development timeline, coordinating rig updates with animation proved to be a real challenge while maintaining production momentum.</p>
         
-        <p>As the technical artist and developer, I focused on creating custom shaders and particle systems that would bring the supernatural elements to life. The project required balancing visual impact with performance constraints, leading to creative solutions for rendering ghostly apparitions and atmospheric effects.</p>
+        <p>This project served as my introduction to production rigging workflows, version control for character assets, and the critical importance of communication between technical artists and animators in a fast-paced creative environment.</p>
     </div>
 
     <h2>Key Contributions</h2>
     <div class="grid competencies-grid">
         <div class="grid-item">
             <div class="project-info">
-                <h3>👻 Ghost/Spirit Rendering</h3>
-                <p class="project-description">Developed custom translucency effects with rim lighting and distortion for supernatural character rendering with ethereal appearance.</p>
+                <h3>🎭 Character Rigging</h3>
+                <p class="project-description">Created cartoon-style character rigs with facial controls including cartoon card eyes system. Built modular rig components for consistent character animation.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🌫️ Procedural Atmosphere</h3>
-                <p class="project-description">Created dynamic horror atmosphere system with procedural fog, particle effects, and environmental storytelling elements.</p>
+                <h3>3D Modeling</h3>
+                <p class="project-description">Responsible for creating environment assets, props, and character models. Focused on topology suitable for animation and deformation.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>💡 Dynamic Lighting</h3>
-                <p class="project-description">Implemented real-time lighting system with flickering effects, shadow manipulation, and atmospheric light scattering.</p>
+                <h3>Lighting Design</h3>
+                <p class="project-description">Developed lighting rigs and setups for consistent shot-by-shot lighting. Created reusable lighting templates for different scene moods.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>✨ Supernatural VFX</h3>
-                <p class="project-description">Designed particle-based supernatural effects using Unity's VFX Graph for poltergeist activities and spirit manifestations.</p>
+                <h3>Pipeline Development</h3>
+                <p class="project-description">Established asset versioning workflow and rig update procedures to maintain animator productivity during production.</p>
             </div>
         </div>
     </div>
 
     <h2>Technical Implementation</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <h3>Ghost Shader (ShaderGraph/HLSL)</h3>
-        <div style="background: var(--form-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code>// Custom ghost rendering with translucency and distortion
-Shader "Custom/GhostSpirit"
-{
-    Properties
-    {
-        _MainTex ("Texture", 2D) = "white" {}
-        _Opacity ("Opacity", Range(0,1)) = 0.5
-        _RimPower ("Rim Power", Range(0.5,8)) = 3
-        _DistortionStrength ("Distortion", Range(0,0.1)) = 0.05
-        _FlickerSpeed ("Flicker Speed", Range(0,10)) = 2
-    }
-    
-    SubShader
-    {
-        Tags {"Queue"="Transparent" "RenderType"="Transparent"}
-        Blend SrcAlpha OneMinusSrcAlpha
-        ZWrite Off
-        
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            
-            float4 frag (v2f i) : SV_Target
-            {
-                // Rim lighting for ethereal glow
-                float3 viewDir = normalize(_WorldSpaceCameraPos - i.worldPos);
-                float rim = 1.0 - saturate(dot(normalize(i.normal), viewDir));
-                rim = pow(rim, _RimPower);
-                
-                // Time-based flickering
-                float flicker = sin(_Time.y * _FlickerSpeed) * 0.5 + 0.5;
-                float opacity = _Opacity * rim * flicker;
-                
-                return float4(i.color.rgb, opacity);
-            }
-            ENDCG
-        }
-    }
-}</code></pre>
-        </div>
-
-        <h3>Atmospheric Horror System (C#)</h3>
-        <div style="background: var(--form-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code>public class AtmosphereController : MonoBehaviour
-{
-    [Header("Horror Atmosphere")]
-    public ParticleSystem fogSystem;
-    public Light[] flickeringLights;
-    public AudioSource ambientAudio;
-    
-    private float tensionLevel = 0f;
-    
-    void Update()
-    {
-        // Procedural tension building
-        tensionLevel = CalculateTensionLevel();
-        
-        // Adjust atmosphere based on tension
-        UpdateFogDensity(tensionLevel);
-        UpdateLightFlicker(tensionLevel);
-        UpdateAmbientAudio(tensionLevel);
-    }
-    
-    private void UpdateFogDensity(float tension)
-    {
-        var main = fogSystem.main;
-        main.startLifetime = Mathf.Lerp(5f, 15f, tension);
-        
-        var emission = fogSystem.emission;
-        emission.rateOverTime = Mathf.Lerp(10f, 50f, tension);
-    }
-}</code></pre>
-        </div>
-    </div>
 
     <h2>Project Results</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <ul>
-            <li><strong>Unique Visual Identity:</strong> Created distinctive supernatural aesthetic that enhanced narrative immersion</li>
-            <li><strong>Performance Optimized:</strong> Maintained 30+ FPS on low-end hardware through efficient shader design</li>
-            <li><strong>Atmospheric Immersion:</strong> Dynamic lighting and particle effects created compelling horror atmosphere</li>
-            <li><strong>Modular VFX System:</strong> Reusable effects components enabled rapid content creation for level designers</li>
-            <li><strong>Shader Library:</strong> Developed 12+ custom shaders for different supernatural phenomena</li>
+            <li><strong>First Production Rig:</strong> Successfully delivered character rigs for animated film production</li>
+            <li><strong>Cartoon Aesthetic:</strong> Achieved stylized character deformation with cartoon eye system and facial controls</li>
+            <li><strong>Production Pipeline:</strong> Established version control workflow that kept animation team productive</li>
+            <li><strong>Lighting Consistency:</strong> Created reusable lighting setups ensuring visual consistency across scenes</li>
+            <li><strong>Asset Library:</strong> Built modular prop rigs and environment assets for rapid scene assembly</li>
         </ul>
 
         <h3>Technology Stack</h3>
-        <p><strong>Tools & Technologies:</strong> Unity 2022.3, ShaderGraph, VFX Graph, C#, Blender, Photoshop, Git</p>
+        <p><strong>Tools & Technologies:</strong> Maya, MEL, Python, Arnold Renderer, After Effects, Premiere Pro</p>
         
         <h3>Team & Duration</h3>
-        <p><strong>Role:</strong> Technical Artist & Developer<br>
-        <strong>Team Size:</strong> 3 developers<br>
-        <strong>Duration:</strong> 6 months<br>
-        <strong>Platform:</strong> PC</p>
+        <p><strong>Role:</strong> Technical Artist & 3D Generalist<br>
+        <strong>Team Size:</strong> 4 developers<br>
+        <strong>Duration:</strong> 8 months<br>
+        <strong>Platform:</strong> Animated Film</p>
     </div>
 
-    <h2>Creative Challenges</h2>
+    <h2>Production Challenges</h2>
     <div class="grid competencies-grid">
         <div class="grid-item">
             <div class="project-info">
-                <h3>👁️ Visual Clarity</h3>
-                <p class="project-description">Balancing atmospheric effects with gameplay visibility. Used selective fog placement and contrast management.</p>
+                <h3>Version Control</h3>
+                <p class="project-description">Managing rig updates during active animation required careful coordination and backwards compatibility planning.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>⚡ Performance vs Quality</h3>
-                <p class="project-description">Heavy particle effects demanded optimization. Implemented LOD systems and dynamic quality scaling.</p>
+                <h3>Cartoon Deformation</h3>
+                <p class="project-description">Achieving appealing cartoon squash and stretch while maintaining volume and avoiding intersections required custom solutions.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🎨 Art Direction</h3>
-                <p class="project-description">Translating horror concepts into technical solutions. Collaborated closely with artists to realize vision.</p>
+                <h3>Learning Curve</h3>
+                <p class="project-description">First time building production rigs meant learning Maya's rigging tools while under deadline pressure.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🔧 Tool Integration</h3>
-                <p class="project-description">Learning Unity's VFX Graph while in production. Created documentation and workflows for team adoption.</p>
+                <h3>Team Communication</h3>
+                <p class="project-description">Establishing feedback loops with animators to iterate on rig functionality and usability.</p>
             </div>
         </div>
-    </div>
-
-    <h2>Technical Innovation</h2>
-    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>Layered Transparency System:</strong> Developed a multi-pass rendering approach for overlapping transparent effects. This allowed complex ghost materializations without sorting issues or performance penalties.</p>
-        
-        <p><strong>Procedural Horror Events:</strong> Created a system that dynamically adjusts visual intensity based on player actions and story progression. The atmosphere responds to player behavior, creating a more immersive horror experience.</p>
-        
-        <p><strong>Efficient Particle Pooling:</strong> Implemented custom particle pooling system to handle frequent VFX spawning without garbage collection spikes. Critical for maintaining smooth performance during intense supernatural sequences.</p>
     </div>
 
     <h2>Lessons Learned</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>Atmosphere Over Complexity:</strong> Simple effects executed well were more effective than complex systems. The key was consistency and thoughtful placement rather than technical complexity.</p>
+        <p><strong>Plan for Iteration:</strong> Rigs will need updates during production. Building with modularity and backwards compatibility in mind saves significant time later.</p>
         
-        <p><strong>Performance Testing Early:</strong> Regular testing on target hardware revealed bottlenecks early. What looked great in the editor didn't always perform well on lower-end systems.</p>
+        <p><strong>Animator Feedback is Critical:</strong> Regular communication with animators revealed usability issues that weren't apparent during rig testing. User feedback drives better tools.</p>
         
-        <p><strong>Collaborative Iteration:</strong> Close collaboration with level designers and artists led to better integration of effects with gameplay. Technical solutions needed to serve the narrative.</p>
+        <p><strong>Documentation Saves Time:</strong> Clear documentation on rig controls and update procedures helped the team stay productive during rig revisions.</p>
         
-        <p><strong>Documentation Matters:</strong> Creating clear documentation for custom shaders and effects helped team members understand and modify systems when needed.</p>
+        <p><strong>Version Control Everything:</strong> Establishing asset versioning from day one prevented lost work and made collaboration much smoother.</p>
     </div>
 
     <!-- Navigation -->
     <div style="display: flex; justify-content: space-between; margin: 60px 0 40px 0; gap: 20px;">
-        <a href="../../techart.php" class="project-link" style="background: var(--form-bg); color: var(--text-color);">← Back to Technical Art</a>
-        <a href="../smite/" class="project-link">Next Project: Smite →</a>
+        <a href="/techart.php" class="project-link" style="background: var(--form-bg); color: var(--text-color);">← Back to Technical Art</a>
+        <a href="/pages-techart/smite/" class="project-link">Next Project: Smite →</a>
     </div>
 </div>
 
-<?php include '../../includes/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>

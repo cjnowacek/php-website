@@ -1,5 +1,5 @@
 <?php
-// Fixed includes/project_loader.php
+// Fixed includes/project-components/project_loader.php
 class ProjectLoader {
     private static $projects = null;
     
@@ -46,26 +46,15 @@ class ProjectLoader {
     private static function loadProjects() {
         self::$projects = [];
         
-        // Try multiple possible paths
-        $possiblePaths = [
-            __DIR__ . '/',              // Same directory as project_loader.php
-            __DIR__ . '/projects/',     // projects subdirectory
-            dirname(__DIR__) . '/includes/prohect-cards/', // From root
-        ];
+        // Fixed: Look in the correct project-cards directory
+        $projectDir = dirname(__DIR__) . '/project-cards/';
         
-        $projectDir = null;
-        foreach ($possiblePaths as $path) {
-            if (is_dir($path)) {
-                $projectDir = $path;
-                break;
-            }
-        }
-        
-        if ($projectDir && is_dir($projectDir)) {
+        if (is_dir($projectDir)) {
             $files = glob($projectDir . '*.php');
             foreach ($files as $file) {
-                // Skip the project_loader.php and project_card.php files
-                if (basename($file) === 'project_loader.php' || basename($file) === 'project_card.php') {
+                // Skip any non-project files
+                $filename = basename($file);
+                if (in_array($filename, ['project_loader.php', 'project_card.php'])) {
                     continue;
                 }
                 
@@ -79,8 +68,10 @@ class ProjectLoader {
                     error_log("Error loading project file {$file}: " . $e->getMessage());
                 }
             }
+        } else {
+            // Debug: Log the directory we're trying to access
+            error_log("ProjectLoader: Directory not found: " . $projectDir);
         }
     }
 }
 ?>
-

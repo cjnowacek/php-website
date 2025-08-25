@@ -5,10 +5,7 @@ include 'includes/project-components/project_loader.php';
 include 'includes/project-components/project_card.php';
 // YOU control which devops projects appear and in what order
 $devopsProjectIds = [
-    'build_pipeline',    // Your main devops project
-    // Add more devops project IDs here as you create them
-    // 'asset_automation',
-    // 'monitoring_dashboard',
+    'build_pipeline',
 ];
 
 // Load the specific projects you want

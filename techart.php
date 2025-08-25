@@ -8,6 +8,8 @@ $techartProjectIds = [
     'smite',
     'runaway',
     'sintern',
+    // 'gravity-switch',
+
 ];
 
 // Load the specific projects you want

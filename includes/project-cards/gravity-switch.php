@@ -1,8 +1,8 @@
 <?php
-// includes/projects/smite2.php
+// includes/projects-cards/gravity-switch.php
 return [
-    'id' => 'smite_gravity-switch',
-    'title' => 'Smite',
+    'id' => 'gravity-switch',
+    'title' => 'Gravity Switch',
     'company' => 'Hi-Rez Studios',
     'category' => 'techart',
     'featured' => true,
@@ -16,8 +16,8 @@ return [
         'Optimized rendering pipeline achieving 25% performance improvement',
         'Implemented real-time lighting system for dynamic environments'
     ],
-    'tech_tags' => ['Unreal Engine', 'HLSL', 'Python', 'Maya', 'Substance'],
-    'link' => 'techart/smite2/',
+    'tech_tags' => ['3ds Max', 'Maxscript'],
+    'link' => 'techart/smite/',
     'meta' => [
         'duration' => '18 months',
         'role' => 'Senior Technical Artist',
