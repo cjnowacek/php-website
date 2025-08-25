@@ -1,4 +1,4 @@
-/* static/css/variables.css - All CSS custom properties */
+/* Add to static/css/variables.css */
 
 :root {
     --grid-gap: 10px;
@@ -13,4 +13,12 @@
     --images-max-width: 100%;
     --form-bg: #434449;
     --button-hover: #ebebeb;
+
+    --container-max-width: 1300px;
+    --container-narrow: 1000px;
+    --container-wide: 1600px;
+
+    --text-content-max-width: 800px;  /* ~60% of 1300px */
+    --text-content-narrow: 600px;     /* ~45% of 1300px */
+    --text-content-wide: 1000px;      /* ~75% of 1300px */
 }
