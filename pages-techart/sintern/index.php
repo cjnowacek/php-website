@@ -57,17 +57,15 @@ $breadcrumbs = [
     <div class="text-content-wide">
         
         <!-- Character Rigging Section -->
-        <div style="display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin: 30px 0; align-items: start;">
+        <div class="two-column-section">
             <div>
                 <h3>Character Rig System (MEL/Python)</h3>
                 <p>Developed modular character rigs with custom facial controls and cartoon-style deformation systems. The rig featured advanced squash and stretch capabilities while maintaining proper volume preservation for appealing cartoon animation.</p>
                 
                 <p>Key innovations included a card-based eye system that allowed for extreme cartoon expressions and a modular approach that made it easy to swap out components based on character requirements. The facial rig supported both blend shape-based and bone-based deformation for maximum flexibility.</p>
                 
-                <div style="background: var(--form-bg); padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.4; margin: 0;">
-
-<code>// MEL script for cartoon eye setup
+                <div class="code-block">
+                    <pre><code>// MEL script for cartoon eye setup
 proc createCartoonEyes() {
     string $eyeCtrl = `circle -n "eye_CTRL"`;
     addAttr -ln "squash" -at double -dv 1 $eyeCtrl[0];
@@ -79,20 +77,20 @@ proc createCartoonEyes() {
             <div>
                 <img src="/static/img/project-cards/sintern_1200x900.webp" 
                      alt="Character rig demonstration" 
-                     style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-                <p style="font-size: 12px; color: var(--text-secondary); margin-top: 10px; text-align: center;">
+                     class="column-image">
+                <p class="image-caption">
                     Character rig with facial controls and cartoon deformation system
                 </p>
             </div>
         </div>
 
         <!-- Lighting System Section -->
-        <div style="display: grid; grid-template-columns: 300px 1fr; gap: 30px; margin: 30px 0; align-items: start;">
+        <div class="two-column-section two-column-reverse">
             <div>
                 <img src="/static/img/project-cards/runaway_1200x900.webp" 
                      alt="Lighting setup demonstration" 
-                     style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-                <p style="font-size: 12px; color: var(--text-secondary); margin-top: 10px; text-align: center;">
+                     class="column-image">
+                <p class="image-caption">
                     Three-point lighting setup for consistent scene illumination
                 </p>
             </div>
@@ -102,8 +100,8 @@ proc createCartoonEyes() {
                 
                 <p>Each lighting setup was designed to work with Maya's Arnold renderer and included automated positioning based on scene geometry. This approach saved significant time during production while ensuring professional-quality results across all shots.</p>
                 
-                <div style="background: var(--form-bg); padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.4; margin: 0;"><code>class LightingRigManager:
+                <div class="code-block">
+                    <pre><code>class LightingRigManager:
     def create_lighting_setup(self, scene_type):
         key_light = cmds.directionalLight()
         fill_light = cmds.directionalLight()
@@ -112,18 +110,6 @@ proc createCartoonEyes() {
                 </div>
             </div>
         </div>
-
-        <!-- Responsive Design -->
-        <style>
-        @media (max-width: 768px) {
-            .text-content div[style*="grid-template-columns"] {
-                display: block !important;
-            }
-            .text-content div[style*="grid-template-columns"] > div:first-child {
-                margin-bottom: 20px;
-            }
-        }
-        </style>
     </div>
 
     <h2>Project Results</h2>

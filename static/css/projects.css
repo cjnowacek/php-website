@@ -418,3 +418,63 @@
     margin-bottom: 10px;
     font-family: Cambria, Georgia, serif;
 }
+
+/* Add these styles to your static/css/projects.css file */
+
+/* Two-column layout for text and images */
+.two-column-section {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+    margin: 30px 0;
+    align-items: center;
+}
+
+.two-column-reverse {
+    grid-template-columns: 400px 1fr;
+}
+
+.column-image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.image-caption {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Code blocks */
+.code-block {
+    background: var(--form-bg);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.code-block pre {
+    color: var(--text-secondary);
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0;
+    overflow-x: auto;
+}
+
+/* Responsive design for two-column sections */
+@media (max-width: 768px) {
+    .two-column-section,
+    .two-column-reverse {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    /* Make images appear first (on top) on mobile */
+    .two-column-section > div:last-child,
+    .two-column-reverse > div:first-child {
+        order: -1;
+    }
+}
