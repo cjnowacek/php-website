@@ -59,7 +59,7 @@ $breadcrumbs = [
         <!-- Character Rigging Section -->
         <div class="two-column-section">
             <div>
-                <h3>Character Rig System (MEL/Python)</h3>
+                <h3>Character Rigging</h3>
                 <p>Developed modular character rigs with custom facial controls and cartoon-style deformation systems. The rig featured advanced squash and stretch capabilities while maintaining proper volume preservation for appealing cartoon animation.</p>
                 
                 <p>Key innovations included a card-based eye system that allowed for extreme cartoon expressions and a modular approach that made it easy to swap out components based on character requirements. The facial rig supported both blend shape-based and bone-based deformation for maximum flexibility.</p>

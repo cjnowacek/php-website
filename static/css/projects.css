@@ -134,20 +134,28 @@
     opacity: 0;
 }
 
-.project-highlights {
+.project-highlights 
+    list-style-position: inside;
+    padding-left: 0;{
     margin: 1.5rem 0;
 }
 
-.project-highlights ul {
-    margin-left: 1rem;
-    color: #666;
+/* Key Contirbutions START */
+.project-card .project-highlights ul {
+    list-style-position: inside;
+    padding-left: 0;
+    margin-left: 0;
+    text-align: center;
 }
 
-.project-highlights li {
+.project-card .project-highlights li {
+    text-align: center;
+    list-style-type: disc;
     margin-bottom: 0.5rem;
-    line-height: 1.5;
 }
+/* Key Contirbutions END */
 
+/* Tags area START */
 .tech-tags {
     display: flex;
     gap: 0.5rem;
