@@ -12,11 +12,8 @@ include 'includes/header.php';
             
             <h3>Skills & Expertise</h3>
             <ul>
-                <li>Shader Development & Visual Effects</li>
                 <li>Pipeline Development & Tool Creation</li>
-                <li>3D Graphics Programming</li>
                 <li>Game Engine Integration</li>
-                <li>Performance Optimization</li>
                 <li>Cross-disciplinary Collaboration</li>
             </ul>
 
