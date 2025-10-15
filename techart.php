@@ -3,7 +3,7 @@ $page_title = "Technical Art";
 include 'includes/header.php';
 include 'includes/project-components/project_loader.php';
 include 'includes/project-components/project_card.php';
-// YOU control which tech art projects appear and in what order
+
 $techartProjectIds = [
     'smite',
     'runaway',
@@ -45,6 +45,8 @@ foreach ($techartProjectIds as $projectId) {
 <div class="container" style="max-width: 1300px;">
  
     <h2>Techart</h2>
+
+    <hr>
 
     <div style="text-align: center; margin: 40px 0;">
         <a href="/static/files/CJ-Nowacek-TechArt-Resume.pdf" class="competency-link" target="_blank" rel="noopener">Download Resume (PDF)</a>

@@ -21,6 +21,8 @@ foreach ($devopsProjectIds as $projectId) {
 <div class="container" style="max-width: 1300px;">
     <h2>DevOps & Infrastructure</h2>
     
+    <hr>
+
     <div style="text-align: center; margin: 40px 0;">
         <a href="/static/files/CJ-Nowacek-IT-Resume.pdf" class="competency-link" target="_blank" rel="noopener">Download Resume (PDF)</a>
     </div>   

@@ -6,9 +6,20 @@ include 'includes/header.php';
 <div class="container" style="max-width: 1300px;">
 
     <div class="about-content">
+
         <h2>About Me</h2>
+
+        <hr>
+
         <div class="about-text">
-            <p>I'm a passionate Technical Artist with expertise in bridging the gap between art and technology in game development. My work focuses on creating efficient workflows, tools, and visual effects that enhance the creative process while maintaining optimal performance.</p>
+            <h2>Professional Statement</h2>
+            <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+                <p>I am a passionate Technical Artist and DevOps Developer specializing in the intersection of creativity and technology. With extensive experience in pipeline automation and infrastructure optimization, I bridge the gap between artistic vision and technical implementation.</p>
+                
+                <p>My expertise spans from building software tools that make others’ work easier to developing robust CI/CD systems and automating complex workflows. I thrive on solving challenging technical problems while empowering creative teams to focus on what they do best: creating amazing experiences.</p>
+                
+                <p>Whether developing character rigs, or automating asset processing workflows, I bring a unique perspective that combines artistic sensibility with engineering precision.</p>
+            </div>
             
             <h3>Skills & Expertise</h3>
             <ul>

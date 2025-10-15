@@ -22,13 +22,14 @@ foreach ($featuredProjectIds as $projectId) {
 ?>
 
 <div class="container" style="max-width: 1300px;">
-    <h2>Professional Statement</h2>
+
+    <h2>Home</h2>
+
+    <hr>
+
+    <h2>Welcome!</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p>I am a passionate Technical Artist and DevOps Developer specializing in the intersection of creativity and technology . With extensive experience in pipeline automation, and infrastructure optimization, I bridge the gap between artistic vision and technical implementation.</p>
-        
-        <p>My expertise spans from creating and building software tools making other people lives easier. Creating robust CI/CD systems and automating complex workflows. I thrive on solving challenging technical problems while empowering creative teams to focus on what they do best... creating amazing experiences.</p>
-        
-        <p>Whether developing character rigs, or automating asset processing workflows, I bring a unique perspective that combines artistic sensibility with engineering precision.</p>
+        <p>Welcome to my digital workshop. I explore how tools, pipelines, and automation can expand the boundaries of creative expression. Every project here represents a step toward that vision: connecting art and engineering into systems built for people and possibility.</p>
     </div>
 
 <h2>Core Competencies</h2>

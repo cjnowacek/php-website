@@ -46,7 +46,12 @@ include '../../includes/header.php';
 
     <h2>Technical Implementation</h2>
         <p>coming soon!<p/>
+
+        <hr>
+
     <h2>Project Results</h2>
+    <p>Developed a stylized animated short that combined technical precision with creative expression. Contributed to every stage of production, from rigging and lighting to asset optimization and pipeline design.</p>
+    <hr>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <ul>
             <li><strong>80% Time Reduction:</strong> Automated rigging process reduced manual work from hours to minutes</li>
@@ -56,14 +61,23 @@ include '../../includes/header.php';
             <li><strong>Rapid Deployment:</strong> Enabled daily content updates through automated pipeline</li>
         </ul>
 
+        <hr>
+
         <h3>Technology Stack</h3>
-        <p><strong>Tools & Technologies:</strong> Python, Maya Python API, CLI Tools, Shell Scripting</p>
-        
+        <ul>
+            <li><strong>Languages & APIs:</strong> Python, Maya Python API</li>
+            <li><strong>Automation Tools:</strong> Command Line (CLI) Utilities, Shell Scripting</li>
+        </ul>
+
+        <hr>
+
         <h3>Team & Duration</h3>
-        <p><strong>Role:</strong> Technical Artist<br>
-        <strong>Duration:</strong> 1 month<br>
-        <strong>Team Size:</strong> 8+ developers<br>
-        <strong>Platform:</strong> PC</p>
+        <ul>
+            <li><strong>Role:</strong> Technical Artist</li>
+            <li><strong>Team Size:</strong> 8+ developers</li>
+            <li><strong>Duration:</strong> 1 month</li>
+            <li><strong>Platform:</strong> PC</li>
+        </ul>
     </div>
 
     <h2>Automation Challenges</h2>

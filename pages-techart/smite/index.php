@@ -13,10 +13,10 @@ include '../../includes/header.php';
 
     <h2>Smite</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>Hi-Rez Studios | 2023-2024 | Unreal Engine 5 & 3DS Max</strong></p>
-        <p>Technical artist for Hi-Rez Studios' popular MOBA game, focusing on character character skinning/rigging and tool development. Working on a live-service game with millions of players required robust, scalable solutions that could handle frequent content updates while maintaining high quality standards.</p>
+        <p><strong>Hi-Rez Studios | 2023-2024 | Unreal Engine 5 & 3ds Max</strong></p>
+        <p>Technical Artist for Hi-Rez Studios’ popular MOBA game, focusing on character skinning/rigging and tool development. Working on a live-service game with millions of players required robust, scalable solutions that could handle frequent content updates while maintaining high-quality standards..</p>
         
-        <p>My primary focus was streamlining the character production workflow, particularly the transition from the original Smite to its sequel. This involved creating automated tools for rig building, optimizing character port processes, and ensuring consistency across a large library of character assets.</p>
+        <p>My primary focus was streamlining the character production workflow, particularly the transition from the original Smite to its sequel. This involved creating automated tools for rig building, optimizing character porting processes, and ensuring consistency across a large library of character assets.</p>
     </div>
 
     <h2>Key Contributions</h2>
@@ -51,22 +51,36 @@ include '../../includes/header.php';
     </div>
 
     <h2>Project Impact</h2>
-    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+    <p>Streamlined the character production pipeline across a large, multi-platform project. Implemented automation and standardization that significantly improved quality control, iteration speed, and team efficiency.</p>
+    <hr>
+
+    <div class="text-content">
         <ul>
             <li><strong>25% Faster Character Ports:</strong> Automated conversion reduced manual work from days to hours</li>
-            <li><strong>Consistent Quality:</strong> Standardized pipeline ensured uniform quality across many character assets</li>
+            <li><strong>Consistent Quality:</strong> Standardized pipeline ensured uniform quality across multiple character assets</li>
             <li><strong>Team Productivity:</strong> Freed up artist time for creative work instead of technical setup</li>
             <li><strong>Live Service Support:</strong> Enabled rapid deployment of character updates and new content</li>
         </ul>
 
+        <hr>
+
         <h3>Technology Stack</h3>
-        <p><strong>Tools & Technologies:</strong> Unreal Engine 5, 3DS Max, MaxScript, Python, Perforce, Jenkins</p>
-        
+        <ul>
+            <li><strong>Engine:</strong> Unreal Engine 5</li>
+            <li><strong>3D & Animation:</strong> 3ds Max</li>
+            <li><strong>Scripting & Tools:</strong> MaxScript, Python</li>
+            <li><strong>Version Control & CI/CD:</strong> Perforce, Jenkins</li>
+        </ul>
+
+        <hr>
+
         <h3>Team & Duration</h3>
-        <p><strong>Role:</strong> Technical Artist<br>
-        <strong>Team Size:</strong> 200+ developers<br>
-        <strong>Duration:</strong> 28 months<br>
-        <strong>Platforms:</strong> PC, Console</p>
+        <ul>
+            <li><strong>Role:</strong> Technical Artist</li>
+            <li><strong>Team Size:</strong> 200+ developers</li>
+            <li><strong>Duration:</strong> 28 months</li>
+            <li><strong>Platforms:</strong> PC, Console</li>
+        </ul>
     </div>
 
     <h2>Production Challenges</h2>

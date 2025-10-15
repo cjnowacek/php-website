@@ -322,6 +322,10 @@
     margin-bottom: 20px;
 }
 
+.text-content ul li  {
+  margin-bottom: 5px;
+}
+
 .info-item {
     margin: 15px 0;
     padding-bottom: 10px;

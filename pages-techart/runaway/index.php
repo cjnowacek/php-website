@@ -15,9 +15,9 @@ include '../../includes/header.php';
     <h2>Runaway</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <p><strong>Senior Thesis | 2024 | Unreal Engine</strong></p>
-        <p>Final BFA school project exploring narrative-driven gameplay and technical innovation. Runaway is a story-rich adventure game focusing on childhood trauma and the courage to face your past, developed as part of my senior thesis project.</p>
+        <p>Final BFA project exploring narrative-driven gameplay and technical innovation. Runaway is a story-rich adventure game focusing on childhood trauma and the courage to face one’s past, developed as part of my senior thesis.</p>
         
-        <p>Working as the sole developer, I was responsible for every aspect of this project - from character rigging and animation systems to asset optimization and deployment automation. The project challenged me to create efficient workflows that could support rapid iteration while maintaining high visual quality.</p>
+        <p>Working as the sole developer, I was responsible for every aspect of the project, from character rigging and animation systems to asset optimization and deployment automation. The project challenged me to create efficient workflows that supported rapid iteration while maintaining high visual quality.</p>
     </div>
 
 <!----------- Embedded YouTube Video ------------->
@@ -171,21 +171,34 @@ include '../../includes/header.php';
     </div>
 
     <h2>Project Results</h2>
-    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+    <p>Delivered a fully realized interactive experience that fused storytelling with robust technical systems. Designed and implemented the entire production pipeline—from rigging and animation to automation and deployment—ensuring efficiency and creative flexibility.</p>
+    <hr>
+
+    <div class="text-content">
         <ul>
-            <li><strong>Complete Character Pipeline:</strong> Delivered fully-rigged character from Maya to Unreal Engine with animation retargeting</li>
-            <li><strong>Automated Workflows:</strong> Reduced manual asset processing time by 75% through Python automation</li>
+            <li><strong>Complete Character Pipeline:</strong> Delivered fully-rigged characters from Maya to Unreal Engine with animation retargeting</li>
+            <li><strong>Automated Workflows:</strong> Reduced manual asset processing time by 75% through Python-based automation</li>
             <li><strong>Seamless Cinematics:</strong> Integrated narrative sequences with gameplay using custom camera systems</li>
         </ul>
 
+        <hr>
+
         <h3>Technology Stack</h3>
-        <p><strong>Tools & Technologies:</strong> Unreal Engine 5, Maya, Blender, Python, MEL, Blueprint Visual Scripting</p>
-        
+        <ul>
+            <li><strong>Engine:</strong> Unreal Engine 5</li>
+            <li><strong>3D & Animation:</strong> Maya, Blender</li>
+            <li><strong>Scripting & Tools:</strong> Python, MEL, Blueprint Visual Scripting</li>
+        </ul>
+
+        <hr>
+
         <h3>Team & Duration</h3>
-        <p><strong>Role:</strong> 3D Generalist<br>
-        <strong>Team Size:</strong> 1 developers<br>
-        <strong>Duration:</strong> 8 months (academic year)<br>
-        <strong>Platform:</strong> PC</p>
+        <ul>
+            <li><strong>Role:</strong> 3D Generalist</li>
+            <li><strong>Team Size:</strong> 1 developer</li>
+            <li><strong>Duration:</strong> 8 months (academic year)</li>
+            <li><strong>Platform:</strong> PC</li>
+        </ul>
     </div>
 
     <h2>Development Challenges</h2>

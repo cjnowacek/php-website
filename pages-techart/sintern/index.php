@@ -17,7 +17,7 @@ $breadcrumbs = [
     <h2>The Sintern</h2>
     <div class="text-content">
         <p><strong>Junior Film Project | 2021-2022 | Maya</strong></p>
-        <p>A story about an intern from hell and her demon dog. The Sintern challenged me to create character rigs for the first time in a production environment. Given our limited development timeline, coordinating rig updates with animation proved to be a real challenge while maintaining production momentum.</p>
+        <p>A story about an intern from hell and her demon dog, The Sintern challenged me to create character rigs for the first time in a production environment. Given our limited development timeline, coordinating rig updates with animation proved to be a real challenge while maintaining production momentum.</p>
         
         <p>This project served as my introduction to production rigging workflows, version control for character assets, and the critical importance of communication between technical artists and animators in a fast-paced creative environment.</p>
     </div>
@@ -124,23 +124,36 @@ $breadcrumbs = [
     </div>
 
     <h2>Project Results</h2>
+        <p>Developed a stylized animated short that combined technical precision with creative expression. Contributed to every stage of production, from rigging and lighting to asset optimization and pipeline design.</p>
+        <hr>
+
     <div class="text-content">
         <ul>
-            <li><strong>First Production Rig:</strong> Successfully delivered character rigs for animated film production</li>
-            <li><strong>Cartoon Aesthetic:</strong> Achieved stylized character deformation with cartoon eye system and facial controls</li>
-            <li><strong>Production Pipeline:</strong> Established version control workflow that kept animation team productive</li>
+            <li><strong>First Production Rig:</strong> Delivered complete character rigs for animated film production</li>
+            <li><strong>Production Pipeline:</strong> Established version control workflows to keep the animation team efficient and synchronized</li>
             <li><strong>Lighting Consistency:</strong> Created reusable lighting setups ensuring visual consistency across scenes</li>
             <li><strong>Asset Library:</strong> Built modular prop rigs and environment assets for rapid scene assembly</li>
         </ul>
 
+        <hr>
+
         <h3>Technology Stack</h3>
-        <p><strong>Tools & Technologies:</strong> Maya, MEL, Python, Arnold Renderer, After Effects, Premiere Pro</p>
+        <ul li {margin-bottom: 10px;}>
+            <li><strong>3D & Animation:</strong> Maya, Arnold Renderer</li>
+            <li><strong>Scripting & Tools:</strong> Python, MEL</li>
+            <li><strong>Compositing & Editing:</strong> After Effects, Premiere Pro</li>
+        </ul>
+
+        <hr>
         
         <h3>Team & Duration</h3>
-        <p><strong>Role:</strong> Technical Artist & 3D Generalist<br>
-        <strong>Team Size:</strong> 4 developers<br>
-        <strong>Duration:</strong> 8 months<br>
-        <strong>Platform:</strong> Animated Film</p>
+        <ul>
+            <li><strong>Role:</strong> Technical Artist & 3D Generalist</li>
+            <li><strong>Team Size:</strong> 4 developers</li>
+            <li><strong>Duration:</strong> 8 months</li>
+            <li><strong>Platform:</strong> Animated Film</li>
+        </ul>
+
     </div>
 
     <h2>Production Challenges</h2>
