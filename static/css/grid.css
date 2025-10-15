@@ -43,7 +43,7 @@
     opacity: 1;
 }
 
-/* Project info styles */
+/* Project info styles START */
 .project-info {
     text-align: left;
     padding: 10px;
@@ -71,6 +71,7 @@
     font-size: 12px;
     margin-top: 5px;
 }
+/* Project info styles END */
 
 /* Category navigation */
 .project-categories {

@@ -3,7 +3,7 @@
 return [
     'id' => 'sintern',
     'title' => 'The Sintern',
-    'company' => 'Brickstone Studios',
+    'company' => 'Brimstone Studios',
     'category' => 'techart',
     'featured' => true,
     'order' => 2,

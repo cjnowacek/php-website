@@ -21,9 +21,9 @@ foreach ($devopsProjectIds as $projectId) {
 <div class="container" style="max-width: 1300px;">
     <h2>DevOps & Infrastructure</h2>
     
-    <div class="about-text">
-        <p>Specializing in building robust, scalable infrastructure and streamlined deployment pipelines for game development and technical art workflows. My DevOps expertise focuses on automating complex processes, ensuring reliable deployments, and creating efficient development environments.</p>
-    </div>
+    <div style="text-align: center; margin: 40px 0;">
+        <a href="/static/files/CJ-Nowacek-IT-Resume.pdf" class="competency-link" target="_blank" rel="noopener">Download Resume (PDF)</a>
+    </div>   
 
     <h2>Core Competencies</h2>
     <div class="grid competencies-grid">

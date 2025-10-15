@@ -22,93 +22,104 @@ $breadcrumbs = [
         <p>This project served as my introduction to production rigging workflows, version control for character assets, and the critical importance of communication between technical artists and animators in a fast-paced creative environment.</p>
     </div>
 
+    <!-- Embedded YouTube Video -->
+    <div class="demo-reel" style="margin: 40px 0;">
+        <div class="video-container">
+            <iframe title="The Sintern | Junior Film 2021-2022" 
+                    src="https://www.youtube.com/embed/Itg7pS30iiQ" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    loading="lazy">
+            </iframe>
+        </div>
+        <p class="image-caption" style="text-align: center; margin-top: 10px;">
+            The Sintern - Full Short Film
+        </p>
+    </div>
+
     <h2>Key Contributions</h2>
     <div class="grid competencies-grid">
         <div class="grid-item">
             <div class="project-info">
-                <h3>🎭 Character Rigging</h3>
-                <p class="project-description">Created cartoon-style character rigs with facial controls including cartoon card eyes system. Built modular rig components for consistent character animation.</p>
+                <h3>Character Rigging</h3>
+                <p class="project-description">Created cartoon-style character rigs with facial controls including cartoon card eyes system.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>📦 3D Modeling</h3>
+                <h3>3D Modeling</h3>
                 <p class="project-description">Responsible for creating environment assets, props, and character models. Focused on topology suitable for animation and deformation.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>💡 Lighting Design</h3>
+                <h3>Lighting Design</h3>
                 <p class="project-description">Developed lighting rigs and setups for consistent shot-by-shot lighting. Created reusable lighting templates for different scene moods.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🔧 Pipeline Development</h3>
+                <h3>Pipeline Development</h3>
                 <p class="project-description">Established asset versioning workflow and rig update procedures to maintain animator productivity during production.</p>
             </div>
         </div>
     </div>
 
+        
+        <!-- Character Rigging Section -->
     <h2>Technical Implementation</h2>
     <div class="text-content-wide">
         
-        <!-- Character Rigging Section -->
-        <div class="two-column-section">
+        <!-- Character Rigging Section with larger video -->
+        <div class="two-column-section" style="grid-template-columns: 1fr 1.5fr;">
             <div>
                 <h3>Character Rigging</h3>
-                <p>Developed modular character rigs with custom facial controls and cartoon-style deformation systems. The rig featured advanced squash and stretch capabilities while maintaining proper volume preservation for appealing cartoon animation.</p>
-                
-                <p>Key innovations included a card-based eye system that allowed for extreme cartoon expressions and a modular approach that made it easy to swap out components based on character requirements. The facial rig supported both blend shape-based and bone-based deformation for maximum flexibility.</p>
-                
-                <div class="code-block">
-                    <pre><code>// MEL script for cartoon eye setup
-proc createCartoonEyes() {
-    string $eyeCtrl = `circle -n "eye_CTRL"`;
-    addAttr -ln "squash" -at double -dv 1 $eyeCtrl[0];
-    addAttr -ln "stretch" -at double -dv 1 $eyeCtrl[0];
-    print("Cartoon eye rig created\n");
-}</code></pre>
-                </div>
+                <p>The Bruce rig was the first character I ever rigged. This rig supported with custom facial controls and cartoon-style expression controls. </p>
+                <p>A spline ik was used for his spine to allow better squash and stretch of his body.</p>
+                <p>A key innovations included a card-based eye system that allowed for cartoon expressions.</p>
             </div>
             <div>
-                <img src="/static/img/project-cards/sintern_1200x900.webp" 
-                     alt="Character rig demonstration" 
-                     class="column-image">
-                <p class="image-caption">
-                    Character rig with facial controls and cartoon deformation system
-                </p>
+                <div class="demo-reel">
+                    <div class="video-container">
+                        <iframe title="Bruce Rig Showcase" 
+                          src="https://www.youtube.com/embed/_5qnnNh4ymU?autohide=1&modestbranding=1&rel=0" 
+                          frameborder="0" 
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen
+                          loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+                <p class="image-caption">Bruce rig showcase</p>
             </div>
         </div>
 
-        <!-- Lighting System Section -->
-        <div class="two-column-section two-column-reverse">
-            <div>
-                <img src="/static/img/project-cards/runaway_1200x900.webp" 
-                     alt="Lighting setup demonstration" 
-                     class="column-image">
-                <p class="image-caption">
-                    Three-point lighting setup for consistent scene illumination
-                </p>
-            </div>
-            <div>
-                <h3>Lighting Rig Automation (Python)</h3>
-                <p>Created standardized lighting rigs that could be quickly deployed across different scenes while maintaining visual consistency. The system included presets for different narrative moods - from bright office environments to dramatic underworld sequences.</p>
-                
-                <p>Each lighting setup was designed to work with Maya's Arnold renderer and included automated positioning based on scene geometry. This approach saved significant time during production while ensuring professional-quality results across all shots.</p>
-                
-                <div class="code-block">
-                    <pre><code>class LightingRigManager:
-    def create_lighting_setup(self, scene_type):
-        key_light = cmds.directionalLight()
-        fill_light = cmds.directionalLight()
-        rim_light = cmds.directionalLight()
-        return [key_light, fill_light, rim_light]</code></pre>
-                </div>
-            </div>
+    <!-- Lighting System Section -->
+    <div class="two-column-section two-column-reverse">
+        <div>
+            <img src="/static/img/pages/sintern/20221210-sintern-lighting-teset-4.jpg" 
+                alt="Lighting setup example 1" 
+                class="column-image"
+                style="margin-bottom: 20px;">
+            
+            <img src="/static/img/pages/sintern/20221210-sintern-lighting-teset-5.jpg" 
+                alt="Lighting setup example 2" 
+                class="column-image">
+            
+            <p class="image-caption" style="text-align: center; margin-top: 10px;">
+               Work in progress lighting tests 
+            </p>
+        </div>
+        <div>
+            <h3>Environment lighting tests</h3>
+            <p>Developed standardized lighting rigs through systematic experimentation and refinement. The process required testing numerous configurations to find the optimal balance between artistic vision and technical constraints - adjusting light intensities, positions, and color temperatures until each preset achieved the desired mood.</p>
+
+
+            <p>Through trial and error, discovered efficient workflows for Maya's Arnold renderer that could handle complex lighting scenarios. Multiple test renders and iterations refined each setup, ultimately creating a library of reliable presets that saved significant production time while ensuring professional-quality results.</p>
         </div>
     </div>
 
@@ -136,28 +147,28 @@ proc createCartoonEyes() {
     <div class="grid competencies-grid">
         <div class="grid-item">
             <div class="project-info">
-                <h3>⏱️ Version Control</h3>
+                <h3>Version Control</h3>
                 <p class="project-description">Managing rig updates during active animation required careful coordination and backwards compatibility planning.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🎨 Cartoon Deformation</h3>
+                <h3>Cartoon Deformation</h3>
                 <p class="project-description">Achieving appealing cartoon squash and stretch while maintaining volume and avoiding intersections required custom solutions.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>📚 Learning Curve</h3>
+                <h3>Learning Curve</h3>
                 <p class="project-description">First time building production rigs meant learning Maya's rigging tools while under deadline pressure.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🤝 Team Communication</h3>
+                <h3>Team Communication</h3>
                 <p class="project-description">Establishing feedback loops with animators to iterate on rig functionality and usability.</p>
             </div>
         </div>

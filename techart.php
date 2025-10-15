@@ -45,10 +45,10 @@ foreach ($techartProjectIds as $projectId) {
 <div class="container" style="max-width: 1300px;">
  
     <h2>Techart</h2>
-    
-    <div class="about-text">
-        <p>Specializing in building character rigging solutions for game development and technical art workflows. I've spent a considerable ammount of time automating complex processes, and creating high polish game assets.</p>
-    </div>
+
+    <div style="text-align: center; margin: 40px 0;">
+        <a href="/static/files/CJ-Nowacek-TechArt-Resume.pdf" class="competency-link" target="_blank" rel="noopener">Download Resume (PDF)</a>
+    </div>   
 
    <?php include 'includes/demo_reel.php'; ?>
 

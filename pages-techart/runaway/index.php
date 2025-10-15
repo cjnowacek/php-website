@@ -16,45 +16,117 @@ include '../../includes/header.php';
         <p><strong>Senior Thesis | 2024 | Unreal Engine</strong></p>
         <p>Final BFA school project exploring narrative-driven gameplay and technical innovation. Runaway is a story-rich adventure game focusing on childhood trauma and the courage to face your past, developed as part of my senior thesis project.</p>
         
-        <p>Working as the sole technical artist on a small team, I was responsible for the entire technical pipeline - from character rigging and animation systems to asset optimization and deployment automation. The project challenged me to create efficient workflows that could support rapid iteration while maintaining high visual quality.</p>
+        <p>Working as the sole developer, I was responsible for every aspect of this project - from character rigging and animation systems to asset optimization and deployment automation. The project challenged me to create efficient workflows that could support rapid iteration while maintaining high visual quality.</p>
+    </div>
+
+    <!-- Embedded YouTube Video -->
+    <div class="demo-reel" style="margin: 40px 0;">
+        <div class="video-container">
+            <iframe title="Runaway | BFA Thesis | 2022-2023" 
+                    src="https://www.youtube.com/embed/AJZ5Ny6kXLE" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    loading="lazy">
+            </iframe>
+        </div>
+        <p class="image-caption" style="text-align: center; margin-top: 10px;">
+            Runaway - Gameplay demo
+        </p>
     </div>
 
     <h2>Key Contributions</h2>
     <div class="grid competencies-grid">
+
         <div class="grid-item">
             <div class="project-info">
-                <h3>🎭 Character Rigging & Animation</h3>
-                <p class="project-description">Developed complete character rigging system with facial animation support, IK/FK blending, and optimized bone hierarchy for performance.</p>
+                <h3><i class="fa-brands fa-github" style="color:#1e3050; vertical-align: middle; margin-right: 4px; font-size:1.1em;"></i>Github Snapshot</h3>
+                <p class="project-description">Here's a snapshot of the tools I created during production.</p>
+                <a href="https://github.com/cjnowacek/maya-tools-lab/tree/89f7c5b4d28bb9b6fccbc0d72c9d9a6b53beae93" target="_blank" class="competency-link">Goto Github</a>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🔧 Automated Build Pipeline</h3>
-                <p class="project-description">Created automated build and deployment system reducing manual tasks and ensuring consistent builds across team members.</p>
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <div class="project-info">
-                <h3>🎬 Cinematic Systems</h3>
+                <h3>Cinematic Systems</h3>
                 <p class="project-description">Programmed cinematic camera system and character locomotion for seamless narrative sequences and responsive gameplay.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>📦 Asset Import Workflow</h3>
-                <p class="project-description">Streamlined asset import process with automatic texture optimization, LOD generation, and metadata preservation.</p>
+                <h3>Character Rigging & Animation</h3>
+                <p class="project-description">Developed complete character rigging system with facial animation support, IK/FK blending, and optimized bone hierarchy for performance.</p>
             </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="project-info">
+                <h3>Automated Build Pipeline</h3>
+                <p class="project-description">Created automated build and deployment system reducing manual tasks and ensuring consistent builds across team members.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Technical Inplementation START -->
+    <h2>Technical Implementation - Unreal</h2>
+
+    <p>Setting up cinematic animations posed a question... how to trigger the cutscene without changing the level. Luckily understanding the level blueprint turned an immpossible task for a Senior Thesis into... still a lot of work, but now it was doable</p>
+    <h3>Level Blueprint Setup</h3>
+
+    <!-- Main Level Blueprint Section -->
+    <div class="two-column-section two-column-reverse" style="grid-template-columns: 2fr 1.5fr;">
+        <div>
+            <img src="/static/img/pages/runaway/runaway-main-level-blueprint.webp" 
+                alt="runaway-main-level-blueprint.webp" 
+                class="column-image"
+                style="margin-bottom: 20px;">
+        </div>
+        <div>
+            <h3>Level Blueprint - Main</h3>
+            <p>This area is used to setup the main initalization of the game. Using sequence nodes, I was then able to set up the different varaibles for the game and cinematics to function correctly.</p>
+            <p>Starting out, I was going to have everything displayed in the main level blueprint area. However, that proved to be an issue with the amount of visual blueprinting that needed to be set up. So I broke it up into different sections...</p>
         </div>
     </div>
 
-    <h2>Technical Implementation</h2>
+    <!-- Cutscene References - Level Blueprint Section -->
+    <div class="two-column-section two-column-reverse" style="grid-template-columns: 2fr 1.5fr;">
+        <div>
+            <img src="/static/img/pages/runaway/runaway-cutscenes-references-level-blueprint.webp" 
+                alt="runaway-cutscene-references-level-blueprint.webp" 
+                class="column-image"
+                style="margin-bottom: 20px;">
+        </div>
+        <div>
+            <h3>Level Blueprint - Cutscene References</h3>
+            <p>In order for unreal to register cutscene playing in the level, the scene must be define and attached to varibles in the level editor. Each scene could then be trigger in the game with an event or a trigger volume.</p>
+        </div>
+    </div>
+
+    <!-- Cutscene Sequences - Level Blueprint Section -->
+    <div class="two-column-section two-column-reverse" style="grid-template-columns: 2fr 1.5fr;">
+        <div>
+            <img src="/static/img/pages/runaway/runaway-cutscenes-level-blueprint.webp" 
+                alt="runaway-cutscene-references-level-blueprint.webp" 
+                class="column-image"
+                style="margin-bottom: 20px;">
+        </div>
+        <div>
+            <h3>Level Blueprint - Cutscene Logic</h3>
+            <p>Handling that players state after cutscenes became an important feature to implement. As each cutscene was different and I wanted to direct the play after viewing the cutscene, I needed a way to make the player face the direction I wanted. That nesscitated a return to game handler; stuff like managing the lighting levels or cycling mesh visiblity.</p>
+        </div>
+    </div>
+
+
+    <!-- Technical Inplementation - Animation START -->
+    <h2>Technical Implementation - Unreal</h2>
+
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <h3>Character Rigging System (Python/Maya)</h3>
         <div style="background: var(--form-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code># Automated character rig generation
+            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;">
+<code># Automated character rig generation
 def create_character_rig(character_mesh):
     """Generate complete character rig with IK/FK systems"""
     
@@ -70,52 +142,25 @@ def create_character_rig(character_mesh):
     # Facial rig with blend shapes
     create_facial_controls(character_mesh)
     
-    return finalize_rig(character_mesh)</code></pre>
+    return finalize_rig(character_mesh)
+</code>
+          </pre>
         </div>
-
-        <h3>Cinematic Camera System (Blueprint/C++)</h3>
-        <div style="background: var(--form-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;"><code>// Dynamic camera system for narrative sequences
-class ACinematicCamera : public ACameraActor
-{
-    UFUNCTION(BlueprintCallable)
-    void StartCinematicSequence(FString SequenceName)
-    {
-        // Load sequence data
-        CinematicData = LoadSequenceData(SequenceName);
-        
-        // Setup camera movement
-        SetupCameraPath(CinematicData.CameraPoints);
-        
-        // Begin smooth interpolation
-        GetWorld()->GetTimerManager().SetTimer(
-            CameraTimerHandle, 
-            this, 
-            &ACinematicCamera::UpdateCameraPosition, 
-            0.016f, 
-            true
-        );
-    }
-};</code></pre>
-        </div>
-    </div>
 
     <h2>Project Results</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <ul>
-            <li><strong>Complete Character Pipeline:</strong> Delivered fully-rigged characters from Maya to Unreal Engine with animation retargeting</li>
-            <li><strong>Automated Workflows:</strong> Reduced manual asset processing time by 70% through Python automation</li>
+            <li><strong>Complete Character Pipeline:</strong> Delivered fully-rigged character from Maya to Unreal Engine with animation retargeting</li>
+            <li><strong>Automated Workflows:</strong> Reduced manual asset processing time by 75% through Python automation</li>
             <li><strong>Seamless Cinematics:</strong> Integrated narrative sequences with gameplay using custom camera systems</li>
-            <li><strong>Optimized Performance:</strong> Maintained 60+ FPS on target hardware through LOD systems and texture streaming</li>
-            <li><strong>Rapid Iteration:</strong> Enabled daily builds and quick content updates for team feedback</li>
         </ul>
 
         <h3>Technology Stack</h3>
-        <p><strong>Tools & Technologies:</strong> Unreal Engine 4, Maya, Blender, Python, Blueprint Visual Scripting, Perforce, Jenkins</p>
+        <p><strong>Tools & Technologies:</strong> Unreal Engine 5, Maya, Blender, Python, MEL, Blueprint Visual Scripting</p>
         
         <h3>Team & Duration</h3>
-        <p><strong>Role:</strong> Technical Artist<br>
-        <strong>Team Size:</strong> 4 developers<br>
+        <p><strong>Role:</strong> 3D Generalist<br>
+        <strong>Team Size:</strong> 1 developers<br>
         <strong>Duration:</strong> 8 months (academic year)<br>
         <strong>Platform:</strong> PC</p>
     </div>
@@ -124,42 +169,31 @@ class ACinematicCamera : public ACameraActor
     <div class="grid competencies-grid">
         <div class="grid-item">
             <div class="project-info">
-                <h3>⏰ Time Constraints</h3>
-                <p class="project-description">Academic deadlines required efficient planning and prioritization. Focused on core features first, then polish.</p>
+                <h3><i class="fa-solid fa-clock" style="color:red; vertical-align: middle; margin-right: 4px; font-size:1.1em;"></i>Time Constraints</h3>
+                <p class="project-description">Academic deadlines required efficient planning and prioritization. Focused on core features first, then polish as much as possible.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>👥 Small Team</h3>
-                <p class="project-description">Wore multiple hats as technical artist, pipeline engineer, and build master. Created clear documentation for handoffs.</p>
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <div class="project-info">
-                <h3>🎯 Scope Management</h3>
+                <h3><i class="fa-solid fa-bullseye" style="color:green; vertical-align: middle; margin-right: 4px; font-size:1.1em;"></i>Scope Management</h3>
                 <p class="project-description">Balanced ambitious narrative goals with technical constraints. Developed modular systems for flexible content creation.</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🔧 Tool Development</h3>
-                <p class="project-description">Built custom tools for team workflow while learning new technologies. Iterative approach with frequent team feedback.</p>
+                <h3><i class="fa-solid fa-screwdriver-wrench" style="color:grey; vertical-align: middle; margin-right: 4px; font-size:1.1em;"></i>Tool Development</h3>
+                <p class="project-description">Built custom tools for my workflow while learning new technologies.</p>
             </div>
         </div>
     </div>
 
     <h2>Lessons Learned</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>Pipeline First:</strong> Investing time early in pipeline development paid dividends throughout production. Automated systems allowed the team to focus on creative work instead of technical bottlenecks.</p>
+        <p><strong>Pipeline First:</strong> Investing time early in pipeline development and scripts paid dividends throughout production. Automated systems allowed me to focus on creative work instead of technical bottlenecks. It made a world a different during crunch time.</p>
         
-        <p><strong>Communication is Key:</strong> Regular check-ins and clear documentation were essential for team coordination. Technical systems need to be artist-friendly and well-documented.</p>
-        
-        <p><strong>Iterative Development:</strong> Small, frequent iterations were more effective than large milestone deliveries. This approach allowed for course corrections and improved team morale.</p>
-        
-        <p><strong>Performance Considerations:</strong> Optimization from the start, not as an afterthought. Building performance considerations into the pipeline saved significant time later.</p>
+        <p><strong>Iterative Development:</strong> Small, frequent iterations were more effective than large milestone deliveries. This approach allowed for course corrections and less headaches. Yet another reason why pipeline scripting early on was so important.</p>
     </div>
 
     <!-- Navigation -->

@@ -10,7 +10,7 @@ $nav_items = [
     '/techart.php' => 'Techart',
     '/devops.php' => 'Devops',
     '/about.php' => 'About',
-    '/contact.php' => 'Contact'
+//    '/contact.php' => 'Contact'
 ];
 
 // Get current page for active nav highlighting
