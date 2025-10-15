@@ -27,41 +27,32 @@ foreach ($devopsProjectIds as $projectId) {
 
     <h2>Core Competencies</h2>
     <div class="grid competencies-grid">
+
         <div class="grid-item">
             <div class="project-info">
-                <h3>🔄 CI/CD Pipelines</h3>
-                <p class="project-description">Jenkins, GitHub Actions, automated testing and deployment workflows for game builds and asset processing</p>
+                <h3>Automation Scripting</h3>
+                <p class="project-description">Python/bash automation for infrastructure provisioning, asset processing, and build system optimization</p>
             </div>
         </div>
 
         <div class="grid-item">
             <div class="project-info">
-                <h3>🐍 Automation Scripting</h3>
-                <p class="project-description">Python automation for infrastructure provisioning, asset processing, and build system optimization</p>
+                <h3>Containerization</h3>
+                <p class="project-description">Docker containers and orchestration for consistent environments and deployments</p>
             </div>
         </div>
 
-        <div class="grid-item">
-            <div class="project-info">
-                <h3>🐳 Containerization</h3>
-                <p class="project-description">Docker containers and orchestration for consistent game development environments and deployments</p>
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <div class="project-info">
-                <h3>☁️ Cloud & Infrastructure</h3>
-                <p class="project-description">Scalable infrastructure design, cloud platform optimization, and performance monitoring for game services</p>
-            </div>
-        </div>
     </div>
 
     <h2>Infrastructure Projects</h2>
+<!--
     <div class="projects-container">
-        <?php foreach ($devopsProjects as $project): ?>
-            <?php renderProjectCard($project); ?>
-        <?php endforeach; ?>
+        % <?php foreach ($devopsProjects as $project): ?>
+         %   <?php renderProjectCard($project); ?>
+        % <?php endforeach; ?>
     </div>
+-->
+<p>coming soon!<p/>
 </div>
 
 <?php include 'includes/footer.php'; ?>
