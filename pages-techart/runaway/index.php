@@ -3,6 +3,7 @@ $page_title = "Runaway - Technical Art";
 include '../../includes/header.php';
 ?>
 
+<!----------- Navigation ------------->
 <div class="container" style="max-width: 1300px;">
     <!-- Breadcrumb Navigation -->
     <nav style="margin: 20px 0; color: var(--text-secondary); font-size: 14px;">
@@ -19,7 +20,7 @@ include '../../includes/header.php';
         <p>Working as the sole developer, I was responsible for every aspect of this project - from character rigging and animation systems to asset optimization and deployment automation. The project challenged me to create efficient workflows that could support rapid iteration while maintaining high visual quality.</p>
     </div>
 
-    <!-- Embedded YouTube Video -->
+<!----------- Embedded YouTube Video ------------->
     <div class="demo-reel" style="margin: 40px 0;">
         <div class="video-container">
             <iframe title="Runaway | BFA Thesis | 2022-2023" 
@@ -35,7 +36,8 @@ include '../../includes/header.php';
         </p>
     </div>
 
-    <h2>Key Contributions</h2>
+<!----------- Key Achievements START ------------->
+    <h2>Key Achievements</h2>
     <div class="grid competencies-grid">
 
         <div class="grid-item">
@@ -63,89 +65,110 @@ include '../../includes/header.php';
         <div class="grid-item">
             <div class="project-info">
                 <h3>Automated Build Pipeline</h3>
-                <p class="project-description">Created automated build and deployment system reducing manual tasks and ensuring consistent builds across team members.</p>
+                <p class="project-description">Created automated build and deployment system reducing manual tasks and ensuring consistent export settings and eleiminating user error.</p>
             </div>
         </div>
-
-
     </div>
+<!----------- Key Achievements END ------------->
 
-    <!-- Technical Inplementation START -->
-    <h2>Technical Implementation - Unreal</h2>
+<!----------- Technical Inplementation ------------->
+    <h2>Technical Implementation</h2>
 
-    <p>Setting up cinematic animations posed a question... how to trigger the cutscene without changing the level. Luckily understanding the level blueprint turned an immpossible task for a Senior Thesis into... still a lot of work, but now it was doable</p>
-    <h3>Level Blueprint Setup</h3>
+<!----------- Cinematic Blueprints ------------->
+    <div class="expandable-section">
+        <button class="expand-toggle">
+           Cinematic Systems - Level blueprint logic <span class="toggle-icon">▼</span>
+        </button>
+        <div class="expandable-content">
 
-    <!-- Main Level Blueprint Section -->
-    <div class="two-column-section two-column-reverse" style="grid-template-columns: 2fr 1.5fr;">
-        <div>
-            <img src="/static/img/pages/runaway/runaway-main-level-blueprint.webp" 
-                alt="runaway-main-level-blueprint.webp" 
-                class="column-image"
-                style="margin-bottom: 20px;">
-        </div>
-        <div>
-            <h3>Level Blueprint - Main</h3>
-            <p>This area is used to setup the main initalization of the game. Using sequence nodes, I was then able to set up the different varaibles for the game and cinematics to function correctly.</p>
-            <p>Starting out, I was going to have everything displayed in the main level blueprint area. However, that proved to be an issue with the amount of visual blueprinting that needed to be set up. So I broke it up into different sections...</p>
+            <p>Setting up cinematic animations posed a question... how to trigger the cutscene without changing the level. Luckily understanding the level blueprint turned an immpossible task for a Senior Thesis into... still a lot of work, but now it was doable</p>
+
+            <h3>Level Blueprint Setup</h3>    <!-- Main Level Blueprint Section -->
+            <div class="two-column-section two-column-reverse" style="grid-template-columns: 2fr 1.5fr;">
+                <div>
+                    <img src="/static/img/pages/runaway/runaway-main-level-blueprint.webp" 
+                        alt="runaway-main-level-blueprint.webp" 
+                        class="column-image"
+                        style="margin-bottom: 20px;">
+                </div>
+                <div>
+                    <h3>Level Blueprint - Main</h3>
+                    <p>This area is used to setup the main initalization of the game. Using sequence nodes, I was then able to set up the different varaibles for the game and cinematics to function correctly.</p>
+                    <p>Starting out, I was going to have everything displayed in the main level blueprint area. However, that proved to be an issue with the amount of visual blueprinting that needed to be set up. So I broke it up into different sections...</p>
+                </div>
+            </div>
+
+            <!-- Cutscene References - Level Blueprint Section -->
+            <div class="two-column-section two-column-reverse" style="grid-template-columns: 2fr 1.5fr;">
+                <div>
+                    <img src="/static/img/pages/runaway/runaway-cutscenes-references-level-blueprint.webp" 
+                        alt="runaway-cutscene-references-level-blueprint.webp" 
+                        class="column-image"
+                        style="margin-bottom: 20px;">
+                </div>
+                <div>
+                    <h3>Level Blueprint - Cutscene References</h3>
+                    <p>In order for unreal to register cutscene playing in the level, the scene must be define and attached to varibles in the level editor. Each scene could then be trigger in the game with an event or a trigger volume.</p>
+                </div>
+            </div>
+
+            <!-- Cutscene Sequences - Level Blueprint Section -->
+            <div class="two-column-section two-column-reverse" style="grid-template-columns: 2fr 1.5fr;">
+                <div>
+                    <img src="/static/img/pages/runaway/runaway-cutscenes-level-blueprint.webp" 
+                        alt="runaway-cutscene-references-level-blueprint.webp" 
+                        class="column-image"
+                        style="margin-bottom: 20px;">
+                </div>
+                <div>
+                    <h3>Level Blueprint - Cutscene Logic</h3>
+                    <p>Handling that players state after cutscenes became an important feature to implement. As each cutscene was different and I wanted to direct the play after viewing the cutscene, I needed a way to make the player face the direction I wanted. That nesscitated a return to game handler; stuff like managing the lighting levels or cycling mesh visiblity.</p>
+                </div>
+            </div>
         </div>
     </div>
+<!----------- Rigging and Animation and Exporting ------------->
+    <div class="expandable-section">
+        <button class="expand-toggle">
+            Rigging and Exporting<span class="toggle-icon">▼</span>
+        </button>
+        <div class="expandable-content">
 
-    <!-- Cutscene References - Level Blueprint Section -->
-    <div class="two-column-section two-column-reverse" style="grid-template-columns: 2fr 1.5fr;">
-        <div>
-            <img src="/static/img/pages/runaway/runaway-cutscenes-references-level-blueprint.webp" 
-                alt="runaway-cutscene-references-level-blueprint.webp" 
-                class="column-image"
-                style="margin-bottom: 20px;">
-        </div>
-        <div>
-            <h3>Level Blueprint - Cutscene References</h3>
-            <p>In order for unreal to register cutscene playing in the level, the scene must be define and attached to varibles in the level editor. Each scene could then be trigger in the game with an event or a trigger volume.</p>
+<!----------- Rigging ------------->
+            <div class="two-column-section" style="grid-template-columns: 1.5fr 2fr;">
+                <div>
+                    <h3>Rigging</h3>
+                    <p>The rigging was handled in Maya. I wanted to use unreal's control rig built into the engine but considering I didn't have time to learn it for this project, I decide to stick with maya rigging. </p>
+                </div>
+                <div class="demo-reel">
+                    <div class="video-container">
+                        <iframe title="robin-rig-showcase" 
+                          src="https://www.youtube.com/embed/RGZt7E0X0zg?autohide=1&modestbranding=1&rel=0" 
+                          frameborder="0" 
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen
+                          loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+<!----------- Animation ------------->
+
+
+<!----------- Exporting ------------->
+            <div class="two-column-section" style="grid-template-columns: 1.5fr 2fr;">
+                <div>
+                    <h3>Exporting</h3>
+                    <p>Exporting was a really big pain in the beginning. However, I figured out how to script the animation export. Turning a cumbersome task taking over 30 seconds for each animation into 2 seconds. This was crucial in order to itterate quickly and get feedback whether I was on track or needed to pivot</p>
+                </div>
+                    <div>
+                    <a href="https://github.com/cjnowacek/maya-tools-lab/blob/89f7c5b4d28bb9b6fccbc0d72c9d9a6b53beae93/live/BfaOps_AnimExporter.py" target="_blank" class="competency-link">Animation Export Script</a>
+                    </div>
+            </div>
+
         </div>
     </div>
-
-    <!-- Cutscene Sequences - Level Blueprint Section -->
-    <div class="two-column-section two-column-reverse" style="grid-template-columns: 2fr 1.5fr;">
-        <div>
-            <img src="/static/img/pages/runaway/runaway-cutscenes-level-blueprint.webp" 
-                alt="runaway-cutscene-references-level-blueprint.webp" 
-                class="column-image"
-                style="margin-bottom: 20px;">
-        </div>
-        <div>
-            <h3>Level Blueprint - Cutscene Logic</h3>
-            <p>Handling that players state after cutscenes became an important feature to implement. As each cutscene was different and I wanted to direct the play after viewing the cutscene, I needed a way to make the player face the direction I wanted. That nesscitated a return to game handler; stuff like managing the lighting levels or cycling mesh visiblity.</p>
-        </div>
-    </div>
-
-
-    <!-- Technical Inplementation - Animation START -->
-    <h2>Technical Implementation - Unreal</h2>
-
-    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <div style="background: var(--form-bg); padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <pre style="color: var(--text-secondary); font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; margin: 0;">
-<code># Automated character rig generation
-def create_character_rig(character_mesh):
-    """Generate complete character rig with IK/FK systems"""
-    
-    # Create joint hierarchy
-    spine_joints = create_spine_chain(character_mesh)
-    arm_joints = create_limb_chain(character_mesh, 'arm')
-    leg_joints = create_limb_chain(character_mesh, 'leg')
-    
-    # Setup IK/FK controls
-    setup_ikfk_switch(arm_joints, 'arm')
-    setup_ikfk_switch(leg_joints, 'leg')
-    
-    # Facial rig with blend shapes
-    create_facial_controls(character_mesh)
-    
-    return finalize_rig(character_mesh)
-</code>
-          </pre>
-        </div>
 
     <h2>Project Results</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
@@ -191,7 +214,7 @@ def create_character_rig(character_mesh):
 
     <h2>Lessons Learned</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>Pipeline First:</strong> Investing time early in pipeline development and scripts paid dividends throughout production. Automated systems allowed me to focus on creative work instead of technical bottlenecks. It made a world a different during crunch time.</p>
+        <p><strong>Pipeline First:</strong> Investing time early in pipeline development and scripts paid dividends throughout production. Automated systems allowed me to focus on creative work instead of technical bottlenecks. It made a world of different during crunch time.</p>
         
         <p><strong>Iterative Development:</strong> Small, frequent iterations were more effective than large milestone deliveries. This approach allowed for course corrections and less headaches. Yet another reason why pipeline scripting early on was so important.</p>
     </div>
@@ -202,5 +225,15 @@ def create_character_rig(character_mesh):
         <a href="../sintern/" class="project-link">Next Project: The Sintern →</a>
     </div>
 </div>
+
+<script>
+document.querySelectorAll('.expand-toggle').forEach(button => {
+    button.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        content.classList.toggle('active');
+    });
+});
+</script>
 
 <?php include '../../includes/footer.php'; ?>
