@@ -5,7 +5,8 @@ include 'includes/project-components/project_loader.php';
 include 'includes/project-components/project_card.php';
 
 $devopsProjectIds = [
-    'bash-tools',
+  'bash-tools',
+  'php-website'
 ];
 
 // Load the specific projects you want

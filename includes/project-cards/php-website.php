@@ -1,11 +1,11 @@
 <?php
 
-// includes/projects/runaway.php
+// includes/projects/bash-tools.php
 return [
-    'id' => 'bash-tools',
-    'title' => 'Bash Tools',
-    'company' => 'Senior Thesis',
-    'category' => 'techart',
+    'id' => 'php-website',
+    'title' => 'PHP Website',
+    'company' => '',
+    'category' => 'devops',
     'featured' => true,
     'order' => 3,
     'image' => 'static/img/project-cards/runaway-webp-1200x900.webp',
