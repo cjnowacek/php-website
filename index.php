@@ -23,10 +23,6 @@ foreach ($featuredProjectIds as $projectId) {
 
 <div class="container" style="max-width: 1300px;">
 
-    <h2>Home</h2>
-
-    <hr>
-
     <h2>Welcome!</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <p>Welcome to my digital workshop. I explore how tools, pipelines, and automation can expand the boundaries of creative expression. Every project here represents a step toward that vision: connecting art and engineering into systems built for people and possibility.</p>

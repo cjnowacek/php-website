@@ -38,6 +38,8 @@ else {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="CJ Nowacek" />
+    <meta name="description" content="A simple portfolio website made by CJ Nowacek" />
     <link rel="stylesheet" href="/static/css/main.css" /> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 </head>

@@ -49,7 +49,7 @@ foreach ($techartProjectIds as $projectId) {
     <hr>
 
     <div style="text-align: center; margin: 40px 0;">
-        <a href="/static/files/CJ-Nowacek-TechArt-Resume.pdf" class="competency-link" target="_blank" rel="noopener">Download Resume (PDF)</a>
+        <a href="/static/files/CJ-Nowacek-TechArt-Resume.pdf" class="competency-link" target="_blank" rel="noopener">Download Techart Resume (PDF)</a>
     </div>   
 
    <?php include 'includes/demo_reel.php'; ?>

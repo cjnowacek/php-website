@@ -50,9 +50,10 @@ include '../../includes/header.php';
         </div>
     </div>
 
+    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
     <h2>Project Impact</h2>
     <p>Streamlined the character production pipeline across a large, multi-platform project. Implemented automation and standardization that significantly improved quality control, iteration speed, and team efficiency.</p>
-    <hr>
+    </div>
 
     <div class="text-content">
         <ul>

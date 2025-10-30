@@ -3,9 +3,9 @@ $page_title = "DevOps";
 include 'includes/header.php';
 include 'includes/project-components/project_loader.php';
 include 'includes/project-components/project_card.php';
-// YOU control which devops projects appear and in what order
+
 $devopsProjectIds = [
-    'build_pipeline',
+    'bash-tools',
 ];
 
 // Load the specific projects you want
@@ -18,13 +18,33 @@ foreach ($devopsProjectIds as $projectId) {
 }
 ?>
 
+<style>
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+@media (max-width: 900px) {
+    .projects-container {
+        grid-template-columns: 1fr 1fr;
+        min-width: auto;
+    }
+}
+@media (max-width: 600px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
 <div class="container" style="max-width: 1300px;">
     <h2>DevOps & Infrastructure</h2>
     
     <hr>
 
     <div style="text-align: center; margin: 40px 0;">
-        <a href="/static/files/CJ-Nowacek-IT-Resume.pdf" class="competency-link" target="_blank" rel="noopener">Download Resume (PDF)</a>
+        <a href="/static/files/CJ-Nowacek-IT-Resume.pdf" class="competency-link" target="_blank" rel="noopener">Download DevOps Resume (PDF)</a>
     </div>   
 
     <h2>Core Competencies</h2>
@@ -46,15 +66,24 @@ foreach ($devopsProjectIds as $projectId) {
 
     </div>
 
-    <h2>Infrastructure Projects</h2>
-<!--
+    <h2>Featured Projects</h2>
+
     <div class="projects-container">
-        % <?php foreach ($devopsProjects as $project): ?>
-         %   <?php renderProjectCard($project); ?>
-        % <?php endforeach; ?>
+        <?php foreach ($devopsProjects as $project): ?>
+            <?php renderProjectCard($project); ?>
+        <?php endforeach; ?>
     </div>
--->
-<p>coming soon!<p/>
 </div>
+
+<script>
+    document.querySelectorAll('.project-card').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const gif = item.querySelector('.hover-gif');
+            if (gif && gif.src) {
+              gif.src = gif.src; // Reset the GIF to play from the beginning
+            }
+        });
+    });
+</script>
 
 <?php include 'includes/footer.php'; ?>

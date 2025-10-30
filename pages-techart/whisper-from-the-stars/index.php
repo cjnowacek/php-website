@@ -49,9 +49,11 @@ include '../../includes/header.php';
 
         <hr>
 
+    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
     <h2>Project Results</h2>
     <p>Developed a stylized animated short that combined technical precision with creative expression. Contributed to every stage of production, from rigging and lighting to asset optimization and pipeline design.</p>
-    <hr>
+    </div>
+
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
         <ul>
             <li><strong>80% Time Reduction:</strong> Automated rigging process reduced manual work from hours to minutes</li>

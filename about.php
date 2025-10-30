@@ -7,10 +7,6 @@ include 'includes/header.php';
 
     <div class="about-content">
 
-        <h2>About Me</h2>
-
-        <hr>
-
         <div class="about-text">
             <h2>Professional Statement</h2>
             <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
@@ -18,7 +14,7 @@ include 'includes/header.php';
                 
                 <p>My expertise spans from building software tools that make others’ work easier to developing robust CI/CD systems and automating complex workflows. I thrive on solving challenging technical problems while empowering creative teams to focus on what they do best: creating amazing experiences.</p>
                 
-                <p>Whether developing character rigs, or automating asset processing workflows, I bring a unique perspective that combines artistic sensibility with engineering precision.</p>
+                <p>Whether developing character rig, or automating asset processing workflows, I bring a unique perspective that combines artistic sensibility with engineering precision.</p>
             </div>
             
             <h3>Skills & Expertise</h3>

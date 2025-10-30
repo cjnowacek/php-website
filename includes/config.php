@@ -6,10 +6,10 @@ $current_year = date('Y');
 
 // Navigation items
 $nav_items = [
-    '/index.php' => 'Home',
-    '/techart.php' => 'Techart',
-    '/devops.php' => 'Devops',
-    '/about.php' => 'About',
+    '/' => 'Home',
+    '/techart' => 'Techart',
+    '/devops' => 'Devops',
+    '/about' => 'About',
 //    '/contact.php' => 'Contact'
 ];
 

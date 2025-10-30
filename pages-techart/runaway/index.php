@@ -170,9 +170,10 @@ include '../../includes/header.php';
         </div>
     </div>
 
+    <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
     <h2>Project Results</h2>
     <p>Delivered a fully realized interactive experience that fused storytelling with robust technical systems. Designed and implemented the entire production pipeline—from rigging and animation to automation and deployment—ensuring efficiency and creative flexibility.</p>
-    <hr>
+    </div>
 
     <div class="text-content">
         <ul>

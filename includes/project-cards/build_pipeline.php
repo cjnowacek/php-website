@@ -1,7 +1,4 @@
 <?php
-
-
-
 // includes/projects/build_pipeline.php
 return [
     'id' => 'build_pipeline',
