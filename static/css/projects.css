@@ -540,3 +540,26 @@
     max-height: 5000px; /* Large enough for your content */
     padding: 20px;
 }
+
+.resume-download-btn {
+  /* Larger resume download buttons */
+    display: inline-block;
+    background: var(--header-color);
+    color: white;
+    padding: 1.2rem 2.5rem;  /* Increased from 0.75rem 1.5rem */
+    text-decoration: none;
+    border-radius: 8px;  /* Slightly larger radius */
+    font-size: 1.1rem;  /* Increased from 0.85rem */
+    font-weight: 600;  /* Bolder text */
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    font-family: Cambria, Georgia, serif;
+    box-shadow: 0 4px 15px rgba(255, 122, 64, 0.3);
+}
+
+.resume-download-btn:hover {
+    background: var(--subheader-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 122, 64, 0.4);
+    color: white;
+}

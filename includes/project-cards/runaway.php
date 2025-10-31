@@ -2,8 +2,8 @@
 
 // includes/projects/runaway.php
 return [
-    'id' => 'bash-tools',
-    'title' => 'Bash Tools',
+    'id' => 'runaway',
+    'title' => 'Runaway',
     'company' => 'Senior Thesis',
     'category' => 'techart',
     'featured' => true,

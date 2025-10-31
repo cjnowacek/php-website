@@ -5,8 +5,8 @@ include 'includes/project-components/project_loader.php';
 include 'includes/project-components/project_card.php';
 
 $devopsProjectIds = [
-  'bash-tools',
-  'php-website'
+#  'bash-tools',
+#  'php-website'
 ];
 
 // Load the specific projects you want
@@ -45,7 +45,7 @@ foreach ($devopsProjectIds as $projectId) {
     <hr>
 
     <div style="text-align: center; margin: 40px 0;">
-        <a href="/static/files/CJ-Nowacek-IT-Resume.pdf" class="competency-link" target="_blank" rel="noopener">Download DevOps Resume (PDF)</a>
+        <a href="/static/files/CJ-Nowacek-IT-Resume.pdf" class="resume-download-btn" target="_blank" rel="noopener">Download DevOps Resume (PDF)</a>
     </div>   
 
     <h2>Core Competencies</h2>
