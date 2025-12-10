@@ -132,6 +132,12 @@ Deploy to SiteGround hosting:
 rsync -avzP --delete --exclude='.git/' --exclude='/home/cnowacek/git/php-website/reinstall-apache2.sh' /home/cnowacek/git/php-website/ siteground:www/cjnowacek.com/public_html/
 ```
 
+If the images don't sync, excluding .kra usually works
+
+```bash
+rsync -avzP --exclude='*.kra' --exclude='*~' /home/cnowacek/git/php-website/static/img/ siteground:www/cjnowacek.com/public_html/static/img/
+```
+
 This syncs the entire site to the production server, excluding git files and the local Apache setup script.
 
 ## License

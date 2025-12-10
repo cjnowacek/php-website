@@ -3,7 +3,7 @@
 return [
     'id' => 'whisper-from-the-stars',
     'title' => 'Whisper from the Stars',
-    'company' => 'Indie Game Studio',
+    'company' => 'Anuttacon',
     'category' => 'techart',
     'featured' => true,
     'order' => 4,
