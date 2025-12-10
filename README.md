@@ -124,6 +124,16 @@ Form submissions are handled by `includes/contact_handler.php` and logged to `co
 - Email format
 - Request method (POST only)
 
+## Deployment
+
+Deploy to SiteGround hosting:
+
+```bash
+rsync -avzP --delete --exclude='.git/' --exclude='/home/cnowacek/git/php-website/reinstall-apache2.sh' /home/cnowacek/git/php-website/ siteground:www/cjnowacek.com/public_html/
+```
+
+This syncs the entire site to the production server, excluding git files and the local Apache setup script.
+
 ## License
 
 Personal portfolio - All rights reserved.
