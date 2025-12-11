@@ -1,7 +1,43 @@
 <?php
 $page_title = "Smite - Technical Art";
 include '../../includes/header.php';
+include '../../includes/project-components/project_loader.php';
+include '../../includes/project-components/project_card.php';
+
+$techartProjectIds = [
+    'smite-envelope-tool',
+    'smite-gravity-switch'
+];
+
+// Load the specific projects you want
+$techartProjects = [];
+foreach ($techartProjectIds as $projectId) {
+    $project = ProjectLoader::getProject($projectId);
+    if ($project) {
+        $techartProjects[] = $project;
+    }
+}
 ?>
+
+<style>
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+@media (max-width: 900px) {
+    .projects-container {
+        grid-template-columns: 1fr 1fr;
+        min-width: auto;
+    }
+}
+@media (max-width: 600px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 
 <div class="container" style="max-width: 1300px;">
     <!-- Breadcrumb Navigation -->
@@ -50,6 +86,14 @@ include '../../includes/header.php';
         </div>
     </div>
 
+    <h2>Featured Projects</h2>
+
+    <div class="projects-container">
+        <?php foreach ($techartProjects as $project): ?>
+            <?php renderProjectCard($project); ?>
+        <?php endforeach; ?>
+    </div>
+
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
     <h2>Project Impact</h2>
     <p>Streamlined the character production pipeline across a large, multi-platform project. Implemented automation and standardization that significantly improved quality control, iteration speed, and team efficiency.</p>
@@ -70,7 +114,7 @@ include '../../includes/header.php';
             <li><strong>Engine:</strong> Unreal Engine 5</li>
             <li><strong>3D & Animation:</strong> 3ds Max</li>
             <li><strong>Scripting & Tools:</strong> MaxScript, Python</li>
-            <li><strong>Version Control & CI/CD:</strong> Perforce, Jenkins</li>
+            <li><strong>Version Control & CI/CD:</strong> Perforce, Git</li>
         </ul>
 
         <hr>
@@ -124,5 +168,16 @@ include '../../includes/header.php';
         <a href="../runaway/" class="project-link">Next Project: Runaway →</a>
     </div>
 </div>
+
+<script>
+    document.querySelectorAll('.project-card').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const gif = item.querySelector('.hover-gif');
+            if (gif && gif.src) {
+                gif.src = gif.src; // Reset the GIF to play from the beginning
+            }
+        });
+    });
+</script>
 
 <?php include '../../includes/footer.php'; ?>
