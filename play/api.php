@@ -116,7 +116,9 @@ if ($action === 'resolve') {
     if ($room['publicIp'] !== '' && !in_array($room['publicIp'], $room['addrs'], true))
         $urls[] = "http://{$room['publicIp']}:{$room['port']}/";
 
-    echo json_encode(['ok' => true, 'room' => $code, 'urls' => $urls, 'version' => $room['version']]);
+    // NOTE: no version echo — the game's build number doubles as its GM console key
+    // (2026-08-10), so resolve must not publish it. It stays stored for CJ's own eyes.
+    echo json_encode(['ok' => true, 'room' => $code, 'urls' => $urls]);
     exit;
 }
 
