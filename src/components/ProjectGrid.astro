@@ -7,6 +7,6 @@ import ProjectCard from './ProjectCard.astro';
 const { ids } = Astro.props;
 const projects = await getProjectCards(ids);
 ---
-<div class="projects-container">
+<div class="projects-container projects-container-grid">
   {projects.map((project) => <ProjectCard project={project} />)}
 </div>

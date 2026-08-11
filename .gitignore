@@ -14,3 +14,6 @@ node_modules/
 dist/
 .astro/
 .DS_Store
+
+# Nested working clones (not part of the site)
+/resume-with-tex/

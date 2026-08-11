@@ -84,23 +84,30 @@
 }
 
 /* PROJECT CARDS */
-/* Responsive card grid — the default for listing pages and the smite sub-tool
-   cards. (Was a per-page <style> override in the PHP site; promoted to global.)
-   The home page further overrides this via .projects-container-index below. */
+/* Default: vertical stack of full-width cards (listing pages pair this with
+   .project-rows for the media-left/text-right alternating layout). */
 .projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+/* Modifier: responsive card grid for sub-tool card sets (e.g. the Smite hub).
+   The home page uses its own .projects-container-index override below. */
+.projects-container-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
-    margin: 2rem 0;
 }
 @media (max-width: 900px) {
-    .projects-container {
+    .projects-container-grid {
         grid-template-columns: 1fr 1fr;
         min-width: auto;
     }
 }
 @media (max-width: 600px) {
-    .projects-container {
+    .projects-container-grid {
         grid-template-columns: 1fr;
     }
 }
