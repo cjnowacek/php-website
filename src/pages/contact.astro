@@ -1,11 +1,11 @@
 ---
 // src/pages/contact.astro — ported from contact.php
-// NOTE: Astro has no PHP runtime, so the old includes/contact_handler.php no longer
-// applies. Set FORM_ENDPOINT to a form service (Formspree/Web3Forms) or an Astro
-// serverless endpoint. Until it's set, the form shows a "email me directly" message.
+// The form posts to the same PHP handler the old site used. It ships in the build
+// via public/includes (symlink to /includes), so SiteGround executes it alongside
+// the static output. It won't run under `astro dev` — test against production.
 import Layout from '../layouts/Layout.astro';
 
-const FORM_ENDPOINT = ''; // TODO: e.g. 'https://formspree.io/f/xxxxxxx'
+const FORM_ENDPOINT = '/includes/contact_handler.php';
 ---
 <Layout title="Contact">
   <div class="container" style="max-width: 1300px;">
@@ -118,14 +118,6 @@ const FORM_ENDPOINT = ''; // TODO: e.g. 'https://formspree.io/f/xxxxxxx'
       e.preventDefault();
       const endpoint = form.dataset.endpoint;
       const submitBtn = form.querySelector('.submit-btn');
-
-      // No form service configured yet — tell the user to email directly.
-      if (!endpoint) {
-        responseDiv.innerHTML =
-          '<div class="error-message">The contact form isn\'t wired up yet. Please email me directly at <a href="mailto:cjnowacek@protonmail.com">cjnowacek@protonmail.com</a>.</div>';
-        responseDiv.style.display = 'block';
-        return;
-      }
 
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
