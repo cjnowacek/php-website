@@ -8,8 +8,9 @@ return [
     'featured' => false,
     'order' => 101,
     'image' => '/static/img/project-cards/gravitySwitch-webp-1200x900.webp',
-    'gif' => '/static/img/project-cards/gravitySwitch-webp-1200x900.gif',
-    'description' => 'Gravity simulation rigging system using orient and aim constraints. Enables dynamic directional gravity effects for character animation in Smite.',
+    'gif' => '',
+    'video' => '/static/img/project-cards/video/gravitySwitch_1200x900.mp4',
+    'description' => 'Gravity simulation rigging system using orient and aim constraints. Keeps hair and dangling elements hanging believably on Smite characters.',
     'highlights' => [
         'Dynamic gravity direction simulation using constraints',
         'Seamless integration with existing character rigs'
@@ -18,7 +19,7 @@ return [
     'link' => '/pages-techart/smite/gravity-switch/',
     'meta' => [
         'duration' => 'Part of Smite project',
-        'role' => 'Technical Artist',
+        'role' => 'Technical Animator',
         'platforms' => 'PC, Console',
         'team_size' => 'Individual tool'
     ]

@@ -1,6 +1,5 @@
 <?php
 // includes/contact_handler.php
-require_once __DIR__ . '/config.php';
 
 header('Content-Type: application/json');
 
@@ -8,6 +7,12 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['error' => 'Method not allowed']);
+    exit;
+}
+
+// Honeypot: real users never fill this hidden field; bots do
+if (!empty($_POST['website'])) {
+    echo json_encode(['success' => true, 'message' => 'Thank you for your message!']);
     exit;
 }
 
@@ -39,12 +44,10 @@ $data = [
     'company' => htmlspecialchars(trim($_POST['company'] ?? '')),
     'subject' => htmlspecialchars(trim($_POST['subject'])),
     'message' => htmlspecialchars(trim($_POST['message'])),
-    'newsletter' => !empty($_POST['newsletter']) ? 'yes' : 'no',
     'timestamp' => date('Y-m-d H:i:s')
 ];
 
-// Save to file (simple logging / backup). The includes/.htaccess rule blocks
-// direct web access to this file.
+// Save to file (simple logging)
 $logFile = __DIR__ . '/contact_submissions.json';
 $submissions = [];
 
@@ -55,37 +58,34 @@ if (file_exists($logFile)) {
 $submissions[] = $data;
 file_put_contents($logFile, json_encode($submissions, JSON_PRETTY_PRINT));
 
-// Email the submission to the site owner.
-// Use the raw (unescaped) submitter email for Reply-To so replies go straight back.
-$replyTo = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL) ?: $contact_from;
+// Send the email (JSON log above remains as backup)
+$subjectLabels = [
+    'job_opportunity' => 'Job Opportunity',
+    'freelance_project' => 'Freelance Project',
+    'collaboration' => 'Collaboration',
+    'technical_question' => 'Technical Question',
+    'other' => 'Other',
+];
+$subjectLabel = $subjectLabels[$data['subject']] ?? $data['subject'];
 
-$emailBody = "New contact form submission:\n\n"
-    . "Name:       {$data['name']}\n"
-    . "Email:      {$data['email']}\n"
-    . "Company:    {$data['company']}\n"
-    . "Subject:    {$data['subject']}\n"
-    . "Newsletter: {$data['newsletter']}\n"
-    . "Time:       {$data['timestamp']}\n\n"
-    . "Message:\n{$data['message']}\n";
+$body = "New message from cjnowacek.com\n\n"
+    . "Name: {$data['name']}\n"
+    . "Email: {$data['email']}\n"
+    . "Company: {$data['company']}\n"
+    . "Subject: {$subjectLabel}\n"
+    . "Time: {$data['timestamp']}\n\n"
+    . $data['message'] . "\n";
 
-$headers = "From: {$site_name} <{$contact_from}>\r\n"
-    . "Reply-To: {$data['name']} <{$replyTo}>\r\n"
+$headers = "From: noreply@cjnowacek.com\r\n"
+    . "Reply-To: {$data['email']}\r\n"
     . "Content-Type: text/plain; charset=UTF-8\r\n";
 
-$mailSent = @mail(
-    $contact_email,
-    'Contact Form: ' . $data['subject'],
-    $emailBody,
-    $headers,
-    '-f' . $contact_from
-);
-
-if (!$mailSent) {
-    // The submission is still saved to the JSON log above, so it isn't lost.
-    error_log('contact_handler: mail() failed for submission from ' . $data['email']);
+$sent = @mail('cj@cjnowacek.com', 'Portfolio contact: ' . $subjectLabel, $body, $headers);
+if (!$sent) {
+    error_log('contact_handler: mail() returned false for submission from ' . $data['email']);
 }
 
-// Return success (submission is recorded even if the email failed to send)
+// Return success (submission is logged even if mail delivery hiccups)
 echo json_encode([
     'success' => true,
     'message' => 'Thank you for your message! I\'ll get back to you soon.'

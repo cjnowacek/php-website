@@ -1,18 +1,15 @@
 <?php
 $page_title = "The Sintern - Technical Art";
-include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/includes/components/breadcrumb.php';
-
-// Define breadcrumb navigation
-$breadcrumbs = [
-    ['title' => 'Home', 'url' => '/index.php'],
-    ['title' => 'Technical Art', 'url' => '/techart.php'],
-    ['title' => 'The Sintern', 'url' => ''] // Current page, no URL
-];
+include '../../includes/header.php';
 ?>
 
 <div class="container">
-    <?php renderBreadcrumb($breadcrumbs); ?>
+    <!-- Breadcrumb Navigation -->
+    <nav style="margin: 20px 0; color: var(--text-secondary); font-size: 14px;">
+        <a href="../../index.php" style="color: var(--header-color); text-decoration: none;">Home</a> >
+        <a href="../../techart.php" style="color: var(--header-color); text-decoration: none;">Technical Art</a> >
+        <span>The Sintern</span>
+    </nav>
 
     <h2>The Sintern</h2>
     <div class="text-content">
@@ -78,9 +75,9 @@ $breadcrumbs = [
         <div class="two-column-section" style="grid-template-columns: 1fr 1.5fr;">
             <div>
                 <h3>Character Rigging</h3>
-                <p>The Bruce rig was the first character I ever rigged. This rig supported with custom facial controls and cartoon-style expression controls. </p>
-                <p>A spline ik was used for his spine to allow better squash and stretch of his body.</p>
-                <p>A key innovations included a card-based eye system that allowed for cartoon expressions.</p>
+                <p>The Bruce rig was the first character I ever rigged. It shipped with custom facial controls and cartoon-style expression controls.</p>
+                <p>A spline IK was used for his spine to allow better squash and stretch of his body.</p>
+                <p>A key innovation was a card-based eye system that allowed for cartoon expressions.</p>
             </div>
             <div>
                 <div class="demo-reel">
@@ -116,7 +113,7 @@ $breadcrumbs = [
         </div>
         <div>
             <h3>Environment lighting tests</h3>
-            <p>Developed standardized lighting rigs through systematic experimentation and refinement. The process required testing numerous configurations to find the optimal balance between artistic vision and technical constraints - adjusting light intensities, positions, and color temperatures until each preset achieved the desired mood.</p>
+            <p>Developed standardized lighting rigs through systematic experimentation and refinement. The process required testing numerous configurations to find the optimal balance between artistic vision and technical constraints: adjusting light intensities, positions, and color temperatures until each preset achieved the desired mood.</p>
 
 
             <p>Through trial and error, discovered efficient workflows for Maya's Arnold renderer that could handle complex lighting scenarios. Multiple test renders and iterations refined each setup, ultimately creating a library of reliable presets that saved significant production time while ensuring professional-quality results.</p>
@@ -140,7 +137,7 @@ $breadcrumbs = [
         <hr>
 
         <h3>Technology Stack</h3>
-        <ul li {margin-bottom: 10px;}>
+        <ul>
             <li><strong>3D & Animation:</strong> Maya, Arnold Renderer</li>
             <li><strong>Scripting & Tools:</strong> Python, MEL</li>
             <li><strong>Compositing & Editing:</strong> After Effects, Premiere Pro</li>
@@ -202,9 +199,9 @@ $breadcrumbs = [
 
     <!-- Navigation -->
     <div style="display: flex; justify-content: space-between; margin: 60px 0 40px 0; gap: 20px;">
-        <a href="/techart.php" class="project-link" style="background: var(--form-bg); color: var(--text-color);">← Back to Technical Art</a>
-        <a href="/pages-techart/smite/" class="project-link">Next Project: Smite →</a>
+        <a href="../../techart.php" class="project-link" style="background: var(--form-bg); color: var(--text-color);">← Back to Technical Art</a>
+        <a href="../smite/" class="project-link">Next Project: Smite →</a>
     </div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>

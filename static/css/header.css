@@ -12,6 +12,8 @@
     text-align: center;
     margin-bottom: 20px;
     padding: 20px;
+    background: var(--nav-bg);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
 .title__container h1 {
@@ -31,7 +33,7 @@
 .title__container nav a {
     color: var(--subheader-color);
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     font-family: Cambria, Georgia, serif;
     text-transform: uppercase;
     transition: color 0.3s ease;

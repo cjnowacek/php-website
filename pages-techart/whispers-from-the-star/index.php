@@ -1,5 +1,5 @@
 <?php
-$page_title = "Whisper from the Stars - Technical Art";
+$page_title = "Whispers from the Star - Technical Art";
 include '../../includes/header.php';
 ?>
 
@@ -8,13 +8,13 @@ include '../../includes/header.php';
     <nav style="margin: 20px 0; color: var(--text-secondary); font-size: 14px;">
         <a href="../../index.php" style="color: var(--header-color); text-decoration: none;">Home</a> > 
         <a href="../../techart.php" style="color: var(--header-color); text-decoration: none;">Technical Art</a> > 
-        <span>Whisper from the Stars</span>
+        <span>Whispers from the Star</span>
     </nav>
 
-    <h2>Whisper from the Stars</h2>
+    <h2>Whispers from the Star</h2>
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
-        <p><strong>Indie Game Studio | 2024 | Python & Maya</strong></p>
-        <p>Technical artist  an ambitious indie space exploration game, focusing on automation pipeline development and CLI-based workflows. In just one month, I developed comprehensive scripts and automation tools that integrated seamlessly into the studio's CI/CD pipeline.</p>
+        <p><strong>Anuttacon | 2025 | Python & Maya</strong></p>
+        <p>Technical artist on an ambitious indie space exploration game, focusing on automation pipeline development and CLI-based workflows. In a two-month contract, I developed comprehensive scripts and automation tools that integrated seamlessly into the studio's CI/CD pipeline.</p>
         
         <p>The project required rapid development of robust, command-line driven tools that could handle rigging, animation export, and asset processing without manual intervention. This work enabled the small team to maintain consistent quality while scaling their content production efficiently.</p>
     </div>
@@ -44,14 +44,9 @@ include '../../includes/header.php';
 
     </div>
 
-    <h2>Technical Implementation</h2>
-        <p>coming soon!<p/>
-
-        <hr>
-
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
     <h2>Project Results</h2>
-    <p>Developed a stylized animated short that combined technical precision with creative expression. Contributed to every stage of production, from rigging and lighting to asset optimization and pipeline design.</p>
+    <p>Delivered a suite of headless automation tools that let a small team scale content production without sacrificing quality. Every tool ran from the command line, slotting directly into the studio's CI/CD pipeline.</p>
     </div>
 
     <div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
@@ -77,7 +72,7 @@ include '../../includes/header.php';
         <ul>
             <li><strong>Role:</strong> Technical Artist</li>
             <li><strong>Team Size:</strong> 8+ developers</li>
-            <li><strong>Duration:</strong> 1 month</li>
+            <li><strong>Duration:</strong> 2 months (2025)</li>
             <li><strong>Platform:</strong> PC</li>
         </ul>
     </div>
@@ -87,7 +82,7 @@ include '../../includes/header.php';
         <div class="grid-item">
             <div class="project-info">
                 <h3>Rapid Timeline</h3>
-                <p class="project-description">One-month deadline required efficient tool design and rapid iteration based on team feedback.</p>
+                <p class="project-description">Short contract timeline required efficient tool design and rapid iteration based on team feedback.</p>
             </div>
         </div>
 

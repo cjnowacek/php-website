@@ -1,8 +1,13 @@
-# Ignore static/img (served in Astro via the public/static -> ../static symlink)
-/static/img/
+# Contact form submissions (server-side data, never commit)
+includes/contact_submissions.json
 
-# Contact form submissions (runtime data)
-/includes/contact_submissions.json
+# Ignore static/img, except the small hover-preview videos and card placeholders
+# (served in Astro via the public/static -> ../static symlink)
+/static/img/*
+!/static/img/project-cards/
+/static/img/project-cards/*
+!/static/img/project-cards/video/
+!/static/img/project-cards/ml3ds-webp-1200x900.webp
 
 # Astro / Node
 node_modules/
