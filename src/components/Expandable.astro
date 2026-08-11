@@ -1,11 +1,13 @@
 ---
 // src/components/Expandable.astro — collapsible section (ports the .expandable-section
 // + .expand-toggle pattern from the PHP detail pages). Slot holds the content.
-const { title } = Astro.props;
+// Pass `open` to start expanded (the PHP pages auto-open the first section so the
+// technical depth is visible without a click).
+const { title, open = false } = Astro.props;
 ---
 <div class="expandable-section">
-  <button class="expand-toggle">{title} <span class="toggle-icon">▼</span></button>
-  <div class="expandable-content">
+  <button class:list={['expand-toggle', { active: open }]}>{title} <span class="toggle-icon">▼</span></button>
+  <div class:list={['expandable-content', { active: open }]}>
     <slot />
   </div>
 </div>

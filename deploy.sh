@@ -21,10 +21,18 @@ echo "==> Building"
 (cd "$SCRIPT_DIR" && npm run build)
 
 echo "==> Deploying dist/ to $HOST:$REMOTE/"
+# Same protections as .github/workflows/deploy.yml; /static/img/** additionally
+# stays server-side (images are hand-synced, not in git) except the tracked
+# hover videos + ml3ds card art.
 rsync -avzP --delete \
   --exclude='/play/' \
   --exclude='/includes/contact_submissions.json' \
   --exclude='/.well-known/' \
+  --include='/static/img/' \
+  --include='/static/img/project-cards/' \
+  --include='/static/img/project-cards/video/***' \
+  --include='/static/img/project-cards/ml3ds-webp-1200x900.webp' \
+  --exclude='/static/img/**' \
   -e "ssh -p $PORT" \
   "$SCRIPT_DIR/dist/" "$HOST:$REMOTE/"
 

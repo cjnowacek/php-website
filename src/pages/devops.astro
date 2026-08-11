@@ -4,86 +4,60 @@ import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { getProjectCards } from '../lib/projects.js';
 
-const devopsProjects = await getProjectCards(['deadline-deploy', 'omnitool']);
+const devopsProjects = await getProjectCards(['ml3ds', 'bash-tools']);
 ---
-<Layout title="DevOps">
+<Layout title="Pipeline & Infrastructure">
   <div class="container" style="max-width: 1300px;">
-    <h2>DevOps & Infrastructure</h2>
+    <h2>Pipeline &amp; Infrastructure</h2>
 
     <hr />
 
     <div style="text-align: center; margin: 40px 0;">
       <a
-        href="/static/files/CJ-Nowacek-IT-Resume.pdf"
+        href="/static/files/CJ-Nowacek-Pipeline-Resume.pdf"
         class="resume-download-btn"
         target="_blank"
-        rel="noopener">Download DevOps Resume (PDF)</a
+        rel="noopener">Download Pipeline Resume (PDF)</a
       >
     </div>
 
-    <h2>Core Competencies</h2>
+    <h2>Focus Areas</h2>
     <div class="grid competencies-grid">
       <div class="grid-item">
         <div class="project-info">
-          <h3>Render Farm Automation</h3>
+          <h3>Render Farm Operations</h3>
           <p class="project-description">
-            Unattended deployment of 3ds Max and its plugin stack across ~130 Windows render nodes
-            via AWS Thinkbox Deadline
+            Silent software deployment, remote orchestration, and render-manager migration across
+            production farms
           </p>
         </div>
       </div>
 
       <div class="grid-item">
         <div class="project-info">
-          <h3>Pipeline Tooling</h3>
+          <h3>Automation Scripting</h3>
           <p class="project-description">
-            Python/PyQt applications for scene preparation and render-farm job submission — one
-            codebase running as CLI, GUI, and natively inside 3ds Max
+            Python and Bash automation for provisioning, asset processing, and repeatable batch
+            operations
           </p>
         </div>
       </div>
 
       <div class="grid-item">
         <div class="project-info">
-          <h3>Software Packaging &amp; Deployment</h3>
+          <h3>CI/CD &amp; Release</h3>
           <p class="project-description">
-            Single-file PyInstaller builds with self-updating distribution, tuned to pass studio
-            endpoint security (EDR)
-          </p>
-        </div>
-      </div>
-
-      <div class="grid-item">
-        <div class="project-info">
-          <h3>Windows Systems Automation</h3>
-          <p class="project-description">
-            SYSTEM-level execution via scheduled tasks, UNC-share orchestration, and standard-library
-            Python (schtasks, robocopy)
+            GitHub Actions pipelines, tool packaging and encryption, and git-based release workflows
+            to production
           </p>
         </div>
       </div>
     </div>
 
-    <h2>ML3DS — Render Farm Studio Pipeline</h2>
-    <div class="about-text" style="max-width: 800px; margin: 0 auto 30px auto; text-align: left;">
-      <p>
-        Automation and tooling for a ~130-machine 3ds Max render farm — from unattended, farm-wide
-        software deployment to a self-updating pipeline application shipped across two studios.
-      </p>
-    </div>
-    <div class="projects-container">
+    <h2>Featured Projects</h2>
+
+    <div class="projects-container project-rows">
       {devopsProjects.map((project) => <ProjectCard project={project} />)}
     </div>
   </div>
-
-  <script>
-    document.querySelectorAll('.project-card').forEach((item) => {
-      item.addEventListener('mouseenter', () => {
-        const gif = item.querySelector('.hover-gif');
-        if (gif && gif.src) {
-          gif.src = gif.src;
-        }
-      });
-    });
-  </script>
 </Layout>

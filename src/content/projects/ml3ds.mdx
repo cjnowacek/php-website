@@ -1,0 +1,154 @@
+---
+title: ML3DS Production Pipeline
+company: MediaLab 3D Solutions
+category: devops
+featured: true
+order: 0
+image: /static/img/project-cards/ml3ds-webp-1200x900.webp
+pageTitle: ML3DS Production Pipeline
+description: >-
+  Pipeline tools and infrastructure for an architectural visualization studio: scene automation,
+  render farm deployment, and artist-facing tooling for 3ds Max production at scale.
+highlights:
+  - Python scene-automation framework with CLI, PyQt GUI, and native 3ds Max integration
+  - MaxScript batch-rendering suite for material and finish combinations
+  - Automated remote deployment of 3ds Max and plugins across the render farm
+  - Leading migration to a modern render-management platform
+tech_tags: [Python, PyQt, MaxScript, 3ds Max, V-Ray]
+meta:
+  duration: 2026-Present
+  role: CGI Pipeline Developer
+  platforms: Windows render farm
+  team_size: Studio-wide tooling
+---
+import Expandable from '../../components/Expandable.astro';
+
+<div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+
+**MediaLab 3D Solutions | 2026-Present | Python, PyQt & 3ds Max**
+
+Pipeline development for an architectural visualization studio running a large Windows render farm
+on 3ds Max and V-Ray. I build and maintain the tools between the artists and the farm: scene
+preparation and diagnostics, batch render submission, software deployment, and the packaging
+workflow that ships tooling to production.
+
+The work spans the full stack of a CG pipeline: desktop applications artists use daily,
+command-line tools that slot into automation, and infrastructure scripting that keeps an entire
+farm's software installs consistent without anyone touching a machine by hand.
+
+</div>
+
+## Key Contributions
+
+<div class="grid competencies-grid">
+  <div class="grid-item">
+    <div class="project-info">
+      <h3>Scene-Automation Framework</h3>
+      <p class="project-description">Python framework for scene preparation, health diagnostics, and render-farm submission. One core library, three faces: a CLI, a PyQt desktop app, and native 3ds Max integration.</p>
+    </div>
+  </div>
+  <div class="grid-item">
+    <div class="project-info">
+      <h3>Batch-Rendering Suite</h3>
+      <p class="project-description">MaxScript suite that classifies objects across XRef-linked scenes and automatically renders every material and finish combination, replacing a manual per-option workflow with one-click submission.</p>
+    </div>
+  </div>
+  <div class="grid-item">
+    <div class="project-info">
+      <h3>Farm Deployment Automation</h3>
+      <p class="project-description">Silent, remotely triggered installs of 3ds Max and production plugins across the render farm, including unattended privilege elevation on locked-down worker machines.</p>
+    </div>
+  </div>
+  <div class="grid-item">
+    <div class="project-info">
+      <h3>Render-Manager Migration</h3>
+      <p class="project-description">Leading the farm's migration to a modern render-management platform, porting the deployment framework and submission tooling.</p>
+    </div>
+  </div>
+</div>
+
+## Technical Implementation
+
+<Expandable title="Scene-Automation Framework Architecture" open>
+
+The framework is built as a core library with zero UI knowledge; the CLI and PyQt GUI are thin
+shells over it. A connection layer auto-detects its context: running natively inside 3ds Max, it
+drives the scene directly; running externally, it attaches to a live Max session instead. The same
+tool code works in both worlds.
+
+Scene state is cached in JSON sidecar manifests, so diagnostics and pipeline decisions can run
+against heavy scene files without reopening them in Max. That turns checks that used to cost a
+full scene load into near-instant reads.
+
+Compatibility is a hard constraint: the library has to run on every Python interpreter shipped
+across the studio's range of 3ds Max versions, which drives conservative language choices and
+careful dependency management.
+
+</Expandable>
+
+<Expandable title="Unattended Farm Deployment">
+
+Render workers run as unprivileged users, but installers need administrator rights. The deployment
+system solves this with a scheduled-task elevation pattern: installers are staged locally, executed
+elevated without any interactive prompt, and report exit codes back so the orchestrator knows
+exactly which machines succeeded.
+
+Each software component is a small installer module behind a single orchestrator entry point, so a
+new plugin version means writing one module, not a new deployment process. A dry-run mode simulates
+every action for safe testing, and the whole system is standard-library Python only, so there is
+nothing to install before the installer runs.
+
+</Expandable>
+
+<div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+
+## Project Results
+
+Production tooling in daily use across the studio: artists submit complex batch renders in one
+click, scene health is diagnosed without opening Max, and farm software rollouts happen remotely
+instead of machine by machine.
+
+</div>
+
+<div class="text-content">
+
+- **One-Click Batch Rendering:** Material and finish combinations that were queued manually per option now submit as a single batch
+- **Instant Scene Diagnostics:** JSON manifest caching answers pipeline questions without loading heavy scene files
+- **Hands-Off Deployment:** Full render farm software rollouts run remotely with no manual machine access
+- **Three Interfaces, One Library:** CLI, desktop GUI, and in-Max tooling share a single tested core
+
+---
+
+### Technology Stack
+
+- **Languages:** Python, MaxScript, pymxs
+- **UI & Tooling:** PyQt, CLI utilities
+- **Production:** 3ds Max, V-Ray, render-farm management
+- **Infrastructure:** Windows deployment scripting, Git
+
+---
+
+### Role & Duration
+
+- **Role:** CGI Pipeline Developer
+- **Duration:** 2026-Present
+- **Scope:** Studio-wide pipeline and render farm tooling
+
+</div>
+
+## Challenges & Lessons
+
+<div class="about-text" style="max-width: 800px; margin: 0 auto 40px auto; text-align: left;">
+
+**Build for the artist, not the pipeline:** Coming from a rigging background, I design tools around
+how artists actually work. Adoption is the real success metric; a technically elegant tool nobody
+opens is a failure.
+
+**Unattended means bulletproof:** Farm automation runs with nobody watching. Exit codes, logging,
+and dry-run modes are not polish; they are the difference between a rollout and an outage.
+
+**Meet the constraint, then design:** Version floors, locked-down workers, and live production
+schedules shape every architecture decision. The interesting engineering is making clean design fit
+real constraints.
+
+</div>

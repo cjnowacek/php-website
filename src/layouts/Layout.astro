@@ -1,6 +1,6 @@
 ---
 // src/layouts/Layout.astro — ported from includes/header.php + footer.php
-import { siteName, siteTitle, siteDescription, navItems } from '../config.js';
+import { siteName, siteTitle, siteDescription, navItems, socialLinks } from '../config.js';
 // Bundle the global CSS through Astro so it gets a content-hashed filename.
 // This auto-busts the browser cache whenever the CSS changes (the old
 // /static/css/main.css link cached its @import'd files indefinitely).
@@ -35,6 +35,7 @@ const year = new Date().getFullYear();
   </head>
   <body>
     <div class="title__container">
+      <h1><a href="/" style="color: inherit; text-decoration: none;">{siteName}</a></h1>
       <nav>
         {navItems.map(([href, label]) => (
           <a href={href} class={isActive(href) ? 'active' : undefined}>{label}</a>
@@ -44,7 +45,37 @@ const year = new Date().getFullYear();
 
     <slot />
 
-    <hr />
-    <p class="subtext">&copy; {year} {siteName}. All rights reserved.</p>
+    <div class="site-footer">
+      <p class="footer-links">
+        <a href={socialLinks.github} target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href={socialLinks.linkedin} target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href={socialLinks.vimeo} target="_blank" rel="noopener"><i class="fa-brands fa-vimeo"></i> Demo Reel</a>
+        <a href={socialLinks.email}><i class="fa-solid fa-envelope"></i> Email</a>
+      </p>
+      <p class="subtext">&copy; {year} {siteName}. All rights reserved.</p>
+    </div>
+
+    <script>
+      // Play hover-preview videos on card hover; pause and rewind on leave
+      document.querySelectorAll('.project-card').forEach((card) => {
+        const video = card.querySelector('.hover-video');
+        if (!video) return;
+        card.addEventListener('mouseenter', () => {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        });
+        card.addEventListener('mouseleave', () => {
+          video.pause();
+        });
+      });
+
+      // Whole card is clickable; real links inside keep working normally
+      document.querySelectorAll('.project-card[data-href]').forEach((card) => {
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return;
+          window.location = card.dataset.href;
+        });
+      });
+    </script>
   </body>
 </html>

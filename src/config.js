@@ -5,18 +5,19 @@ export const siteTitle = 'CJ Nowacek';
 // Navigation: [href, label]
 export const navItems = [
   ['/', 'Home'],
-  ['/techart', 'Techart'],
-  ['/devops', 'Devops'],
+  ['/techart', 'Tech Art'],
+  ['/devops', 'Pipeline'],
+  ['/devlog', 'Dev Log'],
   ['/about', 'About'],
   ['/contact', 'Contact'],
 ];
 
 export const siteDescription =
-  'CJ Nowacek - Technical Artist and DevOps Engineer specializing in game development, shader programming, pipeline automation, and infrastructure optimization.';
+  'CJ Nowacek: Pipeline Developer and Technical Artist specializing in CG production tooling, render farm automation, character rigging, and DCC workflows.';
 
 export const socialLinks = {
   linkedin: 'https://linkedin.com/in/cj-nowacek',
   github: 'https://github.com/cjnowacek',
   vimeo: 'https://vimeo.com/1016947852',
-  email: 'mailto:cjnowacek@protonmail.com',
+  email: 'mailto:cj@cjnowacek.com',
 };

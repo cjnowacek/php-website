@@ -126,19 +126,23 @@ Form submissions are handled by `includes/contact_handler.php` and logged to `co
 
 ## Deployment
 
-Deploy to SiteGround hosting:
+The site is built with Astro (`npm run build` -> `dist/`) and deployed as static output,
+plus two PHP pieces that run on SiteGround: the contact-form handler (shipped inside the
+build via `public/includes/` symlinks) and the `/play` room directory (deployed separately).
+
+Every push to `main` auto-deploys via GitHub Actions (`.github/workflows/deploy.yml`):
+build, then rsync `dist/` to `public_html/` with `--delete`. Protected on the server:
+`/play/`, `/includes/contact_submissions.json`, `/.well-known/`, and `/static/img/**`
+(images are hand-synced from Dropbox, not in git, except the tracked hover videos and
+ml3ds card art). Old URLs (`/foo.php`, `/pages-techart/...`, `/pages-devops/...`, retired
+Whisper slugs) 301-redirect via `public/.htaccess`.
+
+Manual fallback with the same protections:
 
 ```bash
-rsync -avzP --delete --exclude='.git/' --exclude='reinstall-apache2.sh' ./ siteground:www/cjnowacek.com/public_html/
+./deploy.sh        # npm run build, then rsync dist/ -> public_html/
+./deploy-play.sh   # deploys ONLY play/ (Traitors & Titans room directory)
 ```
-
-If the images don't sync, excluding .kra usually works
-
-```bash
-rsync -avzP --exclude='*.kra' --exclude='*~' static/img/ siteground:www/cjnowacek.com/public_html/static/img/
-```
-
-This syncs the entire site to the production server, excluding git files and the local Apache setup script.
 
 ## License
 

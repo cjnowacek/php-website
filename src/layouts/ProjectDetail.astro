@@ -6,7 +6,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 
 const { project } = Astro.props;
 const d = project.data;
-const categoryLabel = d.category === 'devops' ? 'DevOps' : 'Technical Art';
+const categoryLabel = d.category === 'devops' ? 'Pipeline' : 'Technical Art';
 const categoryHref = d.category === 'devops' ? '/devops' : '/techart';
 const title = d.pageTitle ?? `${d.title} - ${categoryLabel}`;
 ---

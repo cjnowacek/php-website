@@ -11,6 +11,16 @@ RewriteBase /
 # Never rewrite the live PHP endpoints (POST targets — a redirect would drop the body).
 RewriteRule ^(includes|play)(/|$) - [L]
 
+# Old Whisper slugs and singular/plural typo permutations -> canonical
+# (renamed Jul 2026 to match the game's actual title; canonical is
+# whispers-from-the-star, which must NOT match here or it would loop)
+RewriteRule ^(?:pages-techart|techart)/(whisper-from-the-stars|whispers-from-the-stars|whisper-from-the-star)(/.*)?$ /techart/whispers-from-the-star$2 [R=301,L]
+
+# Retired pages: build-pipeline was deleted (content matched neither resume);
+# media-lab was renamed to ml3ds
+RewriteRule ^(?:pages-devops|devops)/build-pipeline(/.*)?$ /devops/ [R=301,L]
+RewriteRule ^devops/media-lab(/.*)?$ /devops/ml3ds/ [R=301,L]
+
 # Old URLs, permanently moved:
 #   /pages-techart/foo/ -> /techart/foo/   (project pages)
 #   /pages-devops/foo/  -> /devops/foo/

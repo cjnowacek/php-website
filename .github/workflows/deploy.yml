@@ -18,6 +18,17 @@ jobs:
             exit 1
           fi
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Build Astro site
+        run: |
+          npm ci
+          npm run build
+
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
@@ -25,20 +36,22 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "${{ secrets.SG_PORT || '18765' }}" "${{ secrets.SG_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Deploy site (code only; images stay on the server)
+      # dist/ is the whole site. Protected on the server:
+      #   /play/            - deployed separately by deploy-play.sh
+      #   /includes/contact_submissions.json - live contact-form log
+      #   /.well-known/     - host-managed (Let's Encrypt)
+      #   /static/img/**    - images live on the server, not in git, EXCEPT the
+      #                       tracked hover videos + ml3ds card art, which deploy
+      - name: Deploy site (built output; images stay on the server)
         run: |
           rsync -avz --delete \
             -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SG_PORT || '18765' }}" \
-            --exclude='.git/' \
-            --exclude='.github/' \
+            --exclude='/play/' \
+            --exclude='/includes/contact_submissions.json' \
+            --exclude='/.well-known/' \
             --include='/static/img/' \
             --include='/static/img/project-cards/' \
             --include='/static/img/project-cards/video/***' \
             --include='/static/img/project-cards/ml3ds-webp-1200x900.webp' \
             --exclude='/static/img/**' \
-            --exclude='contact_submissions.json' \
-            --exclude='reinstall-apache2.sh' \
-            --exclude='dev-router.php' \
-            --exclude='dev-server.bat' \
-            --exclude='CLAUDE.md' \
-            ./ "${{ secrets.SG_USER }}@${{ secrets.SG_HOST }}:www/cjnowacek.com/public_html/"
+            dist/ "${{ secrets.SG_USER }}@${{ secrets.SG_HOST }}:www/cjnowacek.com/public_html/"
