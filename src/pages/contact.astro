@@ -4,8 +4,15 @@
 // via public/includes (symlink to /includes), so SiteGround executes it alongside
 // the static output. It won't run under `astro dev` — test against production.
 import Layout from '../layouts/Layout.astro';
+import { statSync } from 'node:fs';
 
 const FORM_ENDPOINT = '/includes/contact_handler.php';
+
+// "Updated" stamp from the PDF's mtime, resolved at build time (the resume CI
+// pushes fresh PDFs to static/files, which triggers a rebuild).
+const resumeUpdated = statSync(
+  new URL('../../static/files/CJ-Nowacek-Pipeline-Resume.pdf', import.meta.url)
+).mtime.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
 ---
 <Layout title="Contact">
   <div class="container" style="max-width: 1300px;">
@@ -38,10 +45,13 @@ const FORM_ENDPOINT = '/includes/contact_handler.php';
 
         <div class="resume-download">
           <h3>Resume</h3>
-          <a href="/static/files/CJ_Nowacek_Resume.pdf" class="project-link" download>
-            📄 Download Resume (PDF)
+          <a href="/static/files/CJ-Nowacek-TechArt-Resume.pdf" class="project-link" download>
+            📄 Tech Art Resume (PDF)
           </a>
-          <p class="project-description">Technical Artist & DevOps Engineer<br />Updated: January 2025</p>
+          <a href="/static/files/CJ-Nowacek-Pipeline-Resume.pdf" class="project-link" download>
+            📄 Pipeline Resume (PDF)
+          </a>
+          <p class="project-description">Pipeline Developer &amp; Technical Artist<br />Updated: {resumeUpdated}</p>
         </div>
 
         <div class="availability">
