@@ -1,0 +1,25 @@
+# Root .htaccess for the Astro build (ships via public/ -> dist/).
+# The static site is plain directories with index.html; PHP survives only in
+# /includes/contact_handler.php (contact form) and /play/ (room directory).
+
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+RewriteBase /
+
+# Never rewrite the live PHP endpoints (POST targets — a redirect would drop the body).
+RewriteRule ^(includes|play)(/|$) - [L]
+
+# Old URLs, permanently moved:
+#   /pages-techart/foo/ -> /techart/foo/   (project pages)
+#   /pages-devops/foo/  -> /devops/foo/
+RewriteRule ^pages-techart/(.*)$ /techart/$1 [R=301,L]
+RewriteRule ^pages-devops/(.*)$ /devops/$1 [R=301,L]
+
+# /index.php (any directory) -> the directory itself
+RewriteRule ^(.*/)?index\.php$ /$1 [R=301,L]
+
+# /foo.php -> /foo (old flat pages: about.php, contact.php, techart.php, ...)
+RewriteCond %{THE_REQUEST} \s/+([^.?\s]+)\.php[\s?]
+RewriteRule ^ /%1 [R=301,L]

@@ -126,19 +126,18 @@ Form submissions are handled by `includes/contact_handler.php` and logged to `co
 
 ## Deployment
 
-Deploy to SiteGround hosting:
+The site is built with Astro and deployed as static output, plus two PHP pieces that
+run on SiteGround: the contact-form handler (shipped inside the build via
+`public/includes/` symlinks) and the `/play` room directory (deployed separately).
 
 ```bash
-rsync -avzP --delete --exclude='.git/' --exclude='/home/cnowacek/git/php-website/reinstall-apache2.sh' /home/cnowacek/git/php-website/ siteground:www/cjnowacek.com/public_html/
+./deploy.sh        # npm run build, then rsync dist/ -> public_html/
+./deploy-play.sh   # deploys ONLY play/ (Traitors & Titans room directory)
 ```
 
-If the images don't sync, excluding .kra usually works
-
-```bash
-rsync -avzP --exclude='*.kra' --exclude='*~' /home/cnowacek/git/php-website/static/img/ siteground:www/cjnowacek.com/public_html/static/img/
-```
-
-This syncs the entire site to the production server, excluding git files and the local Apache setup script.
+`deploy.sh` uses `--delete` but protects `/play/`, `/includes/contact_submissions.json`
+(the live form log), and `/.well-known/`. Old URLs (`/foo.php`, `/pages-techart/...`,
+`/pages-devops/...`) 301-redirect to their new locations via `public/.htaccess`.
 
 ## License
 
