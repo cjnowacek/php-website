@@ -5,6 +5,18 @@
 DirectoryIndex index.html index.php
 ErrorDocument 404 /404.html
 
+# HTML must never be served stale (SiteGround's dynamic cache kept serving
+# pre-deploy pages — same fix as the old PHP header). Astro's /_astro/ assets
+# have content-hashed names, so they can cache forever.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "^[^.]+\.[A-Za-z0-9_-]{8,}\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
 RewriteEngine On
 RewriteBase /
 
