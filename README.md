@@ -1,149 +1,49 @@
 # CJ Nowacek Portfolio
 
-Professional portfolio website showcasing Technical Art and DevOps expertise.
-
-## Overview
-
-This is a PHP-based portfolio website featuring project showcases, downloadable resumes, an embedded demo reel, and a contact form. The site is designed to highlight work in both Technical Art (game development) and DevOps/Infrastructure domains.
+Portfolio website for cjnowacek.com, showcasing Technical Art and Pipeline/DevOps work: project pages, downloadable resumes, an embedded demo reel, a dev log, and a contact form.
 
 ## Tech Stack
 
-- **Backend:** PHP (procedural, component-based)
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **Server:** Apache 2 with mod_rewrite
-- **Icons:** Font Awesome 6.5.0
-
-## Project Structure
-
-```
-php-website/
-├── index.php              # Homepage
-├── techart.php            # Technical Art portfolio
-├── devops.php             # DevOps portfolio
-├── about.php              # About page
-├── contact.php            # Contact page with form
-├── 404.php                # Custom error page
-├── includes/              # Backend components
-│   ├── config.php         # Site configuration
-│   ├── header.php         # Common header/nav
-│   ├── footer.php         # Common footer
-│   ├── contact_handler.php # Form submission handler
-│   ├── demo_reel.php      # Vimeo embed component
-│   ├── components/        # Reusable UI components
-│   ├── project-cards/     # Project data definitions
-│   └── project-components/ # Project rendering system
-├── pages-techart/         # Technical Art project detail pages
-├── pages-devops/          # DevOps project detail pages
-├── static/
-│   ├── css/               # Modular stylesheets
-│   ├── files/             # Downloadable resumes (PDFs)
-│   ├── img/               # Images (not in git)
-│   └── icons/             # Icon assets
-├── .htaccess              # Apache URL rewriting
-└── reinstall-apache2.sh   # Apache setup script
-```
-
-## Setup
-
-### Prerequisites
-
-- Apache 2
-- PHP 7.4+
-- mod_rewrite enabled
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd php-website
-```
-
-2. Sync images (script lives in the Dropbox assets folder, not this repo; runs in Git Bash, WSL, or Linux):
-```bash
-# Auto-detects the repo at C:\dev\PHP-Website (Windows) or ~/dev/PHP-Website (Linux/WSL);
-# pass the repo path explicitly if it lives elsewhere
-/c/Dropbox/1-career/web-assets/sync-with-static-img.sh [path-to-repo]
-```
-Note: Images are stored separately in Dropbox and excluded from git.
-
-3. Configure Apache to serve this directory, or use the provided script:
-```bash
-./reinstall-apache2.sh
-```
-
-4. Access the site at `http://localhost`
-
-## Configuration
-
-Edit `includes/config.php` to update:
-- Site title and description
-- Navigation menu items
-- SEO metadata
-- Social media links
-
-## Features
-
-- **Dynamic Project System:** Projects are loaded from individual PHP files in `includes/project-cards/`
-- **Contact Form:** Submissions logged to JSON with validation
-- **Clean URLs:** Apache rewriting removes `.php` extensions
-- **Responsive Design:** Mobile-first CSS with breakpoints
-- **Project Cards:** Hover animations with GIF transitions
-- **Demo Reel:** Embedded Vimeo player
-- **Dual Resumes:** Separate PDFs for TechArt and DevOps roles
-
-## Image Management
-
-Images are stored in Windows Dropbox at `C:\Dropbox\1-career\web-assets\`. The `~sync\` subfolder holds the web-ready assets (`pages/`, `pfp/`, `project-cards/`); `src\` holds source art (PSDs, logo, gif frames) that never ships.
-
-Sync via the script in the Dropbox folder. It works in Git Bash on Windows, WSL, and native Linux, auto-detecting Dropbox and the repo (`C:\dev\PHP-Website` on Windows, `~/dev/PHP-Website` on Linux); pass the repo path as an argument to override:
-
-```bash
-/c/Dropbox/1-career/web-assets/sync-with-static-img.sh [path-to-repo]
-```
-
-## URL Structure
-
-- Homepage: `/`
-- Portfolio pages: `/techart`, `/devops`
-- About: `/about`
-- Contact: `/contact`
-- Project details: `/pages-techart/{project}/`, `/pages-devops/{project}/`
+- **Framework:** [Astro](https://astro.build) (fully static output, MDX content collections)
+- **Styling:** Plain modular CSS in `static/css/`, vanilla JavaScript
+- **Hosting:** SiteGround (Apache); deployed by GitHub Actions on push to `main`
+- **Server-side PHP (the only two pieces left):** the contact form handler and the `/play/` room directory
 
 ## Development
 
-The site uses a modular component system:
-- Common elements (header/footer) are in `includes/`
-- Projects are defined as PHP arrays in `includes/project-cards/`
-- Add new projects by creating a new file in `project-cards/` and a detail page in `pages-techart/` or `pages-devops/`
-
-## Contact Form
-
-Form submissions are handled by `includes/contact_handler.php` and logged to `contact_submissions.json`. The handler validates:
-- Required fields (name, email, subject, message)
-- Email format
-- Request method (POST only)
-
-## Deployment
-
-The site is built with Astro (`npm run build` -> `dist/`) and deployed as static output,
-plus two PHP pieces that run on SiteGround: the contact-form handler (shipped inside the
-build via `public/includes/` symlinks) and the `/play` room directory (deployed separately).
-
-Every push to `main` auto-deploys via GitHub Actions (`.github/workflows/deploy.yml`):
-build, then rsync `dist/` to `public_html/` with `--delete`. Protected on the server:
-`/play/`, `/includes/contact_submissions.json`, `/.well-known/`, and `/static/img/**`
-(images are hand-synced from Dropbox, not in git, except the tracked hover videos and
-ml3ds card art). Old URLs (`/foo.php`, `/pages-techart/...`, `/pages-devops/...`, retired
-Whisper slugs) 301-redirect via `public/.htaccess`.
-
-Manual fallback with the same protections:
-
 ```bash
-./deploy.sh        # npm run build, then rsync dist/ -> public_html/
-./deploy-play.sh   # deploys ONLY play/ (Traitors & Titans room directory)
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # static site into dist/
+npm run preview    # serve the built dist/
 ```
 
-## License
+## Content Model
 
-Personal portfolio - All rights reserved.
+Each project is one `.mdx` file in `src/content/projects/`: frontmatter holds the card metadata (title, category, image, highlights, tags, ...), the body is the detail page. Detail routes derive from the file path (`smite/gravity-switch.mdx` → `/techart/smite/gravity-switch`). Listing pages (`index`, `/techart`, `/devops`) render explicit ordered id lists, so a project can exist unlisted.
+
+Site-wide strings (nav, SEO, social links) live in `src/config.js`.
+
+## Deploy
+
+Pushing to `main` runs `.github/workflows/deploy.yml`: build, then rsync `dist/` to SiteGround. The deploy never touches `/play/` (deployed separately via `deploy-play.sh`), the live contact-form log, or `static/img/` contents. `deploy.sh` is the manual equivalent.
+
+## Images
+
+Images are not in git. They live in Dropbox (`C:\Dropbox\1-career\web-assets\~sync\`) and are synced into `static/img/` with the script in that Dropbox folder, then hand-rsynced to the server:
+
+```bash
+/c/Dropbox/1-career/web-assets/sync-with-static-img.sh [path-to-repo]
+rsync -avzP --exclude='*.kra' --exclude='*~' static/img/ siteground:www/cjnowacek.com/public_html/static/img/
+```
+
+Astro serves them through the `public/static -> ../static` symlink. The two resume PDFs in `static/files/` are built and committed automatically by the `Resume-with-Tex` repo's CI.
+
+## URL Structure
+
+- `/` home, `/techart`, `/devops`, `/devlog`, `/about`, `/contact`
+- Project details: `/techart/{project}`, `/devops/{project}`
+- Old PHP-era URLs 301-redirect via `public/.htaccess`
+- `/play/` Traitors & Titans room directory (standalone PHP)
+
+See `CLAUDE.md` for the full architecture and workflow reference.
