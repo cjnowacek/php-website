@@ -29,12 +29,21 @@ jobs:
           npm ci
           npm run build
 
+      # Host keys are pinned rather than ssh-keyscan'd at deploy time: SiteGround's
+      # brute-force protection intermittently drops connections from cloud-runner
+      # IPs, and a failed scan used to kill the whole deploy (the rsync below gets
+      # retries for the same reason). Pinned keys are public info and safe in git.
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
           printf '%s\n' "${{ secrets.SG_SSH_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p "${{ secrets.SG_PORT || '18765' }}" "${{ secrets.SG_HOST }}" >> ~/.ssh/known_hosts
+          cat >> ~/.ssh/known_hosts <<'EOF'
+          [ssh.cjnowacek.com]:18765 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJMAJVNdbTG4hQMroKVu4UQPiLybooAMlSS/B/asy7gv
+          [ssh.cjnowacek.com]:18765 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAqVfzp8UoR3iW2yhHcSynWZlmXhDNIAG6jubZy3V6aeN6Efqlj1U6K2d/7fHZekvI5sFc6fjddVAr7Qwie9VhdcJzNJEyJiYPJ2fOXHfMp3Htpb+2LTFvOvJjqjcT3M8iOKb5vufWJg5eLsi5NtTKTTYr52cwwMLZrZswauO8ROXD4FTbYmrC1EQJ39ZrfKUETptJ4sUw+ddJZMCT7CkBL8w0hho/q5S6kcANbDoni8zDwCm7gwcCtwybH9hHBObjHgEptTuHHIfBF/+k2K+fNBuTlNtwlS6zAXKCoHLwN61u5gyPBrnww7ogWEp8Z8GsY4fAgDQ4Z0XJnHBVawvZDQ==
+          EOF
+          # Best-effort scan in case SG_HOST isn't ssh.cjnowacek.com (pinned above)
+          ssh-keyscan -p "${{ secrets.SG_PORT || '18765' }}" "${{ secrets.SG_HOST }}" >> ~/.ssh/known_hosts || true
 
       # dist/ is the whole site. Protected on the server:
       #   /play/            - deployed separately by deploy-play.sh
@@ -44,7 +53,9 @@ jobs:
       #                       tracked hover videos + ml3ds card art, which deploy
       - name: Deploy site (built output; images stay on the server)
         run: |
-          rsync -avz --delete \
+          for attempt in 1 2 3; do
+            [ "$attempt" -gt 1 ] && { echo "rsync attempt $attempt after 30s..."; sleep 30; }
+            rsync -avz --delete \
             -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SG_PORT || '18765' }}" \
             --exclude='/play/' \
             --exclude='/includes/contact_submissions.json' \
@@ -54,4 +65,8 @@ jobs:
             --include='/static/img/project-cards/video/***' \
             --include='/static/img/project-cards/ml3ds-webp-1200x900.webp' \
             --exclude='/static/img/**' \
-            dist/ "${{ secrets.SG_USER }}@${{ secrets.SG_HOST }}:www/cjnowacek.com/public_html/"
+            dist/ "${{ secrets.SG_USER }}@${{ secrets.SG_HOST }}:www/cjnowacek.com/public_html/" \
+              && exit 0
+          done
+          echo "::error::rsync failed after 3 attempts"
+          exit 1
