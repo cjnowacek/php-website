@@ -78,10 +78,13 @@ if ($action === 'register') {
         if (count($addrs) >= 8) break;
     }
 
-    // Tunnel URL (https://xxx.trycloudflare.com) — reachable from anywhere, so resolve
-    // serves it first. Strictly validated: it lands in a redirect on the join page.
+    // Tunnel URL — reachable from anywhere, so resolve serves it first. Strictly
+    // validated (it lands in a redirect on the join page): either our own frp vhost
+    // (ROOM.play.cjnowacek.com, since 2026-08-12) or a legacy cloudflared quick tunnel.
     $publicUrl = (string)($body['publicUrl'] ?? '');
-    if ($publicUrl !== '' && !preg_match('#^https://[a-z0-9.-]+\.trycloudflare\.com/?$#', $publicUrl)) {
+    if ($publicUrl !== ''
+        && !preg_match('#^https://[a-z0-9-]+\.play\.cjnowacek\.com/?$#', $publicUrl)
+        && !preg_match('#^https://[a-z0-9.-]+\.trycloudflare\.com/?$#', $publicUrl)) {
         $publicUrl = '';
     }
 
