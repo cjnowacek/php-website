@@ -125,4 +125,117 @@ if ($action === 'resolve') {
     exit;
 }
 
+// ── Game records (2026-08-28) ─────────────────────────────────────────────
+// The GM's game mirrors its journal here: roster, every event (public and GM-only),
+// state snapshots at phase changes, the result. One JSON file per game under
+// tt-data/games/. Same secret as the heartbeat; events arrive in batches keyed by seq,
+// so a retried batch never duplicates. Reads (games / game) need the secret too —
+// the journal holds every role and every GM-only line.
+
+function games_dir(string $dataDir): string
+{
+    $d = $dataDir . '/games';
+    if (!is_dir($d)) mkdir($d, 0700, true);
+    return $d;
+}
+
+function require_secret(string $secretFile, array $body): void
+{
+    if (!is_file($secretFile)) fail(503, 'directory not provisioned');
+    $secret = trim((string)file_get_contents($secretFile));
+    if (!hash_equals($secret, (string)($body['secret'] ?? ''))) fail(403, 'bad secret');
+}
+
+function read_body(): array
+{
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') fail(405, 'POST required');
+    $body = json_decode((string)file_get_contents('php://input'), true);
+    if (!is_array($body)) fail(400, 'bad json');
+    return $body;
+}
+
+if ($action === 'record') {
+    $body = read_body();
+    require_secret($secretFile, $body);
+    $id = (string)($body['game'] ?? '');
+    if (!preg_match('/^[0-9]{8}-[0-9]{6}-[A-Z0-9]{2,8}$/', $id)) fail(400, 'bad game id');
+
+    $file = games_dir($dataDir) . '/' . $id . '.json';
+    $fp = fopen($file, 'c+');
+    if ($fp === false || !flock($fp, LOCK_EX)) fail(500, 'storage unavailable');
+    $raw = stream_get_contents($fp);
+    $rec = $raw !== '' ? json_decode($raw, true) : null;
+    if (!is_array($rec)) {
+        $rec = ['id' => $id, 'events' => [], 'snapshots' => [], 'createdUtc' => gmdate('c')];
+    }
+    foreach (['room', 'version', 'startedUtc', 'endedUtc', 'result', 'winner', 'king'] as $k)
+        if (isset($body[$k]) && $body[$k] !== '') $rec[$k] = substr((string)$body[$k], 0, 400);
+    if (isset($body['playerCount'])) $rec['playerCount'] = (int)$body['playerCount'];
+    if (!empty($body['roster']) && is_array($body['roster'])) $rec['roster'] = array_slice($body['roster'], 0, 40);
+
+    $maxSeq = 0;
+    foreach ($rec['events'] as $e) $maxSeq = max($maxSeq, (int)($e['seq'] ?? 0));
+    $added = 0;
+    foreach ((array)($body['events'] ?? []) as $e) {
+        if (!is_array($e)) continue;
+        $seq = (int)($e['seq'] ?? 0);
+        if ($seq <= $maxSeq) continue;                       // retried batch — already have it
+        $rec['events'][] = [
+            'seq' => $seq, 'at' => (int)($e['at'] ?? 0), 'phase' => (int)($e['phase'] ?? -1),
+            'day' => (int)($e['day'] ?? 0), 'cat' => substr((string)($e['cat'] ?? ''), 0, 16),
+            'msg' => substr((string)($e['msg'] ?? ''), 0, 2000), 'gmOnly' => !empty($e['gmOnly']),
+        ];
+        $maxSeq = $seq; $added++;
+    }
+    $maxSnap = 0;
+    foreach ($rec['snapshots'] as $s) $maxSnap = max($maxSnap, (int)($s['seq'] ?? 0));
+    foreach ((array)($body['snapshots'] ?? []) as $s) {
+        if (!is_array($s)) continue;
+        $seq = (int)($s['seq'] ?? 0);
+        if ($seq < $maxSnap || ($seq === $maxSnap && $maxSnap > 0)) continue;
+        $rec['snapshots'][] = ['seq' => $seq, 'label' => substr((string)($s['label'] ?? ''), 0, 40), 'json' => (string)($s['json'] ?? '')];
+        $maxSnap = $seq;
+    }
+    $rec['ended'] = !empty($body['ended']) || !empty($rec['endedUtc']);
+    $rec['updatedUtc'] = gmdate('c');
+
+    ftruncate($fp, 0); rewind($fp);
+    fwrite($fp, json_encode($rec));
+    fflush($fp); flock($fp, LOCK_UN); fclose($fp);
+    echo json_encode(['ok' => true, 'game' => $id, 'seq' => $maxSeq, 'added' => $added]);
+    exit;
+}
+
+if ($action === 'games') {
+    $body = read_body();
+    require_secret($secretFile, $body);
+    $out = [];
+    foreach (glob(games_dir($dataDir) . '/*.json') as $f) {
+        $r = json_decode((string)file_get_contents($f), true);
+        if (!is_array($r)) continue;
+        $out[] = [
+            'id' => $r['id'] ?? basename($f, '.json'), 'room' => $r['room'] ?? '', 'startedUtc' => $r['startedUtc'] ?? '',
+            'endedUtc' => $r['endedUtc'] ?? '', 'playerCount' => $r['playerCount'] ?? 0, 'events' => count($r['events'] ?? []),
+            'snapshots' => count($r['snapshots'] ?? []), 'result' => $r['result'] ?? '', 'winner' => $r['winner'] ?? '',
+            'ended' => !empty($r['ended']),
+        ];
+    }
+    usort($out, fn($a, $b) => strcmp($b['id'], $a['id']));
+    echo json_encode(['ok' => true, 'games' => $out]);
+    exit;
+}
+
+if ($action === 'game') {
+    $body = read_body();
+    require_secret($secretFile, $body);
+    $id = (string)($body['game'] ?? '');
+    if (!preg_match('/^[0-9]{8}-[0-9]{6}-[A-Z0-9]{2,8}$/', $id)) fail(400, 'bad game id');
+    $file = games_dir($dataDir) . '/' . $id . '.json';
+    if (!is_file($file)) fail(404, 'no such game');
+    $rec = json_decode((string)file_get_contents($file), true);
+    if (empty($body['snapshots'])) unset($rec['snapshots']);   // snapshots only on request — they are big
+    echo json_encode(['ok' => true, 'game' => $rec]);
+    exit;
+}
+
 fail(400, 'unknown action');
