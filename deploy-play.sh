@@ -17,7 +17,15 @@ HOST="${VPS_HOST:-root@167.99.5.169}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "==> Deploying play/ to $HOST:/var/www/play/"
-rsync -avzP --delete "$SCRIPT_DIR/play/" "$HOST:/var/www/play/"
+# rsync is absent from Git for Windows (2026-08-30) — scp each file instead. The play/
+# directory is two small files, so losing --delete costs nothing a stale file would not
+# have cost anyway; the tt-data secret lives outside this tree either way.
+if command -v rsync >/dev/null 2>&1; then
+  rsync -avzP --delete "$SCRIPT_DIR/play/" "$HOST:/var/www/play/"
+else
+  echo "    (no rsync — using scp)"
+  scp "$SCRIPT_DIR/play/"* "$HOST:/var/www/play/"
+fi
 ssh "$HOST" 'chown -R www-data:www-data /var/www/play'
 
 echo "==> Ensuring tt-data + secret exist (outside webroot)"
@@ -33,6 +41,8 @@ fi
 ssh "$HOST" 'chown -R www-data:www-data /var/www/tt-data'
 
 echo "==> Smoke test"
-curl -fsS 'https://play.cjnowacek.com/api.php?action=resolve&room=ZZZZ' || true
+# ZZZZ is deliberately absent, so a 404 with {"ok":false} IS the healthy answer — the
+# point is that PHP ran and answered as itself. -f made curl shout about it every deploy.
+curl -sS 'https://play.cjnowacek.com/api.php?action=resolve&room=ZZZZ' || true
 echo
 echo "==> Done. Players join at: https://play.cjnowacek.com/"
