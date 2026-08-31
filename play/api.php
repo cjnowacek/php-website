@@ -168,7 +168,8 @@ if ($action === 'record') {
     if (!is_array($rec)) {
         $rec = ['id' => $id, 'events' => [], 'snapshots' => [], 'createdUtc' => gmdate('c')];
     }
-    foreach (['room', 'version', 'startedUtc', 'endedUtc', 'result', 'winner', 'king'] as $k)
+    // 'mode' is "game" or "test" — a sandbox session is stored with the rest but labelled.
+    foreach (['room', 'version', 'startedUtc', 'endedUtc', 'result', 'winner', 'king', 'mode'] as $k)
         if (isset($body[$k]) && $body[$k] !== '') $rec[$k] = substr((string)$body[$k], 0, 400);
     if (isset($body['playerCount'])) $rec['playerCount'] = (int)$body['playerCount'];
     if (!empty($body['roster']) && is_array($body['roster'])) $rec['roster'] = array_slice($body['roster'], 0, 40);
@@ -217,6 +218,7 @@ if ($action === 'games') {
             'id' => $r['id'] ?? basename($f, '.json'), 'room' => $r['room'] ?? '', 'startedUtc' => $r['startedUtc'] ?? '',
             'endedUtc' => $r['endedUtc'] ?? '', 'playerCount' => $r['playerCount'] ?? 0, 'events' => count($r['events'] ?? []),
             'snapshots' => count($r['snapshots'] ?? []), 'result' => $r['result'] ?? '', 'winner' => $r['winner'] ?? '',
+            'mode' => $r['mode'] ?? 'game',
             'ended' => !empty($r['ended']),
         ];
     }
